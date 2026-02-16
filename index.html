@@ -10,111 +10,109 @@
     <style>
         :root { --gold: #d4af37; --royal-blue: #0a192f; --white: #ffffff; --light-bg: #f8f9fa; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--light-bg); color: var(--royal-blue); scroll-behavior: smooth; }
+        body { background-color: var(--light-bg); color: var(--royal-blue); scroll-behavior: smooth; padding-bottom: 70px; }
 
         /* الهيدر */
         header { background: var(--royal-blue); color: white; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo-area h1 { font-size: 1.4rem; color: var(--gold); }
+        .logo-area h1 { font-size: 1.2rem; color: var(--gold); }
 
-        /* زرار الاتصال العائم الاحترافي */
-        .floating-call {
+        /* شريط الاتصال السفلي الجديد - الحل النهائي */
+        .bottom-contact-bar {
             position: fixed;
-            bottom: 25px;
-            right: 25px; /* ثابت في ركن الشاشة */
-            background: var(--gold);
-            color: var(--royal-blue);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-decoration: none;
-            z-index: 9999;
-            transition: 0.3s;
-        }
-        /* تلميح بيظهر جنب الزرار */
-        .floating-call::before {
-            content: "اتصل الآن";
-            position: absolute;
-            right: 70px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
             background: var(--royal-blue);
-            color: var(--gold);
-            padding: 5px 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: 0.3s;
-            pointer-events: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 9999;
+            border-top: 2px solid var(--gold);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
         }
-        .floating-call:hover::before { opacity: 1; }
-        .floating-call:hover { transform: scale(1.1); }
+
+        .contact-item {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .contact-item i { font-size: 1.5rem; color: var(--gold); margin-bottom: 4px; }
+        .contact-item:active { transform: scale(0.9); }
 
         /* الواجهة الرئيسية */
         .hero {
             background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), 
                         url('https://images.unsplash.com/photo-1579152276503-68fe28369357?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; height: 85vh;
+            background-size: cover; height: 75vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px;
         }
 
-        .hero h2 { font-size: 2.8rem; margin-bottom: 15px; }
-        .hero h3 { font-size: 1.6rem; color: var(--gold); margin-bottom: 25px; padding: 5px 20px; border: 2px solid var(--gold); display: inline-block; }
+        .hero h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 900; }
+        .hero h3 { font-size: 1.3rem; color: var(--gold); margin-bottom: 20px; padding: 5px 15px; border: 1px solid var(--gold); }
 
-        .digital-services { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
-        .btn-luxury { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.4s; display: flex; align-items: center; gap: 10px; }
+        .digital-services { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
+        .btn-luxury { padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; text-align: center; }
         .btn-gold { background: var(--gold); color: var(--royal-blue); }
-        .btn-outline { border: 2px solid var(--gold); color: var(--gold); }
+        .btn-outline { border: 1px solid var(--gold); color: var(--gold); }
 
-        .analysis-section { padding: 80px 10%; background: white; text-align: center; }
-        .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .analysis-item { background: var(--light-bg); padding: 20px; border-right: 5px solid var(--gold); border-radius: 8px; text-align: right; }
+        .analysis-section { padding: 40px 10%; background: white; text-align: center; }
+        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .analysis-item { background: var(--light-bg); padding: 15px; border-right: 4px solid var(--gold); border-radius: 5px; text-align: right; font-size: 0.9rem; }
         
-        footer { background: var(--royal-blue); color: white; text-align: center; padding: 40px; margin-bottom: 0; }
+        footer { background: var(--royal-blue); color: white; text-align: center; padding: 30px; margin-bottom: 0; }
     </style>
 </head>
 <body>
 
-    <a href="tel:01015090991" class="floating-call" title="اتصل بنا">
-        <i class="fas fa-phone-alt"></i>
-    </a>
+    <div class="bottom-contact-bar">
+        <a href="tel:01015090991" class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>اتصل بنا</span>
+        </a>
+        <a href="https://wa.me/201015090991" class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+        <a href="#location" class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>العنوان</span>
+        </a>
+    </div>
 
     <header>
         <div class="logo-area"><h1>د. جابر شحاته</h1></div>
-        <div class="nav-contact" style="color:var(--gold)">01015090991</div>
+        <div style="font-size: 0.9rem; color: var(--gold);">استشاري تحاليل</div>
     </header>
 
     <section class="hero">
-        <h2>معمل د/ جابر شحاته للتحاليل الطبية</h2>
-        <h3>استشاري التحاليل الطبية</h3>
-        <p style="color: #ccd6f6; font-size: 1.1rem;">دقة معملية بمعايير عالمية على أرض أبو المطامير</p>
+        <h2>معمل د/ جابر شحاته</h2>
+        <h3>للتحاليل الطبية</h3>
         
         <div class="digital-services">
-            <a href="https://wa.me/201015090991?text=اريد حجز سحب منزلي" class="btn-luxury btn-gold">
-                <i class="fas fa-motorcycle"></i> طلب سحب منزلي VIP
-            </a>
-            <a href="#" onclick="alert('خدمة النتائج ستكون متاحة قريباً أونلاين')" class="btn-luxury btn-outline">
-                <i class="fas fa-file-invoice"></i> استلام النتائج أونلاين
-            </a>
+            <a href="https://wa.me/201015090991?text=اريد حجز سحب منزلي" class="btn-luxury btn-gold">طلب سحب منزلي VIP</a>
+            <a href="#" onclick="alert('خدمة النتائج ستكون متاحة قريباً أونلاين')" class="btn-luxury btn-outline">نتائج التحاليل أونلاين</a>
         </div>
     </section>
 
     <section class="analysis-section">
-        <h2 style="color: var(--royal-blue);">أهم الفحوصات المتوفرة</h2>
+        <h2 style="font-size: 1.5rem; color: var(--royal-blue);">أهم التحاليل المتوفرة</h2>
         <div class="analysis-grid">
-            <div class="analysis-item"><h4>صورة دم كاملة CBC</h4><p>بأحدث تقنيات العد الإلكتروني.</p></div>
-            <div class="analysis-item"><h4>وظائف الكبد والكلى</h4><p>متابعة دقيقة للأنزيمات والسموم.</p></div>
-            <div class="analysis-item"><h4>السكر التراكمي</h4><p>أدق نتائج متابعة السكر في البحيرة.</p></div>
-            <div class="analysis-item"><h4>هرمونات وغدة درقية</h4><p>فحوصات شاملة بدقة متناهية.</p></div>
+            <div class="analysis-item"><h4>صورة دم CBC</h4></div>
+            <div class="analysis-item"><h4>وظائف كبد وكلى</h4></div>
+            <div class="analysis-item"><h4>سكر تراكمي</h4></div>
+            <div class="analysis-item"><h4>غدة وهرمونات</h4></div>
         </div>
     </section>
 
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026 معمل د. جابر شحاته</p>
-        <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">أبو المطامير - مساكن الإرشاد</p>
+    <footer id="location">
+        <p>أبو المطامير - مساكن الإرشاد</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">&copy; 2026 د. جابر شحاته</p>
     </footer>
 
 </body>
