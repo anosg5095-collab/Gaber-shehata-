@@ -99,13 +99,14 @@
         .test-name { color: white; }
         .test-category { color: #d4af37; font-size: 0.8rem; font-weight: bold; }
 
-        /* شريط الأزرار السفلي */
+        /* شريط الأزرار السفلي (هنا التعديل المطلوب) */
         .bottom-nav {
             position: fixed; bottom: 20px; left: 8%; right: 8%;
             display: flex; justify-content: space-between; align-items: center; z-index: 1000;
         }
 
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        
         .icon-circle {
             width: 60px; height: 60px;
             background: rgba(10, 25, 47, 0.95);
@@ -113,8 +114,10 @@
             display: flex; align-items: center; justify-content: center;
             color: #d4af37; font-size: 1.6rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            transition: 0.3s;
         }
-        .nav-link span { color: white; font-size: 0.8rem; font-weight: bold; }
+
+        .nav-link span { color: white; font-size: 0.85rem; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
         .fade-in { animation: fadeIn 1.5s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -155,49 +158,44 @@
                 <i class="fas fa-times" onclick="closeTestList()" style="font-size: 1.5rem; cursor: pointer;"></i>
             </div>
             <div class="test-item"><span class="test-name">صورة دم كاملة (CBC)</span><span class="test-category">Hematology</span></div>
-            <div class="test-item"><span class="test-name">وظائف كبد كاملة</span><span class="test-category">Biochemistry</span></div>
-            <div class="test-item"><span class="test-name">وظائف كلى كاملة</span><span class="test-category">Biochemistry</span></div>
+            <div class="test-item"><span class="test-name">وظائف كبد (Liver Function)</span><span class="test-category">Biochemistry</span></div>
+            <div class="test-item"><span class="test-name">وظائف كلى (Kidney Function)</span><span class="test-category">Biochemistry</span></div>
             <div class="test-item"><span class="test-name">السكر التراكمي (HbA1c)</span><span class="test-category">Diabetes</span></div>
-            <div class="test-item"><span class="test-name">تحليل الدهون الشامل</span><span class="test-category">Lipid Profile</span></div>
-            <div class="test-item"><span class="test-name">هرمون الغدة الدرقية (TSH)</span><span class="test-category">Hormones</span></div>
-            <div class="test-item"><span class="test-name">هرمونات الخصوبة</span><span class="test-category">Hormones</span></div>
-            <div class="test-item"><span class="test-name">فيتامين د & ب12</span><span class="test-category">Vitamins</span></div>
+            <div class="test-item"><span class="test-name">دهون كاملة (Lipid Profile)</span><span class="test-category">Biochemistry</span></div>
+            <div class="test-item"><span class="test-name">غدة درقية (TSH)</span><span class="test-category">Hormones</span></div>
+            <div class="test-item"><span class="test-name">فيتامين د (Vit D)</span><span class="test-category">Vitamins</span></div>
             <div class="test-item"><span class="test-name">دلالات أورام</span><span class="test-category">Tumor Markers</span></div>
-            <div class="test-item"><span class="test-name">تحليل فيروسات (C & B)</span><span class="test-category">Immunology</span></div>
-            <div class="test-item"><span class="test-name">كالسيوم ويوريك أسيد</span><span class="test-category">Minerals</span></div>
-            <div class="test-item"><span class="test-name">مزرعة بول وبراز</span><span class="test-category">Microbiology</span></div>
-            <div class="test-item"><span class="test-name">تحليل سائل منوي</span><span class="test-category">Special Tests</span></div>
+            <div class="test-item"><span class="test-name">سرعة الترسيب (ESR)</span><span class="test-category">General</span></div>
+            <div class="test-item"><span class="test-name">فيروسات (C & B)</span><span class="test-category">Serology</span></div>
         </div>
     </div>
 
     <div class="bottom-nav">
         <a href="tel:01015090991" class="nav-link">
-            <div class="icon-circle"><i class="fas fa-phone-alt"></i></div>
+            <div class="icon-circle">
+                <i class="fas fa-phone-alt"></i>
+            </div>
             <span>اتصل بنا</span>
         </a>
+
         <a href="https://wa.me/201015090991" class="nav-link">
-            <div class="icon-circle"><i class="fab fa-whatsapp"></i></div>
+            <div class="icon-circle">
+                <i class="fab fa-whatsapp"></i>
+            </div>
             <span>واتساب</span>
         </a>
     </div>
 
     <script>
-        // دالة لفتح القائمة مع منع الخروج من الموقع عند الرجوع
         function openTestList() {
             document.getElementById('testList').style.display = 'block';
-            // إضافة حالة جديدة في التاريخ عشان زرار الرجوع يقفل القائمة مش الموقع
             window.history.pushState({ listOpen: true }, "");
         }
 
-        // دالة لغلق القائمة
         function closeTestList() {
             document.getElementById('testList').style.display = 'none';
-            if(window.history.state && window.history.state.listOpen) {
-                window.history.back();
-            }
         }
 
-        // مراقبة زرار الرجوع في الموبايل
         window.onpopstate = function(event) {
             document.getElementById('testList').style.display = 'none';
         };
