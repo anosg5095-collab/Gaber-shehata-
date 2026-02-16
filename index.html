@@ -11,216 +11,98 @@
         :root {
             --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b38728 100%);
             --deep-navy: #050c18;
-            --glass: rgba(255, 255, 255, 0.05);
+            --glass: rgba(255, 255, 255, 0.07);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        
-        body { 
-            background: var(--deep-navy); 
-            color: white; 
-            overflow-x: hidden;
-            padding-bottom: 80px;
-        }
-
-        /* تأثير الخلفية المتحركة */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #050c18 100%);
-            z-index: -1;
-        }
+        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 80px; }
 
         /* الهيدر */
-        header {
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .logo h1 { 
-            font-family: 'Amiri', serif;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.8rem;
-        }
+        header { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .logo h1 { font-family: 'Amiri', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.8rem; }
 
         /* Hero Section */
-        .hero {
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
+        .hero { height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; background: #fff; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .title-box { background: var(--glass); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 35px; color: #d4af37; font-weight: bold; }
 
-        .hero h2 {
-            font-size: 1.2rem;
-            color: #d4af37;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+        /* الأزرار */
+        .btn-container { display: flex; gap: 15px; flex-direction: column; width: 100%; max-width: 320px; }
+        .premium-btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 1.1rem; text-align: center; transition: 0.4s; display: flex; justify-content: center; align-items: center; gap: 10px; cursor: pointer; border: none; }
+        .btn-main { background: var(--gold-gradient); color: var(--deep-navy); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2); }
+        .btn-sub { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
+        .btn-outline { background: rgba(212, 175, 55, 0.1); color: #fff; border: 1px dashed #d4af37; }
 
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        /* مودال قائمة التحاليل (القائمة اللي بتظهر) */
+        .analysis-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(5, 12, 24, 0.98);
+            z-index: 10001; display: none; padding: 40px 20px; overflow-y: auto;
         }
+        .modal-content { max-width: 600px; margin: 0 auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--gold-gradient); padding-bottom: 10px; }
+        .close-btn { color: #d4af37; font-size: 2rem; cursor: pointer; }
 
-        .title-box {
-            background: var(--glass);
-            padding: 10px 30px;
-            border-radius: 50px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            margin-bottom: 40px;
-            backdrop-filter: blur(5px);
-        }
+        .analysis-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .analysis-card { background: var(--glass); padding: 20px; border-radius: 15px; border-right: 4px solid #d4af37; }
+        .analysis-card h4 { color: #d4af37; margin-bottom: 5px; }
 
-        /* الأزرار الفخمة */
-        .btn-container {
-            display: flex;
-            gap: 20px;
-            flex-direction: column;
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .premium-btn {
-            position: relative;
-            padding: 18px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-align: center;
-            transition: 0.5s;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-main {
-            background: var(--gold-gradient);
-            color: var(--deep-navy);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-sub {
-            background: transparent;
-            color: #d4af37;
-            border: 1px solid #d4af37;
-        }
-
-        .premium-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
-        }
-
-        /* شريط الاتصال السفلي */
-        .bottom-nav {
-            position: fixed;
-            bottom: 20px;
-            left: 5%;
-            right: 5%;
-            height: 70px;
-            background: rgba(10, 25, 47, 0.8);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            z-index: 1000;
-        }
-
-        .nav-item {
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .nav-item i {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* أنيميشن الدخول */
-        .fade-in {
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2.2rem; }
-        }
+        /* شريط التنقل السفلي */
+        .bottom-nav { position: fixed; bottom: 15px; left: 5%; right: 5%; height: 65px; background: rgba(10, 25, 47, 0.85); backdrop-filter: blur(15px); border-radius: 20px; display: flex; justify-content: space-around; align-items: center; border: 1px solid rgba(212, 175, 55, 0.2); z-index: 1000; }
+        .nav-item { text-decoration: none; color: #fff; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; }
+        .nav-item i { font-size: 1.3rem; margin-bottom: 4px; color: #d4af37; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo"><h1>د. جابر شحاته</h1></div>
-        <div style="color: #d4af37; font-size: 0.8rem; letter-spacing: 1px;">EXCELLENCE IN CARE</div>
+        <div style="color: #d4af37; font-size: 0.7rem; letter-spacing: 1px;">PREMIUM DIAGNOSTICS</div>
     </header>
 
-    <section class="hero fade-in">
-        <h2>معمل الاستشاري</h2>
-        <h1>د/ جابر شحاته <br> <span style="font-weight: 300; font-size: 0.7em;">للتحاليل الطبية</span></h1>
-        
-        <div class="title-box">
-            <span style="color: #d4af37; font-weight: bold;">استشاري التحاليل الطبية</span>
-        </div>
+    <section class="hero">
+        <h1>معمل د/ جابر شحاته</h1>
+        <div class="title-box">استشاري التحاليل الطبية</div>
 
         <div class="btn-container">
+            <button onclick="toggleModal()" class="premium-btn btn-outline">
+                <i class="fas fa-list-ul"></i> اكتشف قائمة فحوصاتنا
+            </button>
+            
             <a href="https://wa.me/201015090991" class="premium-btn btn-main">
-                <i class="fas fa-home"></i> طلب سحب منزلي VIP
-            </a>
-            <a href="#" class="premium-btn btn-sub">
-                <i class="fas fa-search"></i> نتائج التحاليل الذكية
+                <i class="fas fa-home"></i> حجز سحب منزلي VIP
             </a>
         </div>
     </section>
 
-    <div class="bottom-nav">
-        <a href="tel:01015090991" class="nav-item">
-            <i class="fas fa-phone-alt"></i>
-            <span>اتصل بنا</span>
-        </a>
-        <a href="https://wa.me/201015090991" class="nav-item">
-            <i class="fab fa-whatsapp"></i>
-            <span>واتساب</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>موقعنا</span>
-        </a>
+    <div id="analysisModal" class="analysis-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #d4af37;">قائمة التحاليل المتوفرة</h2>
+                <span class="close-btn" onclick="toggleModal()">&times;</span>
+            </div>
+            <div class="analysis-grid">
+                <div class="analysis-card"><h4>صورة دم كاملة CBC</h4><p>بأحدث تقنيات العد الإلكتروني لضمان الدقة.</p></div>
+                <div class="analysis-card"><h4>وظائف الكبد والكلى</h4><p>فحص شامل للأنزيمات ومعدلات التصفية.</p></div>
+                <div class="analysis-card"><h4>السكر التراكمي (HbA1c)</h4><p>أدق متابعة لمستوى السكر على مدار 3 أشهر.</p></div>
+                <div class="analysis-card"><h4>الهرمونات والدلالات</h4><p>فحوصات الغدة الدرقية وهرمونات الخصوبة.</p></div>
+                <div class="analysis-card"><h4>فحوصات ما قبل الزواج</h4><p>باقة شاملة للاطمئنان على المستقبل الصحي.</p></div>
+            </div>
+        </div>
     </div>
 
-    <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 0.8rem;">
-        أبو المطامير - مساكن الإرشاد <br> دقة عالمية برعاية د. جابر شحاته
-    </footer>
+    <div class="bottom-nav">
+        <a href="tel:01015090991" class="nav-item"><i class="fas fa-phone-alt"></i><span>اتصل بنا</span></a>
+        <a href="https://wa.me/201015090991" class="nav-item"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-map-marker-alt"></i><span>أبو المطامير</span></a>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('analysisModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 
 </body>
 </html>
