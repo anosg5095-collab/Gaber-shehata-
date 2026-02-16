@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>د. جابر شحاته | استشاري التحاليل الطبية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -16,25 +16,11 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        
-        body { 
-            background: var(--deep-navy); 
-            color: white; 
-            overflow-x: hidden;
-            padding-bottom: 110px;
-        }
+        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 110px; }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #050c18 100%);
-            z-index: -1;
-        }
-
-        /* الهيدر مع صورة الدكتور في المنتصف */
+        /* الهيدر مع الصورة المظبوطة */
         header {
-            padding: 10px 5%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -45,145 +31,77 @@
             z-index: 1000;
         }
 
-        .logo h1 { 
-            font-family: 'Amiri', serif;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.3rem;
-        }
+        .logo h1 { font-family: 'Amiri', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.2rem; }
 
-        .doctor-img-container {
-            width: 60px;
-            height: 60px;
+        .doctor-profile {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 2px solid var(--gold);
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            padding: 2px;
+            background: var(--gold-gradient);
         }
 
-        .doctor-img-container img {
+        .doctor-profile img {
             width: 100%;
             height: 100%;
+            border-radius: 50%;
             object-fit: cover;
+            display: block; /* لضمان ظهور الصورة */
         }
 
-        .header-info {
-            text-align: left;
-            font-size: 0.75rem;
-            color: var(--gold);
-        }
+        .header-info { text-align: left; font-size: 0.75rem; color: var(--gold); }
 
-        /* Hero Section */
-        .hero {
-            height: 65vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h2 { font-size: 1rem; color: var(--gold); margin-bottom: 10px; }
-        .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 20px; }
-
-        .title-box {
-            background: var(--glass);
-            padding: 8px 25px;
-            border-radius: 50px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            margin-bottom: 40px;
-        }
+        /* المحتوى الرئيسي */
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-size: 2.5rem; font-weight: 900; margin: 10px 0; }
+        .title-box { background: var(--glass); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 30px; color: var(--gold); font-weight: bold; }
 
         /* الأزرار */
-        .btn-container {
-            display: flex;
-            gap: 15px;
-            flex-direction: column;
-            width: 100%;
-            max-width: 320px;
-        }
-
-        .premium-btn {
-            padding: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            border: none;
-        }
-
+        .btn-container { display: flex; gap: 15px; flex-direction: column; width: 100%; max-width: 320px; }
+        .premium-btn { padding: 16px; border-radius: 12px; text-decoration: none; font-weight: 700; text-align: center; cursor: pointer; border: none; }
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
-        .btn-sub { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+        .btn-outline { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 
-        /* شريط الاتصال السفلي المطور */
+        /* شريط الأيقونات السفلي (التعديل المطلوب) */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
             left: 5%;
             right: 5%;
-            height: 75px;
-            background: rgba(10, 25, 47, 0.9);
+            height: 80px;
+            background: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(15px);
             border-radius: 30px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             z-index: 1000;
-            padding: 0 10px;
         }
 
         .nav-item {
             text-decoration: none;
-            color: #fff;
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: 0.3s;
+            flex: 1;
         }
 
-        /* أيقونة واتساب مزاحة لليسار */
-        .whatsapp-item { margin-left: 15px; }
-
         .nav-item i {
-            font-size: 1.8rem; /* أيقونات أكبر */
-            margin-bottom: 4px;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-item span { font-size: 0.75rem; font-weight: 600; }
-        
-        .nav-item:active { transform: scale(0.9); }
+        .nav-item span { font-size: 0.8rem; font-weight: bold; }
 
-        /* Overlay */
-        .analysis-overlay {
-            display: none;
-            background: rgba(5, 12, 24, 0.98);
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 2000;
-            padding: 40px 20px;
-            overflow-y: auto;
-        }
-
-        .list-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: var(--glass);
-            padding: 30px;
-            border-radius: 25px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
+        /* إزاحة الواتساب لليسار */
+        .whatsapp-style { transform: translateX(-10px); }
     </style>
 </head>
 <body>
@@ -191,8 +109,8 @@
     <header>
         <div class="logo"><h1>د. جابر شحاته</h1></div>
         
-        <div class="doctor-img-container">
-            <img src="love1.jpg" alt="د. جابر شحاته">
+        <div class="doctor-profile">
+            <img src="./love1.jpg" alt="د. جابر شحاته" onerror="this.src='https://via.placeholder.com/150?text=Doctor'">
         </div>
 
         <div class="header-info">
@@ -202,46 +120,29 @@
     </header>
 
     <section class="hero">
-        <h2>معمل الاستشاري</h2>
-        <h1>د/ جابر شحاته <br> <span style="font-weight: 300; font-size: 0.7em;">للتحاليل الطبية</span></h1>
+        <p style="color: var(--gold); letter-spacing: 2px;">معمل الاستشاري</p>
+        <h1>د/ جابر شحاته</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 20px;">للتحاليل الطبية</p>
         
-        <div class="title-box">
-            <span style="color: var(--gold); font-weight: bold;">استشاري التحاليل الطبية</span>
-        </div>
+        <div class="title-box">استشاري التحاليل الطبية</div>
 
         <div class="btn-container">
-            <button onclick="toggleList()" class="premium-btn btn-sub">قائمة الفحوصات المتوفرة</button>
+            <button class="premium-btn btn-outline">قائمة الفحوصات المتوفرة</button>
             <a href="https://wa.me/201015090991" class="premium-btn btn-main">طلب سحب منزلي VIP</a>
         </div>
     </section>
 
     <div class="bottom-nav">
         <a href="tel:01015090991" class="nav-item">
-            <i class="fas fa-phone-alt"></i>
+            <i class="fas fa-phone-flip"></i>
             <span>اتصل بنا</span>
         </a>
-        <a href="https://wa.me/201015090991" class="nav-item whatsapp-item">
+
+        <a href="https://wa.me/201015090991" class="nav-item whatsapp-style">
             <i class="fab fa-whatsapp"></i>
             <span>واتساب</span>
         </a>
     </div>
-
-    <div id="analysisOverlay" class="analysis-overlay">
-        <div class="list-container">
-            <h2 style="color: var(--gold); margin-bottom: 20px; text-align: center;">أهم الفحوصات</h2>
-            <p style="text-align: center; margin-bottom: 10px;">• صورة دم كاملة CBC</p>
-            <p style="text-align: center; margin-bottom: 10px;">• وظائف الكبد والكلى</p>
-            <p style="text-align: center; margin-bottom: 10px;">• السكر التراكمي</p>
-            <button onclick="toggleList()" class="premium-btn btn-main" style="width: 100%; margin-top: 20px;">إغلاق</button>
-        </div>
-    </div>
-
-    <script>
-        function toggleList() {
-            const overlay = document.getElementById('analysisOverlay');
-            overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
-        }
-    </script>
 
 </body>
 </html>
