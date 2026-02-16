@@ -18,15 +18,25 @@
         body { 
             background: var(--deep-navy); 
             color: white; 
+            overflow-x: hidden;
             padding-bottom: 120px;
         }
 
-        /* الهيدر المعتمد */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #050c18 100%);
+            z-index: -1;
+        }
+
+        /* الهيدر المفضل مع صورتك */
         header {
             padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
@@ -46,24 +56,27 @@
         }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Hero Section */
+        /* التصميم القديم اللي قولت عليه حلو اوي */
         .hero {
-            height: 60vh;
+            height: 70vh;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
-            text-align: center;
+            text-align: center; padding: 0 20px;
         }
 
-        .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+        .hero h2 { font-size: 1.2rem; color: #d4af37; letter-spacing: 3px; margin-bottom: 10px; }
+        .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
 
         .title-box {
             background: var(--glass);
             padding: 10px 30px; border-radius: 50px;
             border: 1px solid rgba(212, 175, 55, 0.3);
             margin-bottom: 40px;
+            backdrop-filter: blur(5px);
         }
 
-        .btn-container { display: flex; gap: 15px; flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
+        .btn-container { display: flex; gap: 20px; flex-direction: column; width: 100%; max-width: 320px; }
+        
         .premium-btn {
             padding: 18px; border-radius: 15px; text-decoration: none;
             font-weight: 700; font-size: 1.1rem; text-align: center;
@@ -71,9 +84,9 @@
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
         .btn-sub { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
 
-        /* شريط الأزرار السفلي المعدل (أيقونات SVG لضمان الظهور) */
+        /* الأزرار السفلية مع الأيقونات (رسمة هاتف وواتساب) */
         .bottom-nav {
-            position: fixed; bottom: 20px; left: 10%; right: 10%;
+            position: fixed; bottom: 20px; left: 8%; right: 8%;
             display: flex; justify-content: space-between; align-items: center;
         }
 
@@ -82,15 +95,15 @@
         .icon-circle {
             width: 65px; height: 65px;
             background: rgba(10, 25, 47, 0.95);
-            border: 2.5px solid #d4af37; border-radius: 50%;
+            border: 2px solid #d4af37; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
-        /* ستايل الأيقونة بلون ذهبي */
-        .icon-circle svg { width: 30px; height: 30px; fill: #d4af37; }
+        /* كود الأيقونات الذهبي */
+        .icon-circle svg { width: 28px; height: 28px; fill: #d4af37; }
 
-        .nav-link span { color: white; font-size: 0.9rem; font-weight: bold; }
+        .nav-link span { color: white; font-size: 0.85rem; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -104,7 +117,9 @@
     </header>
 
     <section class="hero">
+        <h2>معمل الاستشاري</h2>
         <h1>د/ جابر شحاته <br> <span style="font-weight: 300; font-size: 0.7em;">للتحاليل الطبية</span></h1>
+        
         <div class="title-box">
             <span style="color: #d4af37; font-weight: bold;">استشاري التحاليل الطبية</span>
         </div>
