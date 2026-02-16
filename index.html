@@ -21,7 +21,7 @@
             background: var(--deep-navy); 
             color: white; 
             overflow-x: hidden;
-            padding-bottom: 100px;
+            padding-bottom: 110px;
         }
 
         body::before {
@@ -32,7 +32,7 @@
             z-index: -1;
         }
 
-        /* الهيدر مع صورة الدكتور */
+        /* الهيدر مع صورة الدكتور في المنتصف */
         header {
             padding: 15px 8%;
             display: flex;
@@ -64,7 +64,7 @@
 
         /* Hero Section */
         .hero {
-            height: 75vh;
+            height: 70vh;
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             text-align: center; padding: 0 20px;
@@ -80,7 +80,6 @@
             margin-bottom: 40px;
         }
 
-        /* الأزرار الفخمة */
         .btn-container { display: flex; gap: 15px; flex-direction: column; width: 100%; max-width: 320px; }
         .premium-btn {
             padding: 18px; border-radius: 15px; text-decoration: none;
@@ -90,33 +89,35 @@
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
         .btn-sub { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 
-        /* شريط الأزرار السفلي المعدل (أيقونات دائرية) */
+        /* شريط الأزرار السفلي المعدل (أيقونات دائرية مع نصوص) */
         .bottom-nav {
-            position: fixed; bottom: 20px; left: 5%; right: 5%;
-            height: 85px; display: flex;
-            justify-content: space-between; align-items: center;
+            position: fixed; bottom: 25px; left: 8%; right: 8%;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
         }
 
         .nav-btn-circle {
             text-decoration: none;
             display: flex; flex-direction: column; align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
         .icon-circle {
-            width: 55px; height: 55px;
-            background: rgba(10, 25, 47, 0.9);
+            width: 60px; height: 60px;
+            background: rgba(10, 25, 47, 0.95);
             border: 2px solid var(--gold);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            color: var(--gold); font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            color: var(--gold); font-size: 1.6rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: 0.3s;
         }
 
+        .nav-btn-circle:active .icon-circle { transform: scale(0.9); }
+
         .nav-btn-circle span {
-            color: white; font-size: 0.75rem; font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            color: white; font-size: 0.85rem; font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .fade-in { animation: fadeIn 1.5s ease-out; }
@@ -169,7 +170,7 @@
     </div>
 
     <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 0.7rem;">
-        دقة عالمية برعاية د. جابر شحاته © 2026
+        أبو المطامير - مساكن الإرشاد | جميع الحقوق محفوظة © 2026
     </footer>
 
 </body>
