@@ -32,7 +32,7 @@
             z-index: -1;
         }
 
-        /* الهيدر المعدل بصورة الدكتور في المنتصف */
+        /* الهيدر */
         header {
             padding: 20px 8%;
             display: flex;
@@ -47,27 +47,10 @@
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.3rem;
+            font-size: 1.8rem;
         }
 
-        /* صورة الدكتور المضافة */
-        .doctor-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
-            overflow: hidden;
-            background: #000;
-        }
-        .doctor-img img { width: 100%; height: 100%; object-fit: cover; }
-
-        .header-info {
-            color: #d4af37;
-            font-size: 0.8rem;
-            text-align: left;
-        }
-
-        /* Hero Section (نفس الكود اللي بعته بالظبط) */
+        /* Hero Section */
         .hero {
             height: 80vh;
             display: flex;
@@ -103,6 +86,7 @@
             backdrop-filter: blur(5px);
         }
 
+        /* الأزرار الفخمة */
         .btn-container {
             display: flex;
             gap: 20px;
@@ -127,60 +111,78 @@
             gap: 10px;
         }
 
-        .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
-        .btn-sub { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
+        .btn-main {
+            background: var(--gold-gradient);
+            color: var(--deep-navy);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
 
-        /* شريط الاتصال السفلي بشكل أزرار (أيقونات) */
+        .btn-sub {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        /* شريط الاتصال السفلي */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
             left: 5%;
             right: 5%;
-            height: 75px;
-            background: rgba(10, 25, 47, 0.9);
+            height: 70px;
+            background: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             z-index: 1000;
         }
 
-        .nav-button {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: var(--glass);
-            border: 1px solid #d4af37;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #d4af37;
-            font-size: 1.5rem;
+        .nav-item {
             text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
             transition: 0.3s;
         }
 
-        .nav-button:active { transform: scale(0.9); }
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        .fade-in { animation: fadeIn 1.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* أنيميشن الدخول */
+        .fade-in {
+            animation: fadeIn 1.5s ease-out;
+        }
 
-        @media (max-width: 600px) { .hero h1 { font-size: 2.2rem; } }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo"><h1>د. جابر شحاته</h1></div>
-        <div class="doctor-img">
-            <img src="love1.jpg" alt="د. جابر شحاته" onerror="this.src='https://via.placeholder.com/60'">
-        </div>
-        <div class="header-info">
-            <div>01015090991</div>
-            <div>أبو المطامير</div>
-        </div>
+        <div style="color: #d4af37; font-size: 0.8rem; letter-spacing: 1px;">EXCELLENCE IN CARE</div>
     </header>
 
     <section class="hero fade-in">
@@ -192,26 +194,32 @@
         </div>
 
         <div class="btn-container">
-            <a href="javascript:void(0)" class="premium-btn btn-sub" onclick="alert('سيتم إضافة قائمة التحاليل هنا')">
-                <i class="fas fa-list"></i> قائمة التحاليل
-            </a>
             <a href="https://wa.me/201015090991" class="premium-btn btn-main">
                 <i class="fas fa-home"></i> طلب سحب منزلي VIP
+            </a>
+            <a href="#" class="premium-btn btn-sub">
+                <i class="fas fa-search"></i> نتائج التحاليل الذكية
             </a>
         </div>
     </section>
 
     <div class="bottom-nav">
-        <a href="tel:01015090991" class="nav-button">
+        <a href="tel:01015090991" class="nav-item">
             <i class="fas fa-phone-alt"></i>
+            <span>اتصل بنا</span>
         </a>
-        <a href="https://wa.me/201015090991" class="nav-button">
+        <a href="https://wa.me/201015090991" class="nav-item">
             <i class="fab fa-whatsapp"></i>
+            <span>واتساب</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>موقعنا</span>
         </a>
     </div>
 
     <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 0.8rem;">
-        أبو المطامير | جميع الحقوق محفوظة © 2026 د. جابر شحاته
+        أبو المطامير - مساكن الإرشاد <br> دقة عالمية برعاية د. جابر شحاته
     </footer>
 
 </body>
