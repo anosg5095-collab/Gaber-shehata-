@@ -5,26 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>د. جابر شحاته | استشاري التحاليل الطبية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b38728 100%);
             --deep-navy: #050c18;
             --glass: rgba(255, 255, 255, 0.05);
+            --gold: #d4af37;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 100px; }
+        
+        body { 
+            background: var(--deep-navy); 
+            color: white; 
+            overflow-x: hidden;
+            padding-bottom: 100px;
+        }
 
-        /* الهيدر الفخم */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #050c18 100%);
+            z-index: -1;
+        }
+
+        /* الهيدر المنظم */
         header {
-            padding: 20px 8%;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo h1 { 
@@ -32,10 +50,15 @@
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
         }
 
-        .header-info { text-align: left; font-size: 0.9rem; color: #d4af37; }
+        .header-info {
+            text-align: left;
+            font-size: 0.8rem;
+            color: var(--gold);
+            line-height: 1.4;
+        }
 
         /* Hero Section */
         .hero {
@@ -48,21 +71,37 @@
             padding: 0 20px;
         }
 
-        .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 15px; }
-        
+        .hero h2 {
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
         .title-box {
             background: var(--glass);
             padding: 8px 25px;
             border-radius: 50px;
             border: 1px solid rgba(212, 175, 55, 0.3);
-            margin-bottom: 30px;
-            color: #d4af37;
-            font-weight: bold;
+            margin-bottom: 40px;
         }
 
         /* الأزرار */
-        .btn-container { display: flex; gap: 15px; flex-direction: column; width: 100%; max-width: 320px; }
-        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-direction: column;
+            width: 100%;
+            max-width: 320px;
+        }
+
         .premium-btn {
             padding: 16px;
             border-radius: 12px;
@@ -75,39 +114,51 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
-            border: none;
             cursor: pointer;
+            border: none;
         }
 
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
-        .btn-outline { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
+        .btn-sub { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 
-        /* قائمة التحاليل (تفتح بسلاسة) */
-        .analysis-list {
-            max-width: 500px;
-            margin: 20px auto;
+        /* قائمة التحاليل الزجاجية */
+        .analysis-overlay {
             display: none;
+            background: rgba(5, 12, 24, 0.95);
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2000;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .list-container {
+            max-width: 500px;
+            margin: 0 auto;
             background: var(--glass);
-            border-radius: 20px;
-            padding: 20px;
+            padding: 30px;
+            border-radius: 25px;
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .analysis-item {
-            padding: 12px;
+            padding: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* شريط الاتصال السفلي (الحل الأشيك) */
+        .analysis-item i { color: var(--gold); }
+
+        /* شريط الاتصال السفلي */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
             left: 5%;
             right: 5%;
             height: 70px;
-            background: rgba(10, 25, 47, 0.85);
+            background: rgba(10, 25, 47, 0.8);
             backdrop-filter: blur(15px);
             border-radius: 25px;
             display: flex;
@@ -118,7 +169,12 @@
         }
 
         .nav-item { text-decoration: none; color: #fff; display: flex; flex-direction: column; align-items: center; font-size: 0.75rem; }
-        .nav-item i { font-size: 1.3rem; color: #d4af37; margin-bottom: 4px; }
+        .nav-item i { font-size: 1.3rem; margin-bottom: 5px; color: var(--gold); }
+
+        .fade-in { animation: fadeIn 1.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 600px) { .hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
@@ -126,34 +182,43 @@
     <header>
         <div class="logo"><h1>د. جابر شحاته</h1></div>
         <div class="header-info">
-            <i class="fas fa-phone"></i> 01015090991
+            <div><i class="fas fa-phone"></i> 01015090991</div>
+            <div style="margin-top: 3px;"><i class="fas fa-map-marker-alt"></i> أبو المطامير</div>
         </div>
     </header>
 
-    <section class="hero">
-        <h1>معمل د/ جابر شحاته</h1>
-        <div class="title-box">استشاري التحاليل الطبية</div>
+    <section class="hero fade-in">
+        <h2>معمل الاستشاري</h2>
+        <h1>د/ جابر شحاته <br> <span style="font-weight: 300; font-size: 0.7em;">للتحاليل الطبية</span></h1>
+        
+        <div class="title-box">
+            <span style="color: var(--gold); font-weight: bold;">استشاري التحاليل الطبية</span>
+        </div>
 
         <div class="btn-container">
-            <button onclick="document.getElementById('a-list').style.display='block'" class="premium-btn btn-outline">
-                <i class="fas fa-list-ul"></i> قائمة الفحوصات
+            <button onclick="toggleList()" class="premium-btn btn-sub">
+                <i class="fas fa-list-ul"></i> قائمة الفحوصات المتوفرة
             </button>
-            
             <a href="https://wa.me/201015090991" class="premium-btn btn-main">
-                <i class="fas fa-home"></i> سحب منزلي VIP
+                <i class="fas fa-home"></i> طلب سحب منزلي VIP
             </a>
         </div>
     </section>
 
-    <div id="a-list" class="analysis-list">
-        <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
-            <h3 style="color:#d4af37">قائمة التحاليل</h3>
-            <span onclick="document.getElementById('a-list').style.display='none'" style="cursor:pointer">✕</span>
+    <div id="analysisOverlay" class="analysis-overlay">
+        <div class="list-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                <h2 style="color: var(--gold); font-family: 'Amiri', serif;">أهم الفحوصات</h2>
+                <i class="fas fa-times" onclick="toggleList()" style="cursor: pointer; font-size: 1.5rem;"></i>
+            </div>
+            <div class="analysis-item"><i class="fas fa-check-circle"></i> صورة دم كاملة CBC</div>
+            <div class="analysis-item"><i class="fas fa-check-circle"></i> وظائف الكبد والكلى</div>
+            <div class="analysis-item"><i class="fas fa-check-circle"></i> السكر التراكمي</div>
+            <div class="analysis-item"><i class="fas fa-check-circle"></i> الهرمونات والدلالات</div>
+            <div class="analysis-item"><i class="fas fa-check-circle"></i> فيروسات كبدية</div>
+            <div class="analysis-item"><i class="fas fa-check-circle"></i> فحص ما قبل الزواج</div>
+            <button onclick="toggleList()" class="premium-btn btn-main" style="width: 100%; margin-top: 20px;">إغلاق</button>
         </div>
-        <div class="analysis-item"><span>صورة دم كاملة CBC</span><i class="fas fa-check" style="color:#d4af37"></i></div>
-        <div class="analysis-item"><span>وظائف الكبد والكلى</span><i class="fas fa-check" style="color:#d4af37"></i></div>
-        <div class="analysis-item"><span>السكر التراكمي</span><i class="fas fa-check" style="color:#d4af37"></i></div>
-        <div class="analysis-item"><span>الغدة والهرمونات</span><i class="fas fa-check" style="color:#d4af37"></i></div>
     </div>
 
     <div class="bottom-nav">
@@ -165,15 +230,22 @@
             <i class="fab fa-whatsapp"></i>
             <span>واتساب</span>
         </a>
-        <div class="nav-item" style="border-right: 1px solid rgba(212,175,55,0.2); padding-right:15px;">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>أبو المطامير</span>
-        </div>
+        <a href="#" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>مساكن الإرشاد</span>
+        </a>
     </div>
 
-    <footer style="text-align: center; padding: 20px; opacity: 0.4; font-size: 0.7rem;">
-        مساكن الإرشاد - جميع الحقوق محفوظة © 2026
+    <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 0.7rem;">
+        جميع الحقوق محفوظة © 2026 د. جابر شحاته
     </footer>
+
+    <script>
+        function toggleList() {
+            const overlay = document.getElementById('analysisOverlay');
+            overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
 
 </body>
 </html>
