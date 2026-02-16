@@ -5,36 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>د. جابر شحاته | استشاري التحاليل الطبية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        :root { --gold: #d4af37; --royal-blue: #0a192f; --white: #ffffff; --light-bg: #f8f9fa; }
+        :root {
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b38728 100%);
+            --deep-navy: #050c18;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--light-bg); color: var(--royal-blue); scroll-behavior: smooth; padding-bottom: 70px; }
+        
+        body { 
+            background: var(--deep-navy); 
+            color: white; 
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* تأثير الخلفية المتحركة */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #050c18 100%);
+            z-index: -1;
+        }
 
         /* الهيدر */
-        header { background: var(--royal-blue); color: white; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo-area h1 { font-size: 1.2rem; color: var(--gold); }
+        header {
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
 
-        /* شريط الاتصال السفلي الجديد - الحل النهائي */
-        .bottom-contact-bar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
+        .logo h1 { 
+            font-family: 'Amiri', serif;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            color: #d4af37;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .title-box {
+            background: var(--glass);
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin-bottom: 40px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* الأزرار الفخمة */
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
             width: 100%;
-            height: 65px;
-            background: var(--royal-blue);
+            max-width: 320px;
+        }
+
+        .premium-btn {
+            position: relative;
+            padding: 18px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: 0.5s;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-main {
+            background: var(--gold-gradient);
+            color: var(--deep-navy);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-sub {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        /* شريط الاتصال السفلي */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 5%;
+            right: 5%;
+            height: 70px;
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
             display: flex;
             justify-content: space-around;
             align-items: center;
-            z-index: 9999;
-            border-top: 2px solid var(--gold);
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 1000;
         }
 
-        .contact-item {
+        .nav-item {
             text-decoration: none;
-            color: white;
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,77 +155,71 @@
             transition: 0.3s;
         }
 
-        .contact-item i { font-size: 1.5rem; color: var(--gold); margin-bottom: 4px; }
-        .contact-item:active { transform: scale(0.9); }
-
-        /* الواجهة الرئيسية */
-        .hero {
-            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), 
-                        url('https://images.unsplash.com/photo-1579152276503-68fe28369357?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; height: 75vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px;
+        .nav-item i {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero h2 { font-size: 2.2rem; margin-bottom: 10px; font-weight: 900; }
-        .hero h3 { font-size: 1.3rem; color: var(--gold); margin-bottom: 20px; padding: 5px 15px; border: 1px solid var(--gold); }
+        /* أنيميشن الدخول */
+        .fade-in {
+            animation: fadeIn 1.5s ease-out;
+        }
 
-        .digital-services { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
-        .btn-luxury { padding: 12px; border-radius: 10px; text-decoration: none; font-weight: 700; text-align: center; }
-        .btn-gold { background: var(--gold); color: var(--royal-blue); }
-        .btn-outline { border: 1px solid var(--gold); color: var(--gold); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        .analysis-section { padding: 40px 10%; background: white; text-align: center; }
-        .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .analysis-item { background: var(--light-bg); padding: 15px; border-right: 4px solid var(--gold); border-radius: 5px; text-align: right; font-size: 0.9rem; }
-        
-        footer { background: var(--royal-blue); color: white; text-align: center; padding: 30px; margin-bottom: 0; }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="bottom-contact-bar">
-        <a href="tel:01015090991" class="contact-item">
+    <header>
+        <div class="logo"><h1>د. جابر شحاته</h1></div>
+        <div style="color: #d4af37; font-size: 0.8rem; letter-spacing: 1px;">EXCELLENCE IN CARE</div>
+    </header>
+
+    <section class="hero fade-in">
+        <h2>معمل الاستشاري</h2>
+        <h1>د/ جابر شحاته <br> <span style="font-weight: 300; font-size: 0.7em;">للتحاليل الطبية</span></h1>
+        
+        <div class="title-box">
+            <span style="color: #d4af37; font-weight: bold;">استشاري التحاليل الطبية</span>
+        </div>
+
+        <div class="btn-container">
+            <a href="https://wa.me/201015090991" class="premium-btn btn-main">
+                <i class="fas fa-home"></i> طلب سحب منزلي VIP
+            </a>
+            <a href="#" class="premium-btn btn-sub">
+                <i class="fas fa-search"></i> نتائج التحاليل الذكية
+            </a>
+        </div>
+    </section>
+
+    <div class="bottom-nav">
+        <a href="tel:01015090991" class="nav-item">
             <i class="fas fa-phone-alt"></i>
             <span>اتصل بنا</span>
         </a>
-        <a href="https://wa.me/201015090991" class="contact-item">
+        <a href="https://wa.me/201015090991" class="nav-item">
             <i class="fab fa-whatsapp"></i>
             <span>واتساب</span>
         </a>
-        <a href="#location" class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>العنوان</span>
+        <a href="#" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>موقعنا</span>
         </a>
     </div>
 
-    <header>
-        <div class="logo-area"><h1>د. جابر شحاته</h1></div>
-        <div style="font-size: 0.9rem; color: var(--gold);">استشاري تحاليل</div>
-    </header>
-
-    <section class="hero">
-        <h2>معمل د/ جابر شحاته</h2>
-        <h3>للتحاليل الطبية</h3>
-        
-        <div class="digital-services">
-            <a href="https://wa.me/201015090991?text=اريد حجز سحب منزلي" class="btn-luxury btn-gold">طلب سحب منزلي VIP</a>
-            <a href="#" onclick="alert('خدمة النتائج ستكون متاحة قريباً أونلاين')" class="btn-luxury btn-outline">نتائج التحاليل أونلاين</a>
-        </div>
-    </section>
-
-    <section class="analysis-section">
-        <h2 style="font-size: 1.5rem; color: var(--royal-blue);">أهم التحاليل المتوفرة</h2>
-        <div class="analysis-grid">
-            <div class="analysis-item"><h4>صورة دم CBC</h4></div>
-            <div class="analysis-item"><h4>وظائف كبد وكلى</h4></div>
-            <div class="analysis-item"><h4>سكر تراكمي</h4></div>
-            <div class="analysis-item"><h4>غدة وهرمونات</h4></div>
-        </div>
-    </section>
-
-    <footer id="location">
-        <p>أبو المطامير - مساكن الإرشاد</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">&copy; 2026 د. جابر شحاته</p>
+    <footer style="text-align: center; padding: 20px; opacity: 0.5; font-size: 0.8rem;">
+        أبو المطامير - مساكن الإرشاد <br> دقة عالمية برعاية د. جابر شحاته
     </footer>
 
 </body>
