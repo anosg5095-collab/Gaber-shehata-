@@ -33,31 +33,31 @@
         .doc-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        .hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .hero { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
         .hero h1 { font-size: 2.8rem; font-weight: 900; margin-bottom: 10px; }
         .title-box { background: var(--glass); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 25px; }
 
         .btn-container { display: flex; gap: 12px; flex-direction: column; width: 100%; max-width: 320px; }
-        .premium-btn { padding: 16px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 1rem; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .premium-btn { padding: 16px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 1rem; text-align: center; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
         .btn-sub { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
         .btn-results { background: rgba(0, 255, 204, 0.1); color: #00ffcc; border: 1px dashed #00ffcc; margin-top: 5px; }
 
-        /* نافذة القائمة مع تثبيت الهيدر */
+        /* نافذة القائمة العملاقة */
         .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 5000; display: none; padding: 15px; }
-        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; max-height: 90vh; overflow-y: auto; padding: 0 20px 20px 20px; }
+        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; max-height: 90vh; overflow-y: auto; padding: 0 20px 20px 20px; position: relative; }
         
-        .list-header { position: sticky; top: 0; background: var(--deep-navy); z-index: 100; padding: 20px 0; border-bottom: 2px solid #d4af37; display: flex; justify-content: space-between; align-items: center; }
+        .list-header { position: sticky; top: 0; background: var(--deep-navy); z-index: 1000; padding: 20px 0; border-bottom: 2px solid #d4af37; display: flex; justify-content: space-between; align-items: center; }
         
-        .category-title { color: #d4af37; font-weight: 900; margin: 25px 0 10px 0; border-right: 3px solid #d4af37; padding-right: 10px; font-size: 1.1rem; }
-        .test-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .test-name { color: white; font-weight: bold; font-size: 0.9rem; }
-        .test-time { color: #00ffcc; font-size: 0.7rem; }
+        .category-title { color: #d4af37; font-weight: 900; margin: 35px 0 15px 0; border-right: 4px solid #d4af37; padding-right: 12px; font-size: 1.2rem; background: rgba(212,175,55,0.05); padding: 5px 10px; }
+        .test-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .test-name { color: white; font-weight: bold; font-size: 0.95rem; }
+        .test-time { color: #00ffcc; font-size: 0.75rem; display: block; }
         .book-btn { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 14px; border-radius: 8px; font-size: 0.75rem; font-weight: 900; text-decoration: none; }
 
-        .package-card { background: var(--glass); border: 1px solid #d4af37; border-radius: 15px; padding: 15px; margin: 15px 0; border-right: 5px solid #d4af37; }
-        .package-name { color: #d4af37; font-weight: 900; display: block; }
-        .package-details { font-size: 0.8rem; color: #ccc; display: block; margin-bottom: 10px; }
+        /* الباقات */
+        .package-card { background: var(--glass); border: 1px solid #d4af37; border-radius: 15px; padding: 20px; margin: 15px 0; border-right: 6px solid #d4af37; position: relative; }
+        .discount-tag { position: absolute; top: 10px; left: 10px; background: #ff3366; color: white; padding: 2px 10px; border-radius: 5px; font-size: 0.7rem; font-weight: 900; }
 
         .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 10px; }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
@@ -68,7 +68,7 @@
 </head>
 <body>
 
-    <div class="ramadan-bar">🌙 بمناسبة شهر رمضان: خصم 30% على جميع التحاليل والباقات 🌙</div>
+    <div class="ramadan-bar">🌙 خصومات رمضان تصل لـ 40% على الباقات الشاملة 🌙</div>
 
     <header>
         <div class="logo"><h1>د. جابر شحاته</h1></div>
@@ -76,13 +76,13 @@
     </header>
 
     <section class="hero">
-        <h2 style="color: #d4af37; font-size: 1.1rem;">معمل الاستشاري</h2>
+        <h2 style="color: #d4af37;">معمل الاستشاري</h2>
         <h1>د/ جابر شحاته</h1>
         <div class="title-box"><span>استشاري التحاليل الطبية</span></div>
         <div class="btn-container">
-            <a href="https://wa.me/201015090991?text=حجز سحب منزلي VIP" class="premium-btn btn-main">طلب سحب منزلي VIP</a>
-            <div class="premium-btn btn-sub" onclick="openTestList()">قائمة التحاليل والباقات</div>
-            <a href="https://wa.me/201015090991?text=استعلام عن نتيجة" class="premium-btn btn-results">📩 استلام النتائج أونلاين</a>
+            <a href="https://wa.me/201015090991?text=سحب منزلي VIP" class="premium-btn btn-main">طلب سحب منزلي VIP</a>
+            <div class="premium-btn btn-sub" onclick="openTestList()">موسوعة التحاليل والباقات</div>
+            <a href="https://wa.me/201015090991?text=استلام نتيجة" class="premium-btn btn-results">📩 استلام النتائج أونلاين</a>
         </div>
     </section>
 
@@ -90,102 +90,81 @@
         <div class="list-content">
             <div class="list-header">
                 <div>
-                    <h2 style="color: #d4af37;">الفحوصات الشاملة</h2>
-                    <p style="font-size: 0.75rem; color: #00ffcc;">رمضان كريم - خصم 30% مطبق</p>
+                    <h2 style="color: #d4af37; font-size: 1.1rem;">دليل الفحوصات الشامل</h2>
+                    <p style="font-size: 0.7rem; color: #00ffcc;">رمضان كريم - خصومات فورية</p>
                 </div>
-                <div onclick="closeTestList()" style="color: white; font-size: 2rem; cursor: pointer;">✕</div>
+                <div onclick="closeTestList()" style="color: white; font-size: 2.2rem; cursor: pointer;">✕</div>
             </div>
             
-            <h3 class="category-title">باقات الفحص الشامل 🌙</h3>
+            <h3 class="category-title">باقات رمضان VIP 🌙</h3>
             <div class="package-card">
-                <span class="package-name">باقة "اطمن على نفسك"</span>
-                <span class="package-details">صورة دم، سكر تراكمي، وظائف كبد وكلى، دهون كاملة</span>
-                <a href="https://wa.me/201015090991?text=حجز باقة اطمن" class="book-btn">حجز الباقة</a>
+                <div class="discount-tag">خصم 35%</div>
+                <span style="color:#d4af37; font-weight:900;">باقة الفحص الشامل للرجل</span>
+                <p style="font-size:0.8rem; color:#ccc; margin:10px 0;">(صورة دم، سكر، دهون، كبد، كلى، نقرس، بروستاتا)</p>
+                <a href="https://wa.me/201015090991?text=حجز باقة الرجل" class="book-btn" style="display:block; text-align:center;">حجز الباقة</a>
+            </div>
+            <div class="package-card" style="border-right-color:#00ffcc;">
+                <div class="discount-tag" style="background:#00ccff;">خصم 40%</div>
+                <span style="color:#00ffcc; font-weight:900;">باقة المرأة والجمال</span>
+                <p style="font-size:0.8rem; color:#ccc; margin:10px 0;">(فيتامين د، مخزون الحديد، غدة درقية، صورة دم، كالسيوم)</p>
+                <a href="https://wa.me/201015090991?text=حجز باقة المرأة" class="book-btn" style="display:block; text-align:center; background:#00ffcc;">حجز الباقة</a>
             </div>
 
             <h3 class="category-title">فحوصات أمراض الدم</h3>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">صورة دم كاملة (CBC)</span><span class="test-time">ساعتين ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز CBC" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">فصيلة الدم والعامل الرايزيسي</span><span class="test-time">15 دقيقة ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز فصيلة دم" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">سرعة الترسيب (ESR)</span><span class="test-time">ساعتين ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز ESR" class="book-btn">حجز الآن</a>
-            </div>
-
-            <h3 class="category-title">وظائف الكبد والكلى</h3>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">إنزيمات الكبد (SGOT - SGPT)</span><span class="test-time">3 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز إنزيمات كبد" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">وظائف كلى (Urea - Creatinine)</span><span class="test-time">3 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز وظائف كلى" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">الصفراء (Total & Direct Bilirubin)</span><span class="test-time">4 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز صفراء" class="book-btn">حجز الآن</a>
-            </div>
-
-            <h3 class="category-title">الهرمونات والغدد</h3>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">هرمون الغدة الدرقية (TSH)</span><span class="test-time">نفس اليوم ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز TSH" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">هرمون البرولاكتين (لبن)</span><span class="test-time">24 ساعة ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز Prolactin" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">هرمون الذكورة (Testosterone)</span><span class="test-time">24 ساعة ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز هرمون ذكورة" class="book-btn">حجز الآن</a>
-            </div>
+            <div class="test-item"><div class="test-info"><span class="test-name">صورة دم كاملة (CBC)</span><span class="test-time">ساعتين</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">فصيلة الدم (RH)</span><span class="test-time">15 دقيقة</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">سرعة الترسيب (ESR)</span><span class="test-time">ساعتين</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">زمن التجلط (PT - PTT)</span><span class="test-time">4 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">تحليل أنيميا البحر المتوسط</span><span class="test-time">3 أيام</span></div><a href="#" class="book-btn">حجز</a></div>
 
             <h3 class="category-title">السكر والتمثيل الغذائي</h3>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">سكر صائم وفاطر</span><span class="test-time">ساعتين ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز سكر" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">السكر التراكمي (HbA1c)</span><span class="test-time">4 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز تراكمي" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">تحليل الكوليسترول والدهون</span><span class="test-time">5 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز دهون" class="book-btn">حجز الآن</a>
-            </div>
+            <div class="test-item"><div class="test-info"><span class="test-name">سكر صائم / فاطر</span><span class="test-time">ساعتين</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">السكر التراكمي (HbA1c)</span><span class="test-time">4 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">منحنى السكر (GTT)</span><span class="test-time">6 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+
+            <h3 class="category-title">وظائف الكبد</h3>
+            <div class="test-item"><div class="test-info"><span class="test-name">إنزيمات الكبد (ALT - AST)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">الصفراء الكلية والمباشرة</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">زلال الدم (Albumin)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">فيروس C و B (الأجسام المضادة)</span><span class="test-time">4 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+
+            <h3 class="category-title">وظائف الكلى والنقرس</h3>
+            <div class="test-item"><div class="test-info"><span class="test-name">البولينا (Urea)</span><span class="test-time">3 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">الكرياتينين (Creatinine)</span><span class="test-time">3 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">حمض البوليك - النقرس</span><span class="test-time">3 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+
+            <h3 class="category-title">دهون الدم (Lipid Profile)</h3>
+            <div class="test-item"><div class="test-info"><span class="test-name">كوليسترول كلي</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">دهون ثلاثية</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">دهون نافعة وضارة (HDL-LDL)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+
+            <h3 class="category-title">الغدد والهرمونات</h3>
+            <div class="test-item"><div class="test-info"><span class="test-name">هرمون الغدة الدرقية (TSH)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">هرمون (Free T3 - Free T4)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">هرمون الذكورة / الأنوثة</span><span class="test-time">24 ساعة</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">هرمون الحليب (Prolactin)</span><span class="test-time">24 ساعة</span></div><a href="#" class="book-btn">حجز</a></div>
 
             <h3 class="category-title">الفيتامينات والمعادن</h3>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">فيتامين د (Vitamin D)</span><span class="test-time">24-48 ساعة ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز Vit D" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">الكالسيوم الكلي والمتأين</span><span class="test-time">4 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز كالسيوم" class="book-btn">حجز الآن</a>
-            </div>
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">مخزون الحديد (Ferritin)</span><span class="test-time">6 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز مخزون حديد" class="book-btn">حجز الآن</a>
-            </div>
+            <div class="test-item"><div class="test-info"><span class="test-name">فيتامين د (Vitamin D)</span><span class="test-time">24 ساعة</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">مخزون الحديد (Ferritin)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">الكالسيوم والماغنسيوم</span><span class="test-time">4 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">فيتامين ب12 (B12)</span><span class="test-time">48 ساعة</span></div><a href="#" class="book-btn">حجز</a></div>
 
-            <p style="text-align: center; color: #d4af37; margin: 30px 0;">ثقتكم أمانة نعتز بها</p>
+            <h3 class="category-title">فحوصات متنوعة</h3>
+            <div class="test-item"><div class="test-info"><span class="test-name">تحليل بول كامل</span><span class="test-time">ساعتين</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">تحليل براز كامل</span><span class="test-time">ساعتين</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">جرثومة المعدة (براز/دم)</span><span class="test-time">4 ساعات</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">عامل الروماتويد (RF)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">ميكروب سبحي (ASOT)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+            <div class="test-item"><div class="test-info"><span class="test-name">بروتين سي التفاعلي (CRP)</span><span class="test-time">نفس اليوم</span></div><a href="#" class="book-btn">حجز</a></div>
+
+            <p style="text-align: center; color: #d4af37; margin-top: 40px; font-size: 0.8rem;">🌙 جميع الفحوصات تتم بأحدث الأجهزة الألمانية والأمريكية 🌙</p>
         </div>
     </div>
 
     <div class="bottom-nav">
-        <a href="tel:01015090991" class="nav-link">
-            <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
-            <span>اتصل بنا</span>
-        </a>
-        <a href="https://wa.me/201015090991" class="nav-link">
-            <div class="icon-circle" style="background: rgba(37, 211, 102, 0.2);"><svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div>
-            <span>واتساب</span>
-        </a>
+        <a href="tel:01015090991" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><span>اتصل بنا</span></a>
+        <a href="https://wa.me/201015090991" class="nav-link"><div class="icon-circle" style="border-color:#25d366;"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div><span>واتساب</span></a>
     </div>
 
     <script>
