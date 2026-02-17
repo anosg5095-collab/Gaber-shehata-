@@ -37,8 +37,6 @@
         .ramadan-bar { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 0; font-weight: 900; text-align: center; position: sticky; top: 0; z-index: 4000; font-size: 0.9rem; }
 
         header { padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* القائمة الجانبية (التلات شرط) */
         .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 4500; }
         .menu-toggle span { display: block; width: 28px; height: 3px; background: var(--gold-gradient); border-radius: 3px; }
 
@@ -46,23 +44,25 @@
         .doc-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; box-shadow: 0 0 15px rgba(212,175,55,0.3); }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* Sidebar */
         .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 9500; transition: 0.4s; padding: 60px 20px; }
         .sidebar.active { right: 0; }
         .sidebar-close { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #d4af37; cursor: pointer; }
         .sidebar-menu li { margin: 25px 0; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 15px; cursor: pointer; font-weight: bold; list-style: none; color: #f9f295; font-size: 1.1rem; }
 
+        /* Overlays */
         .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; display: none; padding: 5px; }
         .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; height: 100%; overflow-y: auto; padding: 100px 20px 40px 20px; position: relative; }
         .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: #0a192f; padding: 25px 20px; border-bottom: 1px solid #d4af37; display: flex; justify-content: space-between; align-items: center; z-index: 10000; border-radius: 20px 20px 0 0; }
 
         .package-card { background: linear-gradient(to left, rgba(212,175,55,0.1), transparent); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #d4af37; position: relative; }
         .discount-tag { position: absolute; top: 0; left: 0; background: #ff3366; color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: 900; border-radius: 0 0 10px 0; }
-
-        .category-title { color: #d4af37; font-weight: 900; margin: 30px 0 15px 0; border-right: 4px solid #d4af37; padding-right: 12px; }
-        .test-card { background: var(--glass); padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        
+        .category-title { color: #d4af37; font-weight: 900; margin: 30px 0 15px 0; border-right: 4px solid #d4af37; padding-right: 12px; font-size: 1.2rem;}
+        .test-card { background: var(--glass); padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
         .test-info { flex: 1; }
-        .test-name { display: block; font-weight: bold; margin-bottom: 4px; }
-        .test-time { color: var(--accent-green); font-size: 0.7rem; font-weight: 800; display: block; }
+        .test-name { display: block; font-weight: bold; margin-bottom: 4px; color: #fff; }
+        .test-time { color: var(--accent-green); font-size: 0.7rem; font-weight: 800; }
         .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 900; white-space: nowrap; }
 
         .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 8px; z-index: 1000; }
@@ -72,11 +72,12 @@
         .nav-link span { color: #f9f295; font-size: 0.75rem; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
 
         .footer-rights { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(212,175,55,0.1); }
+        .info-box { background: rgba(212,175,55,0.05); border: 1px dashed #d4af37; padding: 15px; border-radius: 10px; margin-bottom: 20px; color: #eee; line-height: 1.8; }
     </style>
 </head>
 <body>
 
-    <div class="ramadan-bar">🌙 خصومات رمضان 40% على جميع الباقات 🌙</div>
+    <div class="ramadan-bar">🌙 خصومات رمضان 40% على جميع التحاليل 🌙</div>
 
     <header class="animate">
         <div class="menu-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></div>
@@ -88,20 +89,20 @@
         <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
         <ul class="sidebar-menu">
             <li onclick="handleMenuClick('home')">🏠 الرئيسية</li>
-            <li onclick="handleMenuClick('testList')">🧪 قائمة التحاليل</li>
+            <li onclick="handleMenuClick('testList')">🧪 موسوعة التحاليل</li>
             <li onclick="handleMenuClick('aboutDoc')">📄 عن المعمل</li>
-            <li onclick="handleMenuClick('medicalTips')">💡 نصائح طبية</li>
+            <li onclick="handleMenuClick('medicalTips')">💡 إرشادات الصيام</li>
         </ul>
     </div>
 
     <section class="hero animate" style="text-align: center; padding: 40px 20px;">
-        <h2 style="color: #d4af37; font-family: 'Amiri';">معمل</h2>
+        <h2 style="color: #d4af37; font-family: 'Amiri';">مختبرات</h2>
         <h1 style="font-size: 2.3rem; margin-bottom: 10px;">د/ جابر شحاته</h1>
-        <div style="background: rgba(212,175,55,0.1); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 10px 0; color: #f9f295;">استشاري التحاليل الطبية</div>
+        <div style="background: rgba(212,175,55,0.1); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 10px 0; color: #f9f295; font-weight: 800;">استشاري التحاليل الطبية</div>
         
         <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 30px auto;">
-            <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">طلب سحب منزلي VIP</a>
-            <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer;">موسوعة التحاليل والباقات</div>
+            <a href="https://wa.me/201015090991?text=طلب سحب منزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">طلب سحب منزلي VIP</a>
+            <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer;">عرض قائمة التحاليل والعروض</div>
         </div>
 
         <div class="footer-rights animate">
@@ -113,27 +114,49 @@
     <div id="testList" class="list-overlay">
         <div class="list-content">
             <div class="fixed-header">
-                <h2 style="font-size:1.2rem; font-weight: 900;">موسوعة الفحوصات</h2>
+                <h2 style="font-size:1.2rem; font-weight: 900;">موسوعة التحاليل</h2>
                 <div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div>
             </div>
             
-            <h3 class="category-title">🎁 باقات رمضان</h3>
-            <div class="package-card"><div class="discount-tag">شامل</div><h4>الباقة الذهبية الكاملة</h4><p style="font-size:0.75rem;">(صورة دم، سكر صائم وفاطر، كبد، كلى، نقرس، دهون، غدة، بول وبراز)</p><span class="test-time">النتيجة بعد: 24 ساعة</span><a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الآن</a></div>
+            <h3 class="category-title">🎁 عروض باقات رمضان (خصم 40%)</h3>
+            <div class="package-card"><div class="discount-tag">VIP</div><h4>باقة الاطمئنان الكاملة</h4><p style="font-size:0.75rem;">(32 تحليل: سكر، كبد، كلى، صورة دم، دهون، غدة، نقرس، بول وبراز)</p><a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a></div>
+            <div class="package-card"><h4>باقة متابعة السكر</h4><p style="font-size:0.75rem;">(سكر صائم، فاطر، تراكمي، زلال بول ميكروبي)</p><a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a></div>
+            <div class="package-card"><h4>باقة الأنيميا والنمو</h4><p style="font-size:0.75rem;">(صورة دم، مخزون حديد، فيتامين د، كالسيوم)</p><a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a></div>
 
-            <h3 class="category-title">🧪 التحاليل الفردية الشائعة</h3>
-            <div id="individual-tests">
+            <h3 class="category-title">🩸 تحاليل السكر والدم</h3>
+            <div id="tests-blood">
                 <script>
-                    const testData = [
-                        {n: "سكر صائم وفاطر", t: "4 ساعات"}, {n: "سكر تراكمي HbA1c", t: "4 ساعات"},
-                        {n: "تحليل بول كامل", t: "ساعتين"}, {n: "تحليل براز كامل", t: "3 ساعات"},
-                        {n: "صورة دم كاملة CBC", t: "ساعتين"}, {n: "جرثومة المعدة", t: "24 ساعة"},
-                        {n: "هرمون الغدة TSH", t: "24 ساعة"}, {n: "وظائف كبد كاملة", t: "6 ساعات"},
-                        {n: "وظائف كلى كاملة", t: "4 ساعات"}, {n: "تحليل نقرس", t: "4 ساعات"},
-                        {n: "دهون كاملة", t: "6 ساعات"}, {n: "تحليل الحمل الرقمي", t: "4 ساعات"}
+                    const tests1 = [
+                        {n: "سكر صائم وفاطر", t: "4 ساعات"}, {n: "سكر عشوائي", t: "ساعة"}, 
+                        {n: "سكر تراكمي HbA1c", t: "4 ساعات"}, {n: "صورة دم كاملة CBC", t: "ساعتين"},
+                        {n: "فصيلة الدم ومعامل الريسوس", t: "ساعة"}, {n: "سرعة ترسيب ESR", t: "ساعتين"}
                     ];
-                    testData.forEach(item => {
-                        document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${item.n}</span><span class="test-time">النتيجة بعد: ${item.t}</span></div><a href="https://wa.me/201015090991?text=حجز تحليل: ${item.n}" class="btn-book">حجز</a></div>`);
-                    });
+                    tests1.forEach(t => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${t.n}</span><span class="test-time">النتيجة: ${t.t}</span></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                </script>
+            </div>
+
+            <h3 class="category-title">🔬 تحاليل البول والبراز</h3>
+            <div id="tests-lab">
+                <script>
+                    const tests2 = [
+                        {n: "تحليل بول كامل (Urine)", t: "ساعتين"}, {n: "تحليل براز كامل (Stool)", t: "3 ساعات"},
+                        {n: "جرثومة المعدة في البراز", t: "24 ساعة"}, {n: "الدم الخفي في البراز", t: "24 ساعة"},
+                        {n: "مزرعة بول وحساسية", t: "72 ساعة"}
+                    ];
+                    tests2.forEach(t => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${t.n}</span><span class="test-time">النتيجة: ${t.t}</span></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                </script>
+            </div>
+
+            <h3 class="category-title">⚙️ وظائف الأعضاء والهرمونات</h3>
+            <div id="tests-organs">
+                <script>
+                    const tests3 = [
+                        {n: "وظائف كبد (ALT, AST, Albumin)", t: "6 ساعات"}, {n: "وظائف كلى (Creatinine, Urea)", t: "4 ساعات"},
+                        {n: "هرمون الغدة الدرقية TSH", t: "24 ساعة"}, {n: "تحليل النقرس Uric Acid", t: "4 ساعات"},
+                        {n: "دهون كاملة Cholesterol/TG", t: "6 ساعات"}, {n: "فيتامين د Vitamin D", t: "48 ساعة"},
+                        {n: "مخزون الحديد Ferritin", t: "24 ساعة"}, {n: "هرمونات الخصوبة", t: "48 ساعة"}
+                    ];
+                    tests3.forEach(t => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${t.n}</span><span class="test-time">النتيجة: ${t.t}</span></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
                 </script>
             </div>
         </div>
@@ -141,9 +164,17 @@
 
     <div id="aboutDoc" class="list-overlay">
         <div class="list-content">
-            <div class="fixed-header"><h2>عن المعمل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
+            <div class="fixed-header"><h2>عن معملنا</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             <div style="margin-top:20px;">
-                <div class="package-card"><h4>دكتور جابر شحاته</h4><p>استشاري التحاليل الطبية بخبرة 25 عاماً. المعمل مجهز بأحدث الأجهزة لضمان الدقة.</p></div>
+                <div class="info-box">
+                    <b>دكتور جابر شحاته</b><br>
+                    استشاري التحاليل الطبية بخبرة تمتد لأكثر من 25 عاماً. نلتزم بأعلى معايير الجودة العالمية لضمان دقة تشخيصك.
+                </div>
+                <h3 class="category-title">لماذا تختار معملنا؟</h3>
+                <div class="test-card">✅ أحدث الأجهزة الأوتوماتيكية بالكامل.</div>
+                <div class="test-card">✅ نتائج دقيقة معتمدة من كبار الأطباء.</div>
+                <div class="test-card">✅ خدمة سحب عينات منزلي VIP سريعة.</div>
+                <div class="test-card">✅ أرشيف إلكتروني لنتائجك للرجوع لها.</div>
             </div>
         </div>
     </div>
@@ -152,8 +183,14 @@
         <div class="list-content">
             <div class="fixed-header"><h2>إرشادات التحاليل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             <div style="margin-top:20px;">
-                <div class="package-card"><h4>تحاليل السكر</h4><p>الصيام من 6 إلى 8 ساعات.</p></div>
-                <div class="package-card"><h4>تحاليل الدهون</h4><p>الصيام من 12 إلى 14 ساعة.</p></div>
+                <h3 class="category-title">إرشادات الصيام الهامة:</h3>
+                <div class="info-box">
+                    • <b>السكر الصائم:</b> صيام من 6 إلى 8 ساعات (يسمح بشرب الماء فقط).<br>
+                    • <b>دهون الدم الكاملة:</b> صيام من 12 إلى 14 ساعة ضروري جداً.<br>
+                    • <b>وظائف الكبد والكلى:</b> لا تشترط الصيام ولكن يفضل.<br>
+                    • <b>تحليل البول:</b> يفضل أول عينة بول في الصباح.<br>
+                    • <b>جرثومة المعدة:</b> يجب التوقف عن أدوية الحموضة والمضادات الحيوية قبلها بأسبوعين.
+                </div>
             </div>
         </div>
     </div>
