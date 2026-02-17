@@ -14,10 +14,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 120px; }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .animate { animation: fadeInUp 0.8s ease forwards; }
+        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 140px; }
 
         body::before {
             content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -35,9 +32,9 @@
         .doc-img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; box-shadow: 0 0 15px rgba(212,175,55,0.3); }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050c18; z-index: 8000; display: none; }
-        .list-content { height: 100%; overflow-y: auto; padding: 110px 20px 40px 20px; }
-        .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: #0a192f; padding: 25px 20px; border-bottom: 1px solid rgba(212,175,55,0.3); display: flex; justify-content: space-between; align-items: center; z-index: 8500; }
+        .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050c18; z-index: 9999; display: none; }
+        .list-content { height: 100%; overflow-y: auto; padding: 110px 20px 150px 20px; }
+        .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: #0a192f; padding: 25px 20px; border-bottom: 1px solid rgba(212,175,55,0.3); display: flex; justify-content: space-between; align-items: center; z-index: 10000; }
 
         .package-card { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(212,175,55,0.2); position: relative; }
         .discount-tag { position: absolute; top: -10px; right: 15px; background: #ff3366; color: white; padding: 4px 12px; font-size: 0.75rem; font-weight: 900; border-radius: 5px; }
@@ -48,86 +45,77 @@
 
         .bottom-nav { 
             position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); 
-            width: 90%; max-width: 400px; background: rgba(10, 25, 47, 0.85); 
+            width: 92%; max-width: 420px; background: rgba(10, 25, 47, 0.9); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(212,175,55,0.3); border-radius: 30px; 
             display: flex; justify-content: space-around; padding: 12px; 
             z-index: 9000; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-        .icon-circle svg { width: 24px; height: 24px; fill: #d4af37; }
+        .nav-link svg { width: 24px; height: 24px; fill: #d4af37; }
         .nav-link span { color: #f9f295; font-size: 0.7rem; font-weight: 700; }
 
-        .footer-rights { text-align: center; padding: 20px; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 30px; }
-        .hero { padding: 30px 20px 40px 20px; text-align: center; }
+        .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 9500; transition: 0.4s; padding: 80px 25px; }
+        .sidebar.active { right: 0; }
+        .sidebar li { padding: 18px 0; color: #f9f295; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; list-style: none; }
     </style>
 </head>
 <body>
 
     <div class="ramadan-bar">🌙 خصومات رمضان 40% على جميع الباقات 🌙</div>
 
-    <header class="animate">
+    <header>
         <div class="menu-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></div>
         <div class="logo"><h1>د. جابر شحاته</h1></div>
         <div class="doc-img"><img src="love1.jpg" onerror="this.src='https://via.placeholder.com/100'"></div>
     </header>
 
-    <div id="sidebar" class="sidebar" style="position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 9500; transition: 0.4s; padding: 80px 25px;">
-        <div class="sidebar-close" onclick="toggleSidebar()" style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #d4af37; cursor: pointer;">✕</div>
-        <ul style="list-style:none;">
-            <li onclick="goHome()" style="padding:15px 0; color:#f9f295; font-weight:bold; border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer;">🏠 الرئيسية</li>
-            <li onclick="openModal('testList')" style="padding:15px 0; color:#f9f295; font-weight:bold; border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer;">🧪 قائمة التحاليل</li>
-            <li onclick="openModal('aboutDoc')" style="padding:15px 0; color:#f9f295; font-weight:bold; border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer;">📄 عن المعمل</li>
-            <li onclick="openModal('medicalTips')" style="padding:15px 0; color:#f9f295; font-weight:bold; border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer;">💡 نصائح طبية</li>
+    <div id="sidebar" class="sidebar">
+        <div onclick="toggleSidebar()" style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #d4af37; cursor: pointer;">✕</div>
+        <ul>
+            <li onclick="handleMenuClick('home')">🏠 الرئيسية</li>
+            <li onclick="handleMenuClick('testList')">🧪 قائمة التحاليل</li>
+            <li onclick="handleMenuClick('aboutDoc')">📄 عن المعمل</li>
+            <li onclick="handleMenuClick('medicalTips')">💡 نصائح طبية</li>
         </ul>
     </div>
 
-    <section class="hero animate">
-        <h2>معمل الاستشاري</h2>
-        <h1>د/ جابر شحاته</h1>
-        <div style="background: rgba(212,175,55,0.1); padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 20px 0; color: #f9f295; font-weight: 600;">استشاري التحاليل الطبية</div>
+    <section class="hero" style="text-align:center; padding: 40px 20px;">
+        <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 15px;">د/ جابر شحاته</h1>
+        <div style="background: rgba(212,175,55,0.1); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin-bottom: 30px; color: #f9f295;">استشاري التحاليل الطبية</div>
         
         <div style="display: flex; flex-direction: column; gap: 15px; max-width: 340px; margin: 0 auto;">
-            <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 20px; border-radius: 18px; text-decoration: none; font-weight: 900; font-size: 1.1rem;">طلب سحب منزلي VIP</a>
+            <a href="https://wa.me/201015090991?text=طلب سحب منزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 20px; border-radius: 18px; text-decoration: none; font-weight: 900; font-size: 1.1rem;">طلب سحب منزلي VIP</a>
             <div onclick="openModal('testList')" style="background: rgba(255,255,255,0.03); border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 18px; font-weight: bold; cursor: pointer;">موسوعة التحاليل والباقات</div>
         </div>
-
-        <div class="footer-rights">
+        
+        <div style="text-align: center; padding: 20px; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 40px;">
             <p>جميع حقوق النشر محفوظة لدى <b>د. جابر شحاته</b> © 2026</p>
             <p>Designed by: <b>Eng/ Anas Gaber Shehata</b></p>
         </div>
     </section>
 
     <div id="testList" class="list-overlay">
-        <div class="fixed-header">
-            <h2 style="font-size:1.3rem; font-weight: 900;">موسوعة الفحوصات</h2>
-            <div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div>
-        </div>
+        <div class="fixed-header"><h2>الفحوصات والباقات</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
         <div class="list-content">
             
             <h3 class="category-title">🎁 باقات العروض الخاصة</h3>
-            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.8rem; margin:8px 0;">(صورة دم، سكر، كبد، كلى، دهون، نقرس، غدة، بول وبراز)</p><a href="https://wa.me/201015090991?text=حجز: باقة الفحص الشامل الذهبية" class="btn-book">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 35%</div><h4>باقة تساقط الشعر والأنيميا</h4><p style="font-size:0.8rem; margin:8px 0;">(مخزون حديد، فيتامين د، زنك، غدة TSH، صورة دم كاملة)</p><a href="https://wa.me/201015090991?text=حجز: باقة تساقط الشعر" class="btn-book">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة الاطمئنان على الكلى</h4><p style="font-size:0.8rem; margin:8px 0;">(بولينا، كرياتينين، أملاح البول، نقرس، بول كامل)</p><a href="https://wa.me/201015090991?text=حجز: باقة وظائف الكلى" class="btn-book">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة وظائف الكبد والالتهاب</h4><p style="font-size:0.8rem; margin:8px 0;">(ALT, AST, Bilirubin, Albumin, فيروس سي)</p><a href="https://wa.me/201015090991?text=حجز: باقة الكبد" class="btn-book">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 25%</div><h4>باقة كبار السن والسكر</h4><p style="font-size:0.8rem; margin:8px 0;">(سكر تراكمي، دهون ثلاثية، كوليسترول، بروستاتا)</p><a href="https://wa.me/201015090991?text=حجز: باقة كبار السن" class="btn-book">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.85rem; margin-top:8px; opacity:0.8;">(صورة دم، سكر، كبد، كلى، دهون، نقرس، غدة، بول وبراز)</p><br><a href="https://wa.me/201015090991?text=حجز باقة الشامل الذهبية" class="btn-book">حجز الآن</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 35%</div><h4>باقة تساقط الشعر والأنيميا</h4><p style="font-size:0.85rem; margin-top:8px; opacity:0.8;">(مخزون حديد، فيتامين د، زنك، غدة TSH، صورة دم)</p><br><a href="https://wa.me/201015090991?text=حجز باقة تساقط الشعر" class="btn-book">حجز الآن</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة كبار السن والسكر</h4><p style="font-size:0.85rem; margin-top:8px; opacity:0.8;">(سكر تراكمي، وظائف كلى، دهون، بروستاتا)</p><br><a href="https://wa.me/201015090991?text=حجز باقة كبار السن" class="btn-book">حجز الآن</a></div>
 
-            <h3 class="category-title">🧪 قائمة التحاليل الفردية (أ - ي)</h3>
-            <div id="dynamic-tests">
+            <h3 class="category-title">🧪 قائمة التحاليل الشاملة</h3>
+            <div id="full-test-list">
                 <script>
-                    const allTests = [
+                    const tests = [
                         "صورة دم كاملة CBC", "سكر صائم وفاطر", "سكر تراكمي HbA1c", "وظائف كبد ALT", "وظائف كبد AST",
                         "وظائف كلى Creatinine", "بولينا Urea", "حمض البوليك (النقرس)", "كوليسترول كلي", "دهون ثلاثية",
-                        "كوليسترول حميد HDL", "كوليسترول ضار LDL", "هرمون الغدة TSH", "هرمون الغدة Free T4", "هرمون الغدة Free T3",
-                        "فيتامين د Vitamin D", "فيتامين ب12 B12", "مخزون الحديد Ferritin", "حديد بالسيرم Serum Iron", "فيروس سي HCV",
-                        "فيروس بي HBV", "فيروس الإيدز HIV", "جرثومة المعدة (براز)", "جرثومة المعدة (دم)", "بول كامل Urine Analysis",
-                        "براز كامل Stool Analysis", "سيولة الدم PT", "سرعة الترسيب ESR", "بروتين التفاعلي CRP", "فصيلة الدم و RH",
-                        "مزرعة بول وحساسية", "مزرعة براز", "PSA (دلالات البروستاتا)", "كالسيوم كلي Calcium", "بوتاسيوم و صوديوم",
-                        "فوسفور Phosphorus", "هرمون الحليب Prolactin", "هرمون الذكورة Testosterone", "هرمونات الخصوبة LH & FSH", "تحليل الزنك Zinc",
-                        "تحليل التوكسوبلازما (القطط)", "روماتويد RF", "سرعة النزف والتجلط BT & CT", "هيموجلوبين السكر", "ألبومين في البول"
+                        "هرمون الغدة TSH", "فيتامين د Vitamin D", "مخزون الحديد Ferritin", "فيروس سي HCV", "فيروس بي HBV",
+                        "جرثومة المعدة (براز)", "بول كامل Analysis", "براز كامل Analysis", "سيولة الدم PT", "سرعة الترسيب ESR",
+                        "بروتين التفاعلي CRP", "فصيلة الدم و RH", "PSA البروستاتا", "كالسيوم Calcium", "بوتاسيوم و صوديوم"
                     ];
-                    allTests.forEach(t => {
-                        document.write(`<div class="test-card"><div><span style="font-weight:700;">${t}</span></div><a href="https://wa.me/201015090991?text=أريد حجز تحليل: ${t}" class="btn-book">حجز</a></div>`);
+                    tests.forEach(t => {
+                        document.write(`<div class="test-card"><span>${t}</span><a href="https://wa.me/201015090991?text=حجز تحليل: ${t}" class="btn-book">حجز</a></div>`);
                     });
                 </script>
             </div>
@@ -137,48 +125,52 @@
     <div id="aboutDoc" class="list-overlay">
         <div class="fixed-header"><h2>عن المعمل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
         <div class="list-content">
-            <div class="package-card">• استشاري التحاليل الطبية بخبرة تزيد عن 25 عاماً.</div>
+            <div class="package-card">• <b>د. جابر شحاته</b>: استشاري التحاليل الطبية بخبرة +25 عاماً.</div>
             <div class="package-card">• عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM).</div>
             <div class="package-card">• عضو الجمعية المصرية للكيمياء الحيوية والبيولوجيا الجزيئية.</div>
-            <div class="package-card">• مجهز بأحدث الأجهزة الألمانية والأمريكية الأوتوماتيكية بالكامل.</div>
-            <div class="package-card">• دقة تضاهي المعايير الدولية في النتائج.</div>
+            <div class="package-card">• دقة تضاهي المعايير الدولية باستخدام أحدث الأجهزة الأوتوماتيكية.</div>
+            <div class="package-card">• الالتزام التام بمعايير الجودة ومكافحة العدوى.</div>
         </div>
     </div>
 
     <div id="medicalTips" class="list-overlay">
         <div class="fixed-header"><h2>نصائح طبية هامة</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
         <div class="list-content">
-            <div class="package-card"><h4>تحاليل الدهون</h4><p>صيام 12-14 ساعة مع شرب الماء فقط.</p></div>
-            <div class="package-card"><h4>السكر الصائم</h4><p>صيام 6-8 ساعات.</p></div>
-            <div class="package-card"><h4>مزرعة البول</h4><p>التوقف عن المضادات الحيوية لمدة 48 ساعة.</p></div>
-            <div class="package-card"><h4>السكر الفاطر</h4><p>التحليل بعد ساعتين من بدء الأكل.</p></div>
+            <div class="package-card"><h4>تحاليل الدهون</h4><p>تتطلب صياماً من 12 إلى 14 ساعة (يسمح بالماء فقط).</p></div>
+            <div class="package-card"><h4>سكر صائم</h4><p>يجب الصيام من 6 إلى 8 ساعات.</p></div>
+            <div class="package-card"><h4>سكر فاطر</h4><p>التحليل بعد ساعتين من بداية تناول الوجبة.</p></div>
+            <div class="package-card"><h4>مزرعة البول</h4><p>التوقف عن المضادات الحيوية قبل التحليل بـ 48 ساعة.</p></div>
         </div>
     </div>
 
     <div class="bottom-nav">
-        <a href="tel:01015090991" class="nav-link">
-            <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
-            <span>اتصل بنا</span>
-        </a>
-        <a href="https://maps.app.goo.gl/qVB6VW9PMr923Zcn6" target="_blank" class="nav-link">
-            <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
-            <span>موقعنا</span>
-        </a>
-        <a href="https://wa.me/201015090991" class="nav-link">
-            <div class="icon-circle"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div>
-            <span style="color:#25d366;">واتساب</span>
-        </a>
+        <a href="tel:01015090991" class="nav-link"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>اتصال</span></a>
+        <a href="https://maps.app.goo.gl/YourLocationLink" target="_blank" class="nav-link"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>موقعنا</span></a>
+        <a href="https://wa.me/201015090991" class="nav-link"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg><span style="color:#25d366;">واتساب</span></a>
     </div>
 
     <script>
         function toggleSidebar() { 
-            const s = document.getElementById('sidebar');
-            s.style.right = (s.style.right === '0px') ? '-100%' : '0px'; 
+            document.getElementById('sidebar').classList.toggle('active'); 
         }
-        function openModal(id) { document.getElementById(id).style.display = 'block'; document.body.style.overflow = 'hidden'; history.pushState({ modalOpen: true }, ""); }
-        function closeModals() { document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); document.body.style.overflow = 'auto'; }
-        window.onpopstate = function() { closeModals(); };
-        function goHome() { closeModals(); document.getElementById('sidebar').style.right = '-100%'; window.scrollTo({top: 0, behavior: 'smooth'}); }
+
+        // حل مشكلة التغطية: قفل الجنب أولاً ثم فتح المطلوب
+        function handleMenuClick(targetId) {
+            document.getElementById('sidebar').classList.remove('active');
+            if (targetId !== 'home') {
+                setTimeout(() => openModal(targetId), 250); 
+            }
+        }
+
+        function openModal(id) { 
+            document.getElementById(id).style.display = 'block'; 
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeModals() { 
+            document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); 
+            document.body.style.overflow = 'auto'; 
+        }
     </script>
 </body>
 </html>
