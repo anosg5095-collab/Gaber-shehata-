@@ -2,8 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>د. جابر شحاته | استشاري التحاليل الطبية</title>
+    
+    <meta name="theme-color" content="#050c18">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="love1.jpg">
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogImQuIGphYmVyIHNoZWhhdGEiLAogICJzaG9ydF9uYW1lIjogImQuIGphYmVyIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwNTBjMTgiLAogICJ0aGVtZV9jb2xvciI6ICIjMDUwYzE4IiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAibG92ZTEuanBnIiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9qcGciCiAgICB9CiAgXQp9">
+
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
@@ -14,8 +22,8 @@
             --accent-green: #00ffcc;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 160px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 160px; line-height: 1.6; }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .animate { animation: fadeInUp 0.8s ease forwards; }
@@ -26,7 +34,25 @@
             z-index: -1;
         }
 
-        .ramadan-bar { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 0; font-weight: 900; text-align: center; position: sticky; top: 0; z-index: 4000; font-size: 0.9rem; }
+        .ramadan-bar { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 0; font-weight: 900; text-align: center; position: sticky; top: 0; z-index: 4000; font-size: 0.9rem; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+        /* إضافة شريط مواعيد العمل */
+        .work-hours-status {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            margin: 15px auto;
+            padding: 10px;
+            border-radius: 12px;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: #f9f295;
+        }
+        .status-dot { width: 10px; height: 10px; background: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
 
         header { padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; }
         .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 4500; }
@@ -46,7 +72,7 @@
         .category-title { color: #d4af37; font-weight: 900; margin: 30px 0 15px 0; border-right: 4px solid #d4af37; padding-right: 12px; }
         .test-card { background: var(--glass); padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; gap: 10px; }
         .test-info { flex: 1; }
-        .test-name { display: block; font-weight: bold; margin-bottom: 4px; }
+        .test-name { display: block; font-weight: bold; margin-bottom: 4px; color: #fff; }
         .test-time { color: var(--accent-green); font-size: 0.7rem; font-weight: 800; display: block; }
         .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 900; white-space: nowrap; }
 
@@ -74,6 +100,11 @@
         <div class="doc-img"><img src="love1.jpg" onerror="this.src='https://via.placeholder.com/100'"></div>
     </header>
 
+    <div class="work-hours-status animate">
+        <div class="status-dot"></div>
+        <span>خدمة الرد الهاتفي متاحة يومياً من <b>10:00 صباحاً</b></span>
+    </div>
+
     <div id="sidebar" class="sidebar">
         <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
         <ul class="sidebar-menu">
@@ -84,14 +115,14 @@
         </ul>
     </div>
 
-    <section class="hero animate" style="text-align: center; padding: 40px 20px;">
+    <section class="hero animate" style="text-align: center; padding: 20px 20px;">
         <h2 style="color: #d4af37; font-family: 'Amiri';">معمل</h2>
         <h1 style="font-size: 2.3rem; margin-bottom: 10px;">د/ جابر شحاته</h1>
-        <div style="background: rgba(212,175,55,0.1); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 10px 0; color: #f9f295;">استشاري التحاليل الطبية</div>
+        <div style="background: rgba(212,175,55,0.1); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 10px 0; color: #f9f295; font-weight: 800;">استشاري التحاليل الطبية</div>
         
         <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 30px auto;">
             <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">طلب سحب منزلي VIP</a>
-            <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer;">موسوعة التحاليل والباقات</div>
+            <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer; background: rgba(212,175,55,0.05);">موسوعة التحاليل والباقات</div>
         </div>
 
         <div class="footer-rights animate">
@@ -118,23 +149,7 @@
             </div>
 
             <div class="package-card">
-                <div class="discount-tag">جديد</div>
-                <h4>باقة ما قبل الزواج</h4>
-                <p style="font-size:0.75rem;">(فصيلة دم، أنيميا البحر المتوسط، فيروسات B, C, HIV، سكر)</p>
-                <span class="test-time">النتيجة بعد: 48 ساعة</span>
-                <a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a>
-            </div>
-
-            <div class="package-card">
                 <div class="discount-tag">حصري</div>
-                <h4>باقة صحة المرأة/الرجل</h4>
-                <p style="font-size:0.75rem;">(فيتامين د، فيتامين ب12، مخزون حديد، كالسيوم، صورة دم)</p>
-                <span class="test-time">النتيجة بعد: 24 ساعة</span>
-                <a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a>
-            </div>
-
-            <div class="package-card">
-                <div class="discount-tag">عناية</div>
                 <h4>باقة متابعة السكر</h4>
                 <p style="font-size:0.75rem;">(سكر صائم، سكر فاطر، سكر تراكمي HbA1c، زلال دقيق في البول)</p>
                 <span class="test-time">النتيجة بعد: 12 ساعة</span>
@@ -145,37 +160,19 @@
             <div id="individual-tests">
                 <script>
                     const testData = [
-                        {n: "صورة دم كاملة CBC", t: "ساعتين"},
-                        {n: "سكر تراكمي HbA1c", t: "4 ساعات"},
-                        {n: "هرمون الغدة الدرقية TSH", t: "24 ساعة"},
-                        {n: "هرمونات الغدة الكاملة (T3, T4, TSH)", t: "24 ساعة"},
-                        {n: "فيتامين د Vitamin D", t: "48 ساعة"},
-                        {n: "فيتامين ب12 Vitamin B12", t: "48 ساعة"},
-                        {n: "وظائف كبد كاملة (8 تحاليل)", t: "6 ساعات"},
-                        {n: "وظائف كلى كاملة (Urea/Creat/UA)", t: "4 ساعات"},
-                        {n: "دهون كاملة (Lipid Profile)", t: "6 ساعات"},
-                        {n: "جرثومة المعدة (Stool Antigen)", t: "24 ساعة"},
-                        {n: "فيروس سي C (الأجسام المضادة)", t: "24 ساعة"},
-                        {n: "فيروس بي B (الأجسام المضادة)", t: "24 ساعة"},
-                        {n: "تحليل PSA (البروستاتا)", t: "24 ساعة"},
-                        {n: "تحليل مخزون الحديد Ferritin", t: "24 ساعة"},
-                        {n: "كالسيوم كلي ومتأين", t: "5 ساعات"},
-                        {n: "مزرعة بول (C/S)", t: "48-72 ساعة"},
-                        {n: "مزرعة براز (C/S)", t: "48-72 ساعة"},
-                        {n: "تحليل الحمل الرقمي (BHCG)", t: "4 ساعات"},
-                        {n: "دلالات أورام الثدي (CA 15.3)", t: "48 ساعة"},
-                        {n: "دلالات أورام القولون (CEA)", t: "48 ساعة"},
-                        {n: "CRP (بروتين التفاعل C)", t: "ساعتين"},
-                        {n: "سرعة ترسيب ESR", t: "ساعتين"},
-                        {n: "تحليل بول كامل", t: "ساعتين"},
-                        {n: "تحليل براز كامل", t: "3 ساعات"}
+                        {n: "صورة دم كاملة CBC", t: "ساعتين"}, {n: "سكر تراكمي HbA1c", t: "4 ساعات"},
+                        {n: "هرمون الغدة الدرقية TSH", t: "24 ساعة"}, {n: "فيتامين د Vitamin D", t: "48 ساعة"},
+                        {n: "وظائف كبد كاملة", t: "6 ساعات"}, {n: "وظائف كلى كاملة", t: "4 ساعات"},
+                        {n: "دهون كاملة (Lipid Profile)", t: "6 ساعات"}, {n: "جرثومة المعدة", t: "24 ساعة"},
+                        {n: "مخزون الحديد Ferritin", t: "24 ساعة"}, {n: "تحليل الحمل الرقمي", t: "4 ساعات"},
+                        {n: "سرعة ترسيب ESR", t: "ساعتين"}, {n: "تحليل بول كامل", t: "ساعتين"}
                     ];
                     testData.forEach(item => {
                         document.write(`
                             <div class="test-card">
                                 <div class="test-info">
                                     <span class="test-name">${item.n}</span>
-                                    <span class="test-time">النتيجة بعد: ${item.t}</span>
+                                    <span class="test-time">النتيجة: ${item.t}</span>
                                 </div>
                                 <a href="https://wa.me/201015090991?text=حجز تحليل: ${item.n}" class="btn-book">حجز</a>
                             </div>
@@ -192,10 +189,10 @@
             <div style="margin-top:20px;">
                 <div class="package-card">
                     <h4 style="color:#d4af37; margin-bottom:10px;">دكتور جابر شحاته</h4>
-                    <p style="font-size:0.9rem; line-height:1.8;">استشاري التحاليل الطبية بخبرة تزيد عن 25 عاماً. المعمل مجهز بأحدث الأجهزة الألمانية والأمريكية لضمان دقة النتائج بنسبة 100%.</p>
+                    <p style="font-size:0.9rem; line-height:1.8;">استشاري التحاليل الطبية والباثولوجيا الإكلينيكية بخبرة تزيد عن 25 عاماً. المعمل مجهز بأحدث الأجهزة لضمان الدقة الكاملة.</p>
                 </div>
-                <div class="package-card">• عضو الجمعية الأمريكية لعلم الأحياء الدقيقة.</div>
-                <div class="package-card">• إشراف طبي كامل على كافة النتائج.</div>
+                <div class="package-card">✓ عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM).</div>
+                <div class="package-card">✓ عضو الجمعية المصرية للكيمياء الحيوية.</div>
             </div>
         </div>
     </div>
@@ -204,16 +201,16 @@
         <div class="list-content">
             <div class="fixed-header"><h2>إرشادات التحاليل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             <div style="margin-top:20px;">
-                <div class="package-card"><h4>تحاليل الدهون</h4><p>يجب الصيام من 12 إلى 14 ساعة.</p></div>
-                <div class="package-card"><h4>تحليل السكر الصائم</h4><p>الصيام من 6 إلى 8 ساعات.</p></div>
-                <div class="package-card"><h4>المزارع</h4><p>يجب التوقف عن المضاد الحيوي قبل المزرعة بـ 48 ساعة.</p></div>
+                <div class="package-card"><h4>⏰ مواعيد التواصل</h4><p>يرجى العلم أن الرد على الأرقام الهاتفية يبدأ من <b>الساعة 10:00 صباحاً</b> يومياً.</p></div>
+                <div class="package-card"><h4>🧪 تحليل الدهون</h4><p>يجب الصيام من 12 إلى 14 ساعة.</p></div>
+                <div class="package-card"><h4>🩸 السكر الصائم</h4><p>الصيام من 6 إلى 8 ساعات.</p></div>
             </div>
         </div>
     </div>
 
     <div class="bottom-nav">
         <a href="tel:01015090991" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><span>اتصال</span></a>
-        <a href="https://maps.app.goo.gl/qVB6VW9PMr923Zcn6" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
+        <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
         <a href="https://wa.me/201015090991" class="nav-link"><div class="icon-circle" style="border-color:#25d366;"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div><span>واتساب</span></a>
     </div>
 
