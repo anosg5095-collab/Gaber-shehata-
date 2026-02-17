@@ -14,7 +14,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
-        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 120px; }
+        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 160px; }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .animate { animation: fadeInUp 0.8s ease forwards; }
@@ -57,6 +57,10 @@
         .icon-circle { width: 55px; height: 55px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .icon-circle svg { width: 22px; height: 22px; fill: #d4af37; }
         .nav-link span { color: #f9f295; font-size: 0.75rem; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
+
+        /* ستايل الحقوق الجديد */
+        .footer-rights { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(212,175,55,0.1); }
+        .footer-rights b { color: #d4af37; }
     </style>
 </head>
 <body>
@@ -86,6 +90,11 @@
         <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto;">
             <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900;">طلب سحب منزلي VIP</a>
             <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer;">موسوعة التحاليل والباقات</div>
+        </div>
+
+        <div class="footer-rights animate">
+            <p>جميع حقوق النشر محفوظة لدى <b>د. جابر شحاته</b> &copy; 2026</p>
+            <p style="margin-top: 5px; font-size: 0.7rem;">Designed by: <b>Eng/ Anas Gaber Shehata</b></p>
         </div>
     </section>
 
@@ -118,7 +127,6 @@
                         {n: "هرمون ذكورة", t: "24 ساعة"}, {n: "PSA بروستاتا", t: "نفس اليوم"},
                         {n: "كالسيوم كلي Ca", t: "4 ساعات"}, {n: "مزرعة بول", t: "72 ساعة"}
                     ];
-                    // التعديل هنا لجعل الحجز يرسل اسم التحليل
                     testsList.concat(testsList).slice(0, 50).forEach(test => {
                         document.write(`
                             <div class="test-card">
