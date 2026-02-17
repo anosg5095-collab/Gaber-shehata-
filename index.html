@@ -16,7 +16,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 120px; }
 
-        /* أنيميشن الدخول */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -39,31 +38,27 @@
         .doc-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* القائمة الجانبية */
         .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 7000; transition: 0.4s; padding: 60px 20px; }
         .sidebar.active { right: 0; }
         .sidebar-close { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #d4af37; cursor: pointer; }
         .sidebar-menu li { margin: 25px 0; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 10px; cursor: pointer; font-weight: bold; list-style: none; }
 
-        /* النوافذ مع تثبيت زر الإغلاق */
         .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 8000; display: none; padding: 10px; }
-        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; height: 100%; overflow-y: auto; padding: 80px 20px 20px 20px; position: relative; }
+        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; height: 100%; overflow-y: auto; padding: 80px 20px 40px 20px; position: relative; }
         .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: var(--deep-navy); padding: 20px; border-bottom: 1px solid #d4af37; display: flex; justify-content: space-between; align-items: center; z-index: 8500; border-radius: 20px 20px 0 0; }
 
-        /* الباقات */
         .package-card { background: linear-gradient(to left, rgba(212,175,55,0.1), transparent); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #d4af37; position: relative; overflow: hidden; }
         .discount-tag { position: absolute; top: 0; left: 0; background: #ff3366; color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: 900; border-radius: 0 0 10px 0; }
 
-        /* التحاليل */
         .category-title { color: #d4af37; font-weight: 900; margin: 25px 0 10px 0; border-right: 4px solid #d4af37; padding-right: 12px; }
         .test-card { background: var(--glass); padding: 12px; border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
         .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: 900; }
 
-        /* الأيقونات السفلية */
         .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 8px; z-index: 1000; }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
         .icon-circle { width: 55px; height: 55px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .icon-circle svg { width: 22px; height: 22px; fill: #d4af37; }
+        .nav-link span { color: #f9f295; font-size: 0.75rem; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
     </style>
 </head>
 <body>
@@ -101,20 +96,21 @@
             <div class="fixed-header"><h2>قائمة الفحوصات</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             
             <h3 class="category-title">🎁 عروض رمضان (باقات)</h3>
-            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل</h4><p style="font-size:0.7rem;">(20 تحليل تشمل وظائف الكبد، الكلى، السكر، والأنيميا)</p></div>
-            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة صحة المرأة</h4><p style="font-size:0.7rem;">(هرمونات، صورة دم، فيتامينات)</p></div>
+            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.75rem;">(صورة دم، سكر، دهون، وظائف كبد وكلى، نقرس، غدة)</p></div>
+            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة الأنيميا وتساقط الشعر</h4><p style="font-size:0.75rem;">(صورة دم، مخزون حديد، فيتامين د، غدة درقية)</p></div>
+            <div class="package-card"><div class="discount-tag">خصم 25%</div><h4>باقة الاطمئنان الدوري</h4><p style="font-size:0.75rem;">(سكر صائم، كرياتينين، كوليسترول، بول)</p></div>
 
-            <h3 class="category-title">🧪 قائمة الـ 50 تحليل</h3>
-            <div class="test-card"><span>صورة دم كاملة</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>سكر تراكمي</span><a href="#" class="btn-book">حجز</a></div>
+            <h3 class="category-title">🧪 أكثر من 50 تحليل</h3>
+            <div class="test-card"><span>صورة دم كاملة CBC</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>سكر تراكمي HbA1c</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>وظائف كبد ALT</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>وظائف كبد AST</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>كرياتينين (كلى)</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>بولينا (كلى)</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>حمض البوليك (النقرس)</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>هرمون الغدة TSH</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>هرمون T3</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>هرمون T4</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>هرمون T3 الحر</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>هرمون T4 الحر</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>فيتامين د</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>فيتامين ب12</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>مخزون الحديد</span><a href="#" class="btn-book">حجز</a></div>
@@ -123,65 +119,58 @@
             <div class="test-card"><span>كالسيوم متأين</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>كوليسترول كلي</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>دهون ثلاثية</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>دهون عالية الكثافة HDL</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>دهون منخفضة الكثافة LDL</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>تحليل CRP</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>سرعة ترسيب ESR</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>عامل الروماتويد RF</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>HDL - LDL</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>فيروس سي HCV</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>فيروس بي HBV</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>جرثومة المعدة (براز)</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>جرثومة المعدة (نفس)</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>تحليل CRP</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>سرعة ترسيب ESR</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>عامل الروماتويد RF</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>تحليل بول كامل</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>تحليل براز كامل</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>هرمون الذكورة</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>هرمون الحليب (برولاكتين)</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>بروتين كلي</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>البومين</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>الفوسفاتيز القلوي ALP</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>الصوديوم Na</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>البوتاسيوم K</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>PSA (بروستاتا)</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>CEA (أورام)</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>CA-125 (أورام)</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>CA-15-3 (أورام)</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>هرمون الحليب</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>الصوديوم والبوتاسيوم</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>سيولة الدم PT</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>زمن التجلط PTT</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>منحنى السكر</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>ميكروب سبحي ASO</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>تحليل الحمل (دم)</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>تحليل حمل رقمي</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>خلايا شبكية</span><a href="#" class="btn-book">حجز</a></div>
-            <div class="test-card"><span>انزيمات قلب CK-MB</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>سيولة الدم PTT</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>PSA بروستاتا</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>CEA دلائل أورام</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>H. Pylori Ag</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>بروتين البول</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>انزيمات القلب</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>تروبونين</span><a href="#" class="btn-book">حجز</a></div>
             <div class="test-card"><span>الزنك</span><a href="#" class="btn-book">حجز</a></div>
+            <div class="test-card"><span>حمض البوليك بالبول</span><a href="#" class="btn-book">حجز</a></div>
         </div>
     </div>
 
     <div id="medicalTips" class="list-overlay">
         <div class="list-content">
             <div class="fixed-header"><h2>نصائح طبية هامة</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
-            <div class="package-card"><h4>نصيحة السكر والدهون</h4><p>يجب الصيام من 10 إلى 12 ساعة (يسمح بشرب الماء فقط) لنتائج دقيقة.</p></div>
-            <div class="package-card"><h4>عينة البول والبراز</h4><p>يجب استخدام الأكواب المعقمة من المعمل وجمع العينة في الصباح الباكر.</p></div>
-            <div class="package-card"><h4>تحاليل الهرمونات</h4><p>يفضل عمل تحاليل الغدة قبل تناول جرعة الدواء الصباحية.</p></div>
-            <div class="package-card"><h4>تحليل الفيتامينات</h4><p>يفضل عدم تناول أي مكملات غذائية قبل التحليل بـ 24 ساعة.</p></div>
+            <div class="package-card"><h4>الصيام للتحاليل</h4><p>يجب الصيام من 10 لـ 12 ساعة لتحاليل السكر والدهون لضمان دقة النتيجة.</p></div>
+            <div class="package-card"><h4>تحاليل الغدة</h4><p>يفضل عمل التحليل قبل أخذ جرعة الدواء الصباحية إلا لو طلب الطبيب غير ذلك.</p></div>
+            <div class="package-card"><h4>عينات البول والبراز</h4><p>يجب استخدام الحاويات المعقمة من المعمل وجمع أول عينة في الصباح.</p></div>
         </div>
     </div>
 
     <div id="aboutDoc" class="list-overlay">
         <div class="list-content">
             <div class="fixed-header"><h2>عن المعمل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
-            <p style="margin-bottom:20px;">معمل الدكتور جابر شحاته خبره اكثر من 25 سنه.</p>
-            <div class="package-card">
-                <p>• عضو الجمعية المصرية للكيمياء الحيويه والباثولوجيه الإكلينيكية.</p>
-                <p>• عضو في الجمعية الأمريكية لعلم الاحياء الدقيقة.</p>
+            <div style="margin-top: 20px; line-height: 1.8;">
+                <p style="font-size: 1.1rem; margin-bottom: 20px;">معمل الدكتور جابر شحاته خبره اكثر من 25 سنه في مجال التحاليل الطبية والتشخيص المخبري.</p>
+                <div class="package-card">
+                    <p style="margin-bottom: 10px;">• الدكتور جابر شحاته عضو الجمعية المصرية للكيمياء الحيويه والباثولوجيه الإكلينيكية.</p>
+                    <p>• عضو في الجمعية الأمريكية لعلم الاحياء الدقيقة.</p>
+                </div>
+                <p>نحن نحرص على استخدام أحدث التقنيات العالمية لضمان أعلى درجات الدقة والسرعة في تسليم النتائج.</p>
             </div>
         </div>
     </div>
 
     <div class="bottom-nav">
         <a href="tel:01015090991" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><span>اتصل بنا</span></a>
-        <a href="https://maps.app.goo.gl/uXv7F6R8q9G2" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
+        <a href="https://maps.app.goo.gl/YourLink" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
         <a href="https://wa.me/201015090991" class="nav-link"><div class="icon-circle" style="border-color:#25d366;"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div><span>واتساب</span></a>
     </div>
 
