@@ -50,11 +50,12 @@
         .package-card { background: linear-gradient(to left, rgba(212,175,55,0.1), transparent); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #d4af37; position: relative; }
         .discount-tag { position: absolute; top: 0; left: 0; background: #ff3366; color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: 900; border-radius: 0 0 10px 0; }
 
-        .category-title { color: #d4af37; font-weight: 900; margin: 25px 0 10px 0; border-right: 4px solid #d4af37; padding-right: 12px; }
+        .category-title { color: #d4af37; font-weight: 900; margin: 25px 0 10px 0; border-right: 4px solid #d4af37; padding-right: 12px; font-size: 1.2rem; }
         .test-card { background: var(--glass); padding: 12px; border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
         .test-info { display: flex; flex-direction: column; }
-        .test-time { color: #00ffcc; font-size: 0.7rem; font-weight: bold; }
-        .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: 900; }
+        .test-name { font-weight: 700; font-size: 0.95rem; }
+        .test-time { color: #00ffcc; font-size: 0.75rem; font-weight: bold; }
+        .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 0.75rem; font-weight: 900; border: none; }
 
         .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 8px; z-index: 1000; }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
@@ -95,29 +96,65 @@
 
     <div id="testList" class="list-overlay">
         <div class="list-content">
-            <div class="fixed-header"><h2>قائمة الفحوصات</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
+            <div class="fixed-header"><h2>الفحوصات والباقات</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             
-            <h3 class="category-title">🎁 باقات العروض</h3>
-            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل</h4><p style="font-size:0.75rem;">(صورة دم، سكر، دهون، وظائف كبد وكلى، نقرس، غدة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة الشامل" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة تساقط الشعر والأنيميا</h4><p style="font-size:0.75rem;">(صورة دم، مخزون حديد، فيتامين د، زنك، غدة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة الشعر" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
-            <div class="package-card"><h4>باقة الاطمئنان الدوري</h4><p style="font-size:0.75rem;">(سكر، كلى، كوليسترول)</p><span class="test-time">النتيجة: نفس اليوم</span><br><a href="https://wa.me/201015090991?text=حجز الاطمئنان" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
+            <h3 class="category-title">🎁 باقات العروض الخاصة</h3>
+            
+            <div class="package-card"><div class="discount-tag">العرض الأقوى</div><h4>باقة الفحص الشامل VIP</h4><p style="font-size:0.75rem;">(صورة دم، سكر صائم، دهون كاملة، وظائف كبد، وظائف كلى، نقرس، غدة درقية، بول، براز)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة الشامل VIP" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
+            
+            <div class="package-card"><div class="discount-tag">الأكثر طلباً</div><h4>باقة تساقط الشعر المتكاملة</h4><p style="font-size:0.75rem;">(صورة دم، مخزون حديد Ferritin، فيتامين د، زنك، هرمون غدة TSH)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة الشعر" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
 
-            <h3 class="category-title">🧪 التحاليل الفردية</h3>
-            <div class="test-card"><div class="test-info"><span>صورة دم كاملة CBC</span><span class="test-time">2 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز CBC" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>سكر تراكمي HbA1c</span><span class="test-time">4 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز تراكمي" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>وظائف كبد ALT</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز ALT" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>كرياتينين (كلى)</span><span class="test-time">3 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز كرياتينين" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>هرمون الغدة TSH</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز TSH" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>فيتامين د</span><span class="test-time">24 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز فيتامين د" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>مخزون الحديد</span><span class="test-time">6 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز مخزون" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>فيروس سي HCV</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز فيروس سي" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>بول كامل</span><span class="test-time">2 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز بول" class="btn-book">حجز</a></div>
+            <div class="package-card"><h4>باقة مرضى السكري</h4><p style="font-size:0.75rem;">(سكر تراكمي، وظائف كلى كرياتينين، زلال في البول Microalbuminuria)</p><span class="test-time">النتيجة: نفس اليوم</span><br><a href="https://wa.me/201015090991?text=حجز باقة السكري" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
+
+            <div class="package-card"><h4>باقة كبار السن (فوق 50)</h4><p style="font-size:0.75rem;">(رسم قلب، دلالات بروستاتا/ثدي، دهون، وظائف كبد وكلى)</p><span class="test-time">النتيجة: 48 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة كبار السن" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
+
+            <div class="package-card"><h4>باقة المقبلين على الزواج</h4><p style="font-size:0.75rem;">(فيروسات الكبد، فصيلة دم، سكر، أنيميا البحر المتوسط)</p><span class="test-time">النتيجة: 48 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة الزواج" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
+
+            <h3 class="category-title">🧪 التحاليل الفردية الشاملة</h3>
+            
+            <div id="test-container">
+                <script>
+                    const tests = [
+                        {n: "صورة دم كاملة CBC", t: "ساعتين"}, {n: "سكر صائم / فاطر", t: "3 ساعات"},
+                        {n: "سكر تراكمي HbA1c", t: "4 ساعات"}, {n: "وظائف كبد ALT", t: "نفس اليوم"},
+                        {n: "وظائف كبد AST", t: "نفس اليوم"}, {n: "وظائف كلى كرياتينين", t: "3 ساعات"},
+                        {n: "بولينا في الدم Urea", t: "3 ساعات"}, {n: "حمض بوليك (نقرس)", t: "3 ساعات"},
+                        {n: "كوليسترول كلي", t: "4 ساعات"}, {n: "دهون ثلاثية TG", t: "4 ساعات"},
+                        {n: "هرمون الغدة TSH", t: "نفس اليوم"}, {n: "فيتامين د Vit D", t: "24 ساعة"},
+                        {n: "مخزون الحديد Ferritin", t: "6 ساعات"}, {n: "حديد في الدم Iron", t: "6 ساعات"},
+                        {n: "فيروس سي HCV Ag", t: "نفس اليوم"}, {n: "فيروس بي HBsAg", t: "نفس اليوم"},
+                        {n: "جرثومة المعدة Ag", t: "6 ساعات"}, {n: "جرثومة المعدة دم Ab", t: "3 ساعات"},
+                        {n: "بول كامل Urine", t: "ساعتين"}, {n: "براز كامل Stool", t: "ساعتين"},
+                        {n: "سرعة ترسيب ESR", t: "ساعتين"}, {n: "روماتويد RF", t: "4 ساعات"},
+                        {n: "بروتين التفاعلي CRP", t: "4 ساعات"}, {n: "فصيلة الدم RH", t: "فوري"},
+                        {n: "كالسيوم كلي Ca", t: "4 ساعات"}, {n: "كالسيوم متأين", t: "4 ساعات"},
+                        {n: "فيتامين ب12", t: "24 ساعة"}, {n: "هرمون ذكورة Total Testo", t: "24 ساعة"},
+                        {n: "هرمون حليب Prolactin", t: "24 ساعة"}, {n: "دلالات بروستاتا PSA", t: "نفس اليوم"},
+                        {n: "سيولة الدم PT-INR", t: "فوري"}, {n: "سيولة الدم PTT", t: "ساعتين"},
+                        {n: "إنزيمات قلب Trop-I", t: "فوري"}, {n: "صوديوم وبوتاسيوم Na/K", t: "4 ساعات"},
+                        {n: "هرمون حمل رقمي BHCG", t: "3 ساعات"}, {n: "زنك في الدم Zinc", t: "48 ساعة"},
+                        {n: "مزرعة بول", t: "72 ساعة"}, {n: "مزرعة براز", t: "72 ساعة"},
+                        {n: "إنزيم G6PD (أنيميا فول)", t: "24 ساعة"}, {n: "نسبة الصفراء Tot/Dir", t: "4 ساعات"}
+                    ];
+                    tests.forEach(test => {
+                        document.write(`
+                            <div class="test-card">
+                                <div class="test-info">
+                                    <span class="test-name">${test.n}</span>
+                                    <span class="test-time">النتيجة خلال: ${test.t}</span>
+                                </div>
+                                <a href="https://wa.me/201015090991?text=حجز تحليل ${test.n}" class="btn-book">حجز</a>
+                            </div>
+                        `);
+                    });
+                </script>
             </div>
+        </div>
     </div>
 
     <div class="bottom-nav">
         <a href="tel:01015090991" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><span>اتصل بنا</span></a>
-        <a href="https://maps.google.com" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
+        <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
         <a href="https://wa.me/201015090991" class="nav-link"><div class="icon-circle" style="border-color:#25d366;"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div><span>واتساب</span></a>
     </div>
 
@@ -127,7 +164,7 @@
         function openModal(id) { 
             document.getElementById(id).style.display = 'block'; 
             document.body.style.overflow = 'hidden'; 
-            // إضافة حالة جديدة في تاريخ المتصفح لمنع الخروج عند ضغط زر الرجوع بالهاتف
+            // إصلاح مشكلة الرجوع بالهاتف
             history.pushState({ modalOpen: true }, ""); 
         }
 
@@ -136,7 +173,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // هذا الكود هو المسؤول عن حل مشكلة زر الرجوع في الهاتف
         window.onpopstate = function(event) {
             closeModals();
             document.getElementById('sidebar').classList.remove('active');
