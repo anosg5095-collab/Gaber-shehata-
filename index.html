@@ -23,28 +23,42 @@
             z-index: -1;
         }
 
+        /* شريط خصم رمضان المتحرك */
+        .ramadan-bar {
+            background: var(--gold-gradient);
+            color: var(--deep-navy);
+            padding: 8px 0;
+            font-weight: 900;
+            font-size: 0.9rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 4000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .animate { animation: fadeInUp 1s ease-out forwards; opacity: 0; }
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.5s; }
         .delay-3 { animation-delay: 0.8s; }
 
-        header { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        header { padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(10px); }
         .logo h1 { font-family: 'Amiri', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.5rem; }
         .doc-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        .hero { height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
-        .title-box { background: var(--glass); padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 40px; }
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 3rem; font-weight: 900; margin-bottom: 15px; line-height: 1.2; }
+        .title-box { background: var(--glass); padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 30px; }
 
-        .btn-container { display: flex; gap: 20px; flex-direction: column; width: 100%; max-width: 320px; }
+        .btn-container { display: flex; gap: 15px; flex-direction: column; width: 100%; max-width: 320px; }
         .premium-btn { padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 1.1rem; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
         .btn-sub { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
 
-        .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; display: none; padding: 40px 20px; overflow-y: auto; }
-        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; padding: 25px; margin-bottom: 50px; }
+        .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 5000; display: none; padding: 20px; overflow-y: auto; }
+        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; padding: 25px; margin-top: 20px; margin-bottom: 50px; }
         .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
         
         .test-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
@@ -54,14 +68,18 @@
         
         .book-btn { background: var(--gold-gradient); color: var(--deep-navy); padding: 6px 12px; border-radius: 8px; font-size: 0.75rem; font-weight: 900; text-decoration: none; }
 
-        .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; align-items: center; gap: 10px; z-index: 1000; }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
-        .icon-circle { width: 60px; height: 60px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); }
+        .icon-circle { width: 60px; height: 60px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .icon-circle svg { width: 25px; height: 25px; fill: #d4af37; }
         .nav-link span { color: white; font-size: 0.75rem; font-weight: bold; }
     </style>
 </head>
 <body>
+
+    <div class="ramadan-bar">
+        🌙 بمناسبة شهر رمضان: خصم 30% على جميع التحاليل لفترة محدودة 🌙
+    </div>
 
     <header class="animate">
         <div class="logo"><h1>د. جابر شحاته</h1></div>
@@ -79,7 +97,7 @@
         </div>
 
         <div class="btn-container animate delay-3">
-            <a href="https://wa.me/201015090991?text=أريد حجز طلب سحب منزلي VIP" class="premium-btn btn-main">طلب سحب منزلي VIP</a>
+            <a href="https://wa.me/201015090991?text=أريد حجز طلب سحب منزلي VIP - عرض رمضان" class="premium-btn btn-main">طلب سحب منزلي VIP</a>
             <div class="premium-btn btn-sub" onclick="openTestList()">قائمة التحاليل الشاملة</div>
         </div>
     </section>
@@ -87,46 +105,29 @@
     <div id="testList" class="list-overlay">
         <div class="list-content">
             <div class="list-header">
-                <h2 style="color: #d4af37;">قائمة الفحوصات</h2>
+                <div>
+                    <h2 style="color: #d4af37;">قائمة الفحوصات</h2>
+                    <p style="font-size: 0.7rem; color: #00ffcc;">خصم 30% متاح الآن بمناسبة رمضان 🌙</p>
+                </div>
                 <div onclick="closeTestList()" style="color: white; font-size: 1.5rem; cursor: pointer;">✕</div>
             </div>
             
             <div class="test-item">
                 <div class="test-info"><span class="test-name">صورة دم كاملة (CBC)</span><span class="test-time">النتيجة خلال ساعتين ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز تحليل CBC" class="book-btn">حجز الآن</a>
+                <a href="https://wa.me/201015090991?text=حجز تحليل CBC - عرض رمضان" class="book-btn">حجز بالخصم</a>
             </div>
 
             <div class="test-item">
                 <div class="test-info"><span class="test-name">وظائف كبد وكلى كاملة</span><span class="test-time">النتيجة نفس اليوم ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز وظائف كبد وكلى" class="book-btn">حجز الآن</a>
+                <a href="https://wa.me/201015090991?text=حجز وظائف كبد وكلى - عرض رمضان" class="book-btn">حجز بالخصم</a>
             </div>
 
             <div class="test-item">
                 <div class="test-info"><span class="test-name">السكر التراكمي (HbA1c)</span><span class="test-time">النتيجة خلال 4 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز السكر التراكمي" class="book-btn">حجز الآن</a>
+                <a href="https://wa.me/201015090991?text=حجز السكر التراكمي - عرض رمضان" class="book-btn">حجز بالخصم</a>
             </div>
 
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">غدة درقية (TSH)</span><span class="test-time">النتيجة نفس اليوم ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز تحليل الغدة الدرقية" class="book-btn">حجز الآن</a>
-            </div>
-
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">تحليل فيتامين د (Vit D)</span><span class="test-time">النتيجة خلال 48 ساعة ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز تحليل فيتامين د" class="book-btn">حجز الآن</a>
-            </div>
-
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">تحليل بول وبراز كامل</span><span class="test-time">النتيجة خلال 3 ساعات ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز تحليل بول وبراز" class="book-btn">حجز الآن</a>
-            </div>
-
-            <div class="test-item">
-                <div class="test-info"><span class="test-name">مخزون الحديد (Ferritin)</span><span class="test-time">النتيجة نفس اليوم ⏱️</span></div>
-                <a href="https://wa.me/201015090991?text=حجز تحليل مخزون الحديد" class="book-btn">حجز الآن</a>
-            </div>
-            
-            <p style="text-align: center; color: #d4af37; font-size: 0.8rem; margin-top: 20px;">الدقة والسرعة في كل فحص</p>
+            <p style="text-align: center; color: #d4af37; font-size: 0.8rem; margin-top: 20px;">رمضان كريم .. وكل عام وأنتم بخير</p>
         </div>
     </div>
 
