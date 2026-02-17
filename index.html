@@ -3,244 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>د. جابر شحاته | استشاري التحاليل الطبية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <title>الدكتور جابر شحاته | استشاري التحاليل الطبية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Amiri:wght@700&family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --royal-gold: #b59410;
-            --deep-black: #1a1a1a;
-            --soft-white: #fdfdfd;
-            --shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --bg-black: #080808;
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b8860b 100%);
+            --glass-dark: rgba(20, 20, 20, 0.7);
+            --gold-text: #d4af37;
+            --text-gray: #a0a0a0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
         
-        body { background-color: var(--soft-white); color: var(--deep-black); line-height: 1.6; }
+        body { 
+            background: var(--bg-black); 
+            color: #fff; 
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at top right, #1a1a1a 0%, #080808 60%);
+        }
 
-        /* شريط التميز */
-        .premium-bar {
-            background: var(--deep-black);
-            color: var(--royal-gold);
+        /* شريط رمضان الملكي */
+        .ramadan-top {
+            background: var(--gold-gradient);
+            color: #000;
             text-align: center;
-            padding: 12px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            padding: 8px 0;
+            font-weight: 900;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.2);
+            position: sticky; top: 0; z-index: 9999;
         }
 
         header {
-            background: white;
-            padding: 30px 8%;
+            padding: 40px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            border-bottom: 1px solid #f0f0f0;
         }
 
-        .brand-name h1 {
+        .doc-identity h1 {
             font-family: 'Amiri', serif;
-            font-size: 2.2rem;
-            color: var(--deep-black);
+            font-size: 2.8rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
         }
 
-        .brand-name p {
+        .doc-identity p {
             font-size: 0.9rem;
-            color: var(--royal-gold);
-            font-weight: 700;
+            color: var(--text-gray);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            font-weight: 300;
         }
 
-        /* القسم الرئيسي */
-        .hero {
-            padding: 50px 8%;
-            text-align: center;
+        .avatar-container {
+            position: relative;
+            margin-top: 30px;
+            width: 130px; height: 130px;
+        }
+        .avatar-container::before {
+            content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: var(--gold-gradient); border-radius: 50%; z-index: -1;
+            opacity: 0.6; blur: 10px;
+        }
+        .avatar-container img {
+            width: 100%; height: 100%; border-radius: 50%;
+            border: 3px solid #080808; object-fit: cover;
         }
 
-        .main-image {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 30px;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-        }
-        .main-image img { width: 100%; height: 100%; object-fit: cover; }
-
-        .intro-text { font-size: 1.2rem; color: #555; max-width: 600px; margin: 0 auto 40px; }
-
-        /* الأزرار الفخمة */
-        .action-cards {
+        /* البطاقات الفاخرة */
+        .luxury-grid {
+            padding: 20px 10% 120px;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            max-width: 500px;
-            margin: 0 auto;
+            gap: 25px;
         }
 
-        .p-btn {
-            background: white;
-            padding: 25px;
+        .l-card {
+            background: var(--glass-dark);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: right;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .l-card::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: 0.5s;
+        }
+        .l-card:hover::after { left: 100%; }
+        .l-card:active { transform: scale(0.97); }
+
+        .l-card h3 {
+            color: var(--gold-text);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+        .l-card p { color: var(--text-gray); font-size: 0.85rem; line-height: 1.6; }
+
+        .icon-gold {
+            font-size: 2rem; margin-bottom: 15px; display: block;
+        }
+
+        /* زر الأكشن الرئيسي */
+        .btn-vip {
+            background: var(--gold-gradient);
+            color: #000;
+            width: 100%;
+            padding: 20px;
             border-radius: 15px;
             text-decoration: none;
-            color: var(--deep-black);
-            box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            transition: all 0.3s ease;
+            font-weight: 900;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
         }
-        .p-btn:active { transform: scale(0.97); background: #fafafa; }
-        .p-btn h3 { font-size: 1.1rem; font-weight: 800; }
-        
-        .p-btn.gold {
-            background: var(--deep-black);
-            color: white;
-        }
-        .p-btn.gold h3 { color: var(--royal-gold); }
 
-        /* تفاصيل التحاليل */
-        .details-section {
+        /* النوافذ المنبثقة (Modal) */
+        .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; z-index: 1000; display: none;
-            overflow-y: auto; padding: 40px 8%;
+            background: rgba(0,0,0,0.95); z-index: 10000;
+            display: none; padding: 40px 20px;
+        }
+        .modal-body {
+            max-width: 600px; margin: 0 auto;
+            border-top: 2px solid var(--gold-text);
+        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .close-icon { font-size: 2rem; color: var(--gold-text); cursor: pointer; }
+
+        .test-item-lux {
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 15px; padding: 20px;
+            border-radius: 12px; border-right: 4px solid var(--gold-text);
+            display: flex; justify-content: space-between; align-items: center;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            color: var(--deep-black);
-            margin-bottom: 30px;
-            border-right: 5px solid var(--royal-gold);
-            padding-right: 15px;
+        /* شريط التنقل السفلي */
+        .nav-dock {
+            position: fixed; bottom: 30px; left: 10%; right: 10%;
+            background: rgba(15, 15, 15, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 15px; border-radius: 25px;
+            display: flex; justify-content: space-around;
+            z-index: 9000;
         }
+        .nav-dock a { text-decoration: none; color: var(--text-gray); font-size: 0.7rem; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .nav-dock a.active { color: var(--gold-text); }
+        .nav-dock svg { width: 22px; height: 22px; stroke: currentColor; }
 
-        .test-card {
-            background: #fff;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .footer-lux {
+            text-align: center; padding: 40px 20px 150px;
+            font-size: 0.7rem; color: #444; text-transform: uppercase; letter-spacing: 2px;
         }
-
-        .close-btn {
-            position: fixed; top: 20px; left: 20px;
-            background: var(--deep-black); color: white;
-            width: 45px; height: 45px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 1100;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 60px 20px 100px;
-            color: #999;
-            font-size: 0.8rem;
-        }
-
-        /* شريط سفلي رفيع */
-        .floating-contact {
-            position: fixed; bottom: 0; width: 100%;
-            background: white; display: flex;
-            border-top: 1px solid #eee; z-index: 900;
-        }
-        .c-item {
-            flex: 1; text-align: center; padding: 15px;
-            text-decoration: none; color: var(--deep-black);
-            font-weight: 700; font-size: 0.9rem;
-        }
-        .c-item:not(:last-child) { border-left: 1px solid #eee; }
-        .c-item.wa { background: #25D366; color: white; }
     </style>
 </head>
 <body>
 
-    <div class="premium-bar">🌙 بـاقـات شـهـر رمـضـان الـمـبـارك - خـصـم 40% 🌙</div>
+    <div class="ramadan-top">✦ عروض شهر رمضان المبارك - خصم 40% على جميع التحاليل ✦</div>
 
     <header>
-        <div class="brand-name">
+        <div class="doc-identity">
             <h1>دكتور جابر شحاته</h1>
             <p>استشاري التحاليل الطبية</p>
         </div>
+        <div class="avatar-container">
+            <img src="love1.jpg" onerror="this.src='https://via.placeholder.com/150/000000/d4af37?text=DR'">
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="main-image">
-            <img src="love1.jpg" onerror="this.src='https://via.placeholder.com/150'">
-        </div>
-        <div class="intro-text">
-            نقدم أدق النتائج المخبرية بأحدث الأنظمة الأوتوماتيكية العالمية تحت إشراف نخبة من المتخصصين.
+    <div class="luxury-grid">
+        <a href="https://wa.me/201015090991?text=طلب سحب منزلي VIP" class="btn-vip">
+            <span>🏠</span> طلب سحب منزلي VIP
+        </a>
+
+        <div class="l-card" onclick="openPage('testList')">
+            <span class="icon-gold">🧪</span>
+            <h3>موسوعة الفحوصات</h3>
+            <p>تصفح قائمة شاملة بجميع التحاليل المخبرية وباقات الاطمئنان الدورية بخصومات رمضان.</p>
         </div>
 
-        <div class="action-cards">
-            <a href="https://wa.me/201015090991?text=طلب سحب منزلي VIP" class="p-btn gold">
-                <span>🏠</span>
-                <h3>طلب سحب منزلي VIP</h3>
-            </a>
-            <div onclick="showPage('testList')" class="p-btn">
-                <span>🧪</span>
-                <h3>قائمة التحاليل والعروض</h3>
+        <div class="l-card" onclick="openPage('aboutDoc')">
+            <span class="icon-gold">📜</span>
+            <h3>عن المختبر</h3>
+            <p>خبرة تمتد لأكثر من 25 عاماً. عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM). دقة بلا حدود.</p>
+        </div>
+
+        <div class="l-card" onclick="openPage('medicalTips')">
+            <span class="icon-gold">💡</span>
+            <h3>إرشادات المريض</h3>
+            <p>تعليمات هامة قبل إجراء الفحوصات لضمان أعلى مستويات الدقة في نتائجك.</p>
+        </div>
+    </div>
+
+    <div id="testList" class="modal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h2 style="color:var(--gold-text)">قائمة التحاليل</h2>
+                <span class="close-icon" onclick="closeAll()">✕</span>
             </div>
-            <div onclick="showPage('aboutDoc')" class="p-btn">
-                <span>📜</span>
-                <h3>عن المختبر والتجهيزات</h3>
+            <div style="background: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                <h4 style="color:var(--gold-text)">🎁 الباقة الذهبية الشاملة</h4>
+                <p style="font-size: 0.8rem; margin-top: 5px;">تشمل صورة الدم، السكر، الكبد، الكلى، الدهون، الغدة الدرقية.</p>
+                <p style="margin-top: 10px; font-weight: 900;">بخصم 40% حصرياً</p>
+            </div>
+            <div id="list-container">
+                <script>
+                    const tests = ["صورة دم كاملة CBC", "سكر تراكمي HbA1c", "وظائف كبد ALT", "وظائف كلى Creatinine", "كوليسترول كامل", "دهون ثلاثية", "هرمون غدة TSH", "فيتامين د", "مخزون حديد", "بول كامل"];
+                    tests.forEach(t => {
+                        document.write(`<div class="test-item-lux"><span>${t}</span><a href="https://wa.me/201015090991" style="color:var(--gold-text); text-decoration:none; font-weight:700;">حجز</a></div>`);
+                    });
+                </script>
             </div>
         </div>
-    </section>
+    </div>
 
-    <div id="testList" class="details-section">
-        <div class="close-btn" onclick="hidePages()">✕</div>
-        <h2 class="section-title">الفحوصات والباقات</h2>
-        
-        <div style="background: #fdf8e6; padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px dashed var(--royal-gold);">
-            <h4 style="color:var(--royal-gold)">🎁 عرض رمضان الشامل</h4>
-            <p>صورة دم، سكر، كبد، كلى، دهون، غدة، نقرس</p>
-            <p style="font-weight: 900; margin-top: 10px;">خصم خاص 40% لفترة محدودة</p>
-        </div>
-
-        <div id="tests-list">
-            <script>
-                const tests = ["صورة دم كاملة CBC", "سكر تراكمي HbA1c", "وظائف كبد ALT", "وظائف كلى Creatinine", "كوليسترول", "دهون ثلاثية", "هرمون غدة TSH", "فيتامين د", "مخزون حديد", "بول كامل"];
-                tests.forEach(t => {
-                    document.write(`<div class="test-card"><span>${t}</span><a href="https://wa.me/201015090991" style="color:var(--royal-gold); text-decoration:none; font-weight:700;">حجز التحليل</a></div>`);
-                });
-            </script>
+    <div id="aboutDoc" class="modal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h2 style="color:var(--gold-text)">عن الاستشاري</h2>
+                <span class="close-icon" onclick="closeAll()">✕</span>
+            </div>
+            <p style="line-height: 2; color: #ccc;">تحت إشراف <b>الدكتور جابر شحاته</b>، نقدم خدمة مخبرية متكاملة تعتمد على أحدث الأجهزة الأوتوماتيكية في العالم. نحن ملتزمون بأعلى معايير الجودة ومكافحة العدوى، لضمان نتائج دقيقة تعكس حالتك الصحية بصدق.</p>
         </div>
     </div>
 
-    <div id="aboutDoc" class="details-section">
-        <div class="close-btn" onclick="hidePages()">✕</div>
-        <h2 class="section-title">عن الدكتور جابر شحاته</h2>
-        <div style="font-size: 1.1rem; color: #444;">
-            <p style="margin-bottom: 20px;">استشاري التحاليل الطبية بخبرة تمتد لأكثر من 25 عاماً في خدمة المرضى.</p>
-            <p style="margin-bottom: 20px;">عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM).</p>
-            <p style="margin-bottom: 20px;">المختبر مجهز بأحدث الأجهزة الأوتوماتيكية لضمان أعلى معايير الدقة والسرعة في استخراج النتائج.</p>
+    <div id="medicalTips" class="modal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h2 style="color:var(--gold-text)">نصائح هامة</h2>
+                <span class="close-icon" onclick="closeAll()">✕</span>
+            </div>
+            <div class="test-item-lux">تحاليل الدهون: صيام 12-14 ساعة</div>
+            <div class="test-item-lux">السكر الصائم: صيام 6-8 ساعات</div>
+            <div class="test-item-lux">المزرعة: قبل تناول أي مضاد حيوي</div>
         </div>
     </div>
 
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026</p>
-        <p style="margin-top:5px; font-weight:700; color:var(--deep-black);">الدكتور جابر شحاته</p>
-        <p style="margin-top:10px;">Designed by: Eng/ Anas Gaber Shehata</p>
-    </footer>
-
-    <div class="floating-contact">
-        <a href="tel:01015090991" class="c-item">إجراء اتصال</a>
-        <a href="https://wa.me/201015090991" class="c-item wa">واتساب</a>
-        <a href="https://maps.app.goo.gl/qVB6VW9PMr923Zcn6" class="c-item">موقعنا</a>
+    <div class="footer-lux">
+        <p>Created by: <b>Anas Gaber Shehata</b></p>
+        <p style="margin-top: 10px;">جميع الحقوق محفوظة للدكتور جابر شحاته © 2026</p>
     </div>
+
+    <nav class="nav-dock">
+        <a href="tel:01015090991">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1.01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            <span>اتصال</span>
+        </a>
+        <a href="https://wa.me/201015090991" class="active">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            <span>واتساب</span>
+        </a>
+        <a href="https://maps.app.goo.gl/qVB6VW9PMr923Zcn6">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>موقعنا</span>
+        </a>
+    </nav>
 
     <script>
-        function showPage(id) {
+        function openPage(id) {
             document.getElementById(id).style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
-        function hidePages() {
-            document.querySelectorAll('.details-section').forEach(s => s.style.display = 'none');
+        function closeAll() {
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
             document.body.style.overflow = 'auto';
         }
     </script>
