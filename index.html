@@ -40,11 +40,11 @@
         .title-box { background: var(--glass); padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(212, 175, 55, 0.3); margin-bottom: 40px; }
 
         .btn-container { display: flex; gap: 20px; flex-direction: column; width: 100%; max-width: 320px; }
-        .premium-btn { padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 1.1rem; text-align: center; cursor: pointer; }
+        .premium-btn { padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 700; font-size: 1.1rem; text-align: center; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .btn-main { background: var(--gold-gradient); color: var(--deep-navy); }
         .btn-sub { background: transparent; color: #d4af37; border: 1px solid #d4af37; }
 
-        /* نافذة قائمة التحاليل مع زر الحجز */
+        /* نافذة القائمة مع وقت النتيجة */
         .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; display: none; padding: 40px 20px; overflow-y: auto; }
         .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; padding: 25px; margin-bottom: 50px; }
         .list-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
@@ -52,16 +52,15 @@
         .test-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .test-info { display: flex; flex-direction: column; gap: 4px; }
         .test-name { color: white; font-weight: bold; font-size: 0.95rem; }
-        .test-category { color: #d4af37; font-size: 0.75rem; font-weight: bold; }
+        .test-time { color: #888; font-size: 0.7rem; font-style: italic; }
         
-        /* زر الحجز الصغير */
-        .book-btn { background: var(--gold-gradient); color: var(--deep-navy); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 900; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+        .book-btn { background: var(--gold-gradient); color: var(--deep-navy); padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 900; text-decoration: none; }
 
-        .bottom-nav { position: fixed; bottom: 20px; left: 8%; right: 8%; display: flex; justify-content: space-between; align-items: center; }
-        .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-        .icon-circle { width: 65px; height: 65px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .icon-circle svg { width: 28px; height: 28px; fill: #d4af37; }
-        .nav-link span { color: white; font-size: 0.85rem; font-weight: bold; }
+        .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; }
+        .icon-circle { width: 60px; height: 60px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.4); transition: 0.3s; }
+        .icon-circle svg { width: 25px; height: 25px; fill: #d4af37; }
+        .nav-link span { color: white; font-size: 0.75rem; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -71,7 +70,6 @@
         <div class="doc-img">
             <img src="love1.jpg" alt="د. جابر شحاته" onerror="this.src='https://via.placeholder.com/100'">
         </div>
-        <div style="color: #d4af37; font-size: 0.8rem;">01015090991</div>
     </header>
 
     <section class="hero">
@@ -85,6 +83,9 @@
         <div class="btn-container animate delay-3">
             <a href="https://wa.me/201015090991?text=أريد حجز طلب سحب منزلي VIP" class="premium-btn btn-main">طلب سحب منزلي VIP</a>
             <div class="premium-btn btn-sub" onclick="openTestList()">قائمة التحاليل الشاملة</div>
+            <a href="https://maps.app.goo.gl/XYZ" target="_blank" class="premium-btn btn-sub" style="border-style: dashed;">
+                📍 موقعنا على الخريطة
+            </a>
         </div>
     </section>
 
@@ -98,36 +99,28 @@
             <div class="test-item">
                 <div class="test-info">
                     <span class="test-name">صورة دم كاملة (CBC)</span>
-                    <span class="test-category">Hematology</span>
+                    <span class="test-time">النتيجة خلال ساعتين ⏱️</span>
                 </div>
-                <a href="https://wa.me/201015090991?text=أهلاً دكتور جابر، أريد حجز تحليل صورة دم كاملة (CBC)" class="book-btn">حجز الآن</a>
+                <a href="https://wa.me/201015090991?text=حجز تحليل CBC" class="book-btn">حجز الآن</a>
             </div>
 
             <div class="test-item">
                 <div class="test-info">
-                    <span class="test-name">وظائف كبد كاملة</span>
-                    <span class="test-category">Biochemistry</span>
+                    <span class="test-name">وظائف كبد وكلى</span>
+                    <span class="test-time">النتيجة نفس اليوم ⏱️</span>
                 </div>
-                <a href="https://wa.me/201015090991?text=أهلاً دكتور جابر، أريد حجز تحليل وظائف كبد كاملة" class="book-btn">حجز الآن</a>
+                <a href="https://wa.me/201015090991?text=حجز وظائف كبد وكلى" class="book-btn">حجز الآن</a>
             </div>
 
             <div class="test-item">
                 <div class="test-info">
                     <span class="test-name">السكر التراكمي (HbA1c)</span>
-                    <span class="test-category">Diabetes</span>
+                    <span class="test-time">النتيجة خلال 4 ساعات ⏱️</span>
                 </div>
-                <a href="https://wa.me/201015090991?text=أهلاً دكتور جابر، أريد حجز تحليل السكر التراكمي" class="book-btn">حجز الآن</a>
-            </div>
-
-            <div class="test-item">
-                <div class="test-info">
-                    <span class="test-name">غدة درقية (TSH)</span>
-                    <span class="test-category">Hormones</span>
-                </div>
-                <a href="https://wa.me/201015090991?text=أهلاً دكتور جابر، أريد حجز تحليل الغدة الدرقية" class="book-btn">حجز الآن</a>
+                <a href="https://wa.me/201015090991?text=حجز السكر التراكمي" class="book-btn">حجز الآن</a>
             </div>
             
-            <p style="text-align: center; color: #d4af37; font-size: 0.8rem; margin-top: 20px;">اضغط على "حجز الآن" للتواصل مع الدكتور مباشرة</p>
+            <p style="text-align: center; color: #d4af37; font-size: 0.8rem; margin-top: 20px;">الدقة والسرعة شعارنا</p>
         </div>
     </div>
 
@@ -135,6 +128,12 @@
         <a href="tel:01015090991" class="nav-link">
             <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
             <span>اتصل بنا</span>
+        </a>
+        <a href="https://maps.app.goo.gl/XYZ" target="_blank" class="nav-link">
+            <div class="icon-circle">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <span>موقعنا</span>
         </a>
         <a href="https://wa.me/201015090991" class="nav-link">
             <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div>
