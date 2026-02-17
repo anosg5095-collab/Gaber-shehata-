@@ -47,14 +47,14 @@
         .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; height: 100%; overflow-y: auto; padding: 80px 20px 40px 20px; position: relative; }
         .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: var(--deep-navy); padding: 20px; border-bottom: 1px solid #d4af37; display: flex; justify-content: space-between; align-items: center; z-index: 8500; border-radius: 20px 20px 0 0; }
 
-        .package-card { background: linear-gradient(to left, rgba(212,175,55,0.1), transparent); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #d4af37; position: relative; overflow: hidden; }
+        .package-card { background: linear-gradient(to left, rgba(212,175,55,0.1), transparent); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #d4af37; position: relative; }
         .discount-tag { position: absolute; top: 0; left: 0; background: #ff3366; color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: 900; border-radius: 0 0 10px 0; }
 
         .category-title { color: #d4af37; font-weight: 900; margin: 25px 0 10px 0; border-right: 4px solid #d4af37; padding-right: 12px; }
         .test-card { background: var(--glass); padding: 12px; border-radius: 10px; margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
         .test-info { display: flex; flex-direction: column; }
         .test-time { color: #00ffcc; font-size: 0.7rem; font-weight: bold; }
-        .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: 900; border: none; cursor: pointer; }
+        .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 0.7rem; font-weight: 900; }
 
         .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 8px; z-index: 1000; }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
@@ -83,7 +83,7 @@
         </ul>
     </div>
 
-    <section class="hero animate" style="text-align: center; padding: 40px 20px;">
+    <section id="home-top" class="hero animate" style="text-align: center; padding: 40px 20px;">
         <h2 style="color: #d4af37;">معمل الاستشاري</h2>
         <h1 style="font-size: 2.5rem;">د/ جابر شحاته</h1>
         <div style="background: var(--glass); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 20px 0;">استشاري التحاليل الطبية</div>
@@ -98,52 +98,35 @@
             <div class="fixed-header"><h2>قائمة الفحوصات</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             
             <h3 class="category-title">🎁 باقات العروض</h3>
-            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل</h4><p style="font-size:0.75rem;">(صورة دم، سكر، دهون، وظائف كبد وكلى، نقرس، غدة)</p><span class="test-time">نتيجة خلال: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=اريد حجز باقة الفحص الشامل" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
-            
-            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة الأنيميا وتساقط الشعر</h4><p style="font-size:0.75rem;">(صورة دم، مخزون حديد، فيتامين د، زنك، غدة درقية)</p><span class="test-time">نتيجة خلال: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=اريد حجز باقة الأنيميا والشعر" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل</h4><p style="font-size:0.75rem;">(صورة دم، سكر، دهون، وظائف كبد وكلى، نقرس، غدة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز باقة الشامل" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
 
-            <div class="package-card"><h4>باقة الاطمئنان الدوري</h4><p style="font-size:0.75rem;">(سكر صائم، كرياتينين، كوليسترول، بول)</p><span class="test-time">نتيجة خلال: 6 ساعات</span><br><a href="https://wa.me/201015090991?text=اريد حجز باقة الاطمئنان الدوري" class="btn-book" style="display:inline-block; margin-top:5px;">حجز العرض</a></div>
-
-            <h3 class="category-title">🧪 التحاليل الفردية (أكثر من 50 تحليل)</h3>
-            <div class="test-card"><div class="test-info"><span>صورة دم كاملة (CBC)</span><span class="test-time">2 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز CBC" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>فصيلة الدم (RH)</span><span class="test-time">فوري</span></div><a href="https://wa.me/201015090991?text=حجز فصيلة دم" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>سرعة الترسيب (ESR)</span><span class="test-time">2 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز ESR" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>سكر تراكمي (HbA1c)</span><span class="test-time">4 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز تراكمي" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>وظائف كبد (ALT - AST)</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز وظائف كبد" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>كرياتينين - بولينا (كلى)</span><span class="test-time">3 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز وظائف كلى" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>حمض البوليك (النقرس)</span><span class="test-time">3 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز تحليل نقرس" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>هرمون الغدة (TSH)</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز TSH" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>فيتامين د (Vitamin D)</span><span class="test-time">24 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز فيتامين د" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>مخزون الحديد (Ferritin)</span><span class="test-time">6 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز مخزون حديد" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>دهون ثلاثية - كوليسترول</span><span class="test-time">4 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز تحليل دهون" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>فيروسات (C - B)</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز فيروسات" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>جرثومة المعدة (Ag)</span><span class="test-time">6 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز جرثومة" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>تحليل بول كامل</span><span class="test-time">2 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز بول" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>تحليل براز كامل</span><span class="test-time">2 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز براز" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>هرمون الذكورة</span><span class="test-time">24 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز هرمون ذكورة" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>هرمون الحليب</span><span class="test-time">24 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز هرمون حليب" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>الزنك</span><span class="test-time">24 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز تحليل زنك" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>سيولة الدم (PT - INR)</span><span class="test-time">فوري</span></div><a href="https://wa.me/201015090991?text=حجز سيولة" class="btn-book">حجز</a></div>
-            <div class="test-card"><div class="test-info"><span>دلالات أورام (PSA)</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز PSA" class="btn-book">حجز</a></div>
+            <h3 class="category-title">🧪 التحاليل الفردية</h3>
+            <div class="test-card"><div class="test-info"><span>صورة دم كاملة CBC</span><span class="test-time">ساعتين</span></div><a href="https://wa.me/201015090991?text=حجز CBC" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>سكر تراكمي HbA1c</span><span class="test-time">4 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز تراكمي" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>وظائف كبد ALT</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز ALT" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>كرياتينين (كلى)</span><span class="test-time">3 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز كرياتينين" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>حمض البوليك (النقرس)</span><span class="test-time">3 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز نقرس" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>هرمون الغدة TSH</span><span class="test-time">نفس اليوم</span></div><a href="https://wa.me/201015090991?text=حجز TSH" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>فيتامين د</span><span class="test-time">24 ساعة</span></div><a href="https://wa.me/201015090991?text=حجز فيتامين د" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>مخزون الحديد</span><span class="test-time">6 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز مخزون حديد" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>كوليسترول كلي</span><span class="test-time">4 ساعات</span></div><a href="https://wa.me/201015090991?text=حجز كوليسترول" class="btn-book">حجز</a></div>
+            <div class="test-card"><div class="test-info"><span>بول كامل</span><span class="test-time">ساعتين</span></div><a href="https://wa.me/201015090991?text=حجز بول" class="btn-book">حجز</a></div>
         </div>
     </div>
 
     <div id="medicalTips" class="list-overlay">
         <div class="list-content">
-            <div class="fixed-header"><h2>نصائح طبية هامة</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
-            <div class="package-card"><h4>الصيام للتحاليل</h4><p>يجب الصيام من 10 لـ 12 ساعة لنتائج دقيقة.</p></div>
+            <div class="fixed-header"><h2>نصائح طبية</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
+            <div class="package-card"><h4>الصيام</h4><p>الصيام 10-12 ساعة ضروري لتحاليل السكر والدهون.</p></div>
         </div>
     </div>
 
     <div id="aboutDoc" class="list-overlay">
         <div class="list-content">
             <div class="fixed-header"><h2>عن المعمل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
-            <div style="margin-top: 20px; line-height: 1.8;">
-                <p>معمل الدكتور جابر شحاته خبره اكثر من 25 سنه في مجال التحاليل الطبية والتشخيص المخبري.</p>
-                <div class="package-card">
-                    <p>• الدكتور جابر شحاته عضو الجمعية المصرية للكيمياء الحيويه والباثولوجيه الإكلينيكية.</p>
-                    <p>• عضو في الجمعية الأمريكية لعلم الاحياء الدقيقة.</p>
-                </div>
+            <div style="margin-top:20px;">
+                <p>معمل الدكتور جابر شحاته خبره اكثر من 25 سنه.</p>
+                <div class="package-card">• عضو الجمعية المصرية للكيمياء الحيويه.</div>
             </div>
         </div>
     </div>
@@ -165,7 +148,11 @@
             document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); 
             document.body.style.overflow = 'auto';
         }
-        function goHome() { closeModals(); document.getElementById('sidebar').classList.remove('active'); }
+        function goHome() { 
+            closeModals(); 
+            document.getElementById('sidebar').classList.remove('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
     </script>
 </body>
 </html>
