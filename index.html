@@ -35,7 +35,6 @@
         .doc-img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; box-shadow: 0 0 15px rgba(212,175,55,0.3); }
         .doc-img img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* تعديل القائمة المنبثقة لمنع الزحمة */
         .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #050c18; z-index: 8000; display: none; }
         .list-content { height: 100%; overflow-y: auto; padding: 110px 20px 40px 20px; }
         .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: #0a192f; padding: 25px 20px; border-bottom: 1px solid rgba(212,175,55,0.3); display: flex; justify-content: space-between; align-items: center; z-index: 8500; }
@@ -50,18 +49,12 @@
         .test-time { color: #00ffcc; font-size: 0.75rem; display: block; margin-top: 4px; }
         .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 18px; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: 900; }
 
-        .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 7000; transition: 0.4s; padding: 80px 25px; }
-        .sidebar.active { right: 0; }
-        .sidebar-menu li { margin: 25px 0; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; font-weight: bold; font-size: 1.1rem; list-style: none; color: #f9f295; }
-
-        /* شريط التنقل السفلي - نظيف */
         .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #050c18; border-top: 1px solid rgba(212,175,55,0.2); display: flex; justify-content: space-around; padding: 15px 10px 30px 10px; z-index: 9000; }
         .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-        .icon-circle { width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .icon-circle { width: 50px; height: 50px; background: rgba(255,255,255,0.03); border: 1.5px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .icon-circle svg { width: 22px; height: 22px; fill: #d4af37; }
         .nav-link span { color: white; font-size: 0.75rem; font-weight: 600; }
 
-        /* تذييل الحقوق - بعيد عن الأيقونات */
         .footer-rights { text-align: center; padding: 20px; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 20px; line-height: 1.6; }
         .footer-rights b { color: rgba(212,175,55,0.6); }
 
@@ -80,13 +73,13 @@
         <div class="doc-img"><img src="love1.jpg" onerror="this.src='https://via.placeholder.com/100'"></div>
     </header>
 
-    <div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar" style="position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 7000; transition: 0.4s; padding: 80px 25px;">
         <div class="sidebar-close" onclick="toggleSidebar()" style="position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #d4af37; cursor: pointer;">✕</div>
         <ul class="sidebar-menu">
-            <li onclick="goHome()">🏠 الرئيسية</li>
-            <li onclick="openModal('testList')">🧪 قائمة التحاليل</li>
-            <li onclick="openModal('aboutDoc')">📄 عن المعمل</li>
-            <li onclick="openModal('medicalTips')">💡 نصائح طبية</li>
+            <li onclick="goHome()" style="margin: 25px 0; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; font-weight: bold; font-size: 1.1rem; list-style: none; color: #f9f295;">🏠 الرئيسية</li>
+            <li onclick="openModal('testList')" style="margin: 25px 0; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; font-weight: bold; font-size: 1.1rem; list-style: none; color: #f9f295;">🧪 قائمة التحاليل</li>
+            <li onclick="openModal('aboutDoc')" style="margin: 25px 0; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; font-weight: bold; font-size: 1.1rem; list-style: none; color: #f9f295;">📄 عن المعمل</li>
+            <li onclick="openModal('medicalTips')" style="margin: 25px 0; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; font-weight: bold; font-size: 1.1rem; list-style: none; color: #f9f295;">💡 نصائح طبية</li>
         </ul>
     </div>
 
@@ -96,7 +89,7 @@
         <div style="background: rgba(212,175,55,0.1); padding: 10px 30px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin-bottom: 35px; color: #f9f295; font-weight: 600;">استشاري التحاليل الطبية</div>
         
         <div style="display: flex; flex-direction: column; gap: 15px; max-width: 340px; margin: 0 auto;">
-            <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 20px; border-radius: 18px; text-decoration: none; font-weight: 900; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">طلب سحب منزلي VIP</a>
+            <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 20px; border-radius: 18px; text-decoration: none; font-weight: 900; font-size: 1.1rem;">طلب سحب منزلي VIP</a>
             <div onclick="openModal('testList')" style="background: rgba(255,255,255,0.03); border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 18px; font-weight: bold; cursor: pointer;">موسوعة التحاليل والباقات</div>
         </div>
 
@@ -108,30 +101,42 @@
 
     <div id="testList" class="list-overlay">
         <div class="fixed-header">
-            <h2 style="font-size:1.3rem; font-weight: 900;">قائمة الفحوصات</h2>
+            <h2 style="font-size:1.3rem; font-weight: 900;">الفحوصات والعروض</h2>
             <div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div>
         </div>
         <div class="list-content">
-            <h3 class="category-title">🎁 باقات العروض</h3>
-            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.8rem; opacity:0.8; margin:8px 0;">(صورة دم، سكر صائم، دهون كاملة، كبد، كلى، غدة)</p><span class="test-time">⏱ النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز: باقة الفحص الشامل" class="btn-book" style="display:inline-block; margin-top:10px;">حجز الآن</a></div>
             
-            <div class="package-card"><div class="discount-tag">خصم 35%</div><h4>باقة تساقط الشعر</h4><p style="font-size:0.8rem; opacity:0.8; margin:8px 0;">(مخزون حديد، فيتامين د، زنك، غدة TSH، صورة دم)</p><span class="test-time">⏱ النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز: باقة تساقط الشعر" class="btn-book" style="display:inline-block; margin-top:10px;">حجز الآن</a></div>
+            <h3 class="category-title">🎁 باقات العروض الخاصة</h3>
+            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.8rem; margin:8px 0;">(صورة دم، سكر، كبد، كلى، دهون، نقرس، غدة)</p><span>⏱ النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز: باقة الفحص الشامل الذهبية" class="btn-book" style="display:inline-block; margin-top:10px;">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 35%</div><h4>باقة تساقط الشعر والأنيميا</h4><p style="font-size:0.8rem; margin:8px 0;">(مخزون حديد، فيتامين د، زنك، غدة TSH، صورة دم)</p><span>⏱ النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز: باقة تساقط الشعر" class="btn-book" style="display:inline-block; margin-top:10px;">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة كبار السن (الاطمئنان)</h4><p style="font-size:0.8rem; margin:8px 0;">(سكر تراكمي، وظائف كلى، كوليسترول، بروستاتا/غدة)</p><span>⏱ النتيجة: نفس اليوم</span><br><a href="https://wa.me/201015090991?text=حجز: باقة كبار السن" class="btn-book" style="display:inline-block; margin-top:10px;">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 25%</div><h4>باقة ما قبل الزواج</h4><p style="font-size:0.8rem; margin:8px 0;">(فيروسات، فصيلة، سكر، تحليل هيموجلوبين)</p><span>⏱ النتيجة: 48 ساعة</span><br><a href="https://wa.me/201015090991?text=حجز: باقة ما قبل الزواج" class="btn-book" style="display:inline-block; margin-top:10px;">حجز</a></div>
 
-            <h3 class="category-title">🧪 التحاليل الشائعة</h3>
+            <h3 class="category-title">🧪 قائمة التحاليل الفردية</h3>
             <div id="dynamic-tests">
                 <script>
                     const testsList = [
-                        {n: "صورة دم كاملة CBC", t: "2 ساعة"}, {n: "سكر تراكمي HbA1c", t: "4 ساعات"},
-                        {n: "وظائف كبد ALT", t: "نفس اليوم"}, {n: "وظائف كلى Creatinine", t: "3 ساعات"},
+                        {n: "صورة دم كاملة CBC", t: "2 ساعة"}, {n: "سكر صائم وفاطر", t: "3 ساعات"},
+                        {n: "سكر تراكمي HbA1c", t: "4 ساعات"}, {n: "وظائف كبد ALT & AST", t: "نفس اليوم"},
+                        {n: "وظائف كلى Creatinine", t: "3 ساعات"}, {n: "بولينا Urea", t: "3 ساعات"},
+                        {n: "حمض البوليك (النقرس)", t: "4 ساعات"}, {n: "كوليسترول كلي", t: "4 ساعات"},
                         {n: "دهون ثلاثية", t: "4 ساعات"}, {n: "هرمون الغدة TSH", t: "نفس اليوم"},
-                        {n: "فيتامين د", t: "24 ساعة"}, {n: "مخزون الحديد", t: "6 ساعات"},
-                        {n: "بول كامل", t: "2 ساعة"}, {n: "سيولة الدم PT", t: "فوري"}
+                        {n: "هرمون الغدة Free T4", t: "نفس اليوم"}, {n: "فيتامين د Vitamin D", t: "24 ساعة"},
+                        {n: "فيتامين ب12", t: "24 ساعة"}, {n: "مخزون الحديد Ferritin", t: "6 ساعات"},
+                        {n: "حديد بالسيرم Iron", t: "6 ساعات"}, {n: "فيروس سي HCV", t: "نفس اليوم"},
+                        {n: "فيروس بي HBV", t: "نفس اليوم"}, {n: "جرثومة المعدة (براز)", t: "24 ساعة"},
+                        {n: "جرثومة المعدة (دم)", t: "4 ساعات"}, {n: "بول كامل", t: "2 ساعة"},
+                        {n: "براز كامل", t: "2 ساعة"}, {n: "سيولة الدم PT", t: "فوري"},
+                        {n: "سرعة الترسيب ESR", t: "2 ساعة"}, {n: "بروتين التفاعلي CRP", t: "4 ساعات"},
+                        {n: "فصيلة الدم و RH", t: "فوري"}, {n: "مزرعة بول وحساسية", t: "72 ساعة"},
+                        {n: "مزرعة براز", t: "72 ساعة"}, {n: "PSA (البروستاتا)", t: "نفس اليوم"},
+                        {n: "كالسيوم كلي Calcium", t: "4 ساعات"}, {n: "بوتاسيوم وسوديوم", t: "3 ساعات"}
                     ];
                     testsList.forEach(test => {
                         document.write(`
                             <div class="test-card">
-                                <div><span style="font-weight:700;">${test.n}</span><span class="test-time">${test.t}</span></div>
-                                <a href="https://wa.me/201015090991?text=حجز تحليل: ${test.n}" class="btn-book">حجز</a>
+                                <div><span style="font-weight:700;">${test.n}</span><span class="test-time">النتيجة: ${test.t}</span></div>
+                                <a href="https://wa.me/201015090991?text=أريد حجز تحليل: ${test.n}" class="btn-book">حجز</a>
                             </div>
                         `);
                     });
@@ -145,15 +150,14 @@
         <div class="list-content">
             <div class="package-card">• استشاري التحاليل الطبية بخبرة +25 عاماً.</div>
             <div class="package-card">• عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM).</div>
-            <div class="package-card">• دقة تضاهي المعايير الدولية بأجهزة أوتوماتيكية.</div>
+            <div class="package-card">• أحدث الأجهزة الألمانية والأمريكية الأوتوماتيكية.</div>
         </div>
     </div>
 
     <div id="medicalTips" class="list-overlay">
         <div class="fixed-header"><h2>نصائح طبية</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
         <div class="list-content">
-            <div class="package-card"><h4>الصيام والدهون</h4><p>يتطلب صياماً من 12 إلى 14 ساعة.</p></div>
-            <div class="package-card"><h4>تحليل السكر الصائم</h4><p>يتطلب صياماً من 6 إلى 8 ساعات.</p></div>
+            <div class="package-card"><h4>الصيام</h4><p>تحاليل الدهون تتطلب صيام 12-14 ساعة، والسكر 6-8 ساعات.</p></div>
         </div>
     </div>
 
@@ -164,18 +168,11 @@
     </div>
 
     <script>
-        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
-        function openModal(id) { 
-            document.getElementById(id).style.display = 'block'; 
-            document.body.style.overflow = 'hidden'; 
-            history.pushState({ modalOpen: true }, ""); 
-        }
-        function closeModals() { 
-            document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); 
-            document.body.style.overflow = 'auto';
-        }
-        window.onpopstate = function() { closeModals(); document.getElementById('sidebar').classList.remove('active'); };
-        function goHome() { closeModals(); document.getElementById('sidebar').classList.remove('active'); window.scrollTo({top: 0, behavior: 'smooth'}); }
+        function toggleSidebar() { document.getElementById('sidebar').style.right = (document.getElementById('sidebar').style.right === '0px') ? '-100%' : '0px'; }
+        function openModal(id) { document.getElementById(id).style.display = 'block'; document.body.style.overflow = 'hidden'; history.pushState({ modalOpen: true }, ""); }
+        function closeModals() { document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); document.body.style.overflow = 'auto'; }
+        window.onpopstate = function() { closeModals(); };
+        function goHome() { closeModals(); window.scrollTo({top: 0, behavior: 'smooth'}); }
     </script>
 </body>
 </html>
