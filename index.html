@@ -84,7 +84,7 @@
         <h1 style="font-size: 2.3rem;">د/ جابر شحاته</h1>
         <div style="background: var(--glass); padding: 8px 25px; border-radius: 50px; border: 1px solid rgba(212,175,55,0.3); display: inline-block; margin: 20px 0;">استشاري التحاليل الطبية</div>
         <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto;">
-            <a href="https://wa.me/201015090991" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900;">طلب سحب منزلي VIP</a>
+            <a href="https://wa.me/201015090991?text=أريد طلب خدمة السحب المنزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900;">طلب سحب منزلي VIP</a>
             <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer;">موسوعة التحاليل والباقات</div>
         </div>
     </section>
@@ -97,9 +97,9 @@
             </div>
             
             <h3 class="category-title">🎁 باقات العروض (خصم حتى 40%)</h3>
-            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.75rem;">(صورة دم، سكر صائم، دهون كاملة، كبد، كلى، نقرس، غدة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 35%</div><h4>باقة تساقط الشعر والأنيميا</h4><p style="font-size:0.75rem;">(مخزون حديد، فيتامين د، زنك، غدة TSH، صورة دم كاملة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
-            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة الاطمئنان الدوري</h4><p style="font-size:0.75rem;">(سكر تراكمي، وظائف كلى كرياتينين، كوليسترول)</p><span class="test-time">النتيجة: نفس اليوم</span><br><a href="https://wa.me/201015090991" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 40%</div><h4>باقة الفحص الشامل الذهبية</h4><p style="font-size:0.75rem;">(صورة دم، سكر صائم، دهون كاملة، كبد، كلى، نقرس، غدة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=أريد حجز: باقة الفحص الشامل الذهبية" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 35%</div><h4>باقة تساقط الشعر والأنيميا</h4><p style="font-size:0.75rem;">(مخزون حديد، فيتامين د، زنك، غدة TSH، صورة دم كاملة)</p><span class="test-time">النتيجة: 24 ساعة</span><br><a href="https://wa.me/201015090991?text=أريد حجز: باقة تساقط الشعر والأنيميا" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
+            <div class="package-card"><div class="discount-tag">خصم 30%</div><h4>باقة الاطمئنان الدوري</h4><p style="font-size:0.75rem;">(سكر تراكمي، وظائف كلى كرياتينين، كوليسترول)</p><span class="test-time">النتيجة: نفس اليوم</span><br><a href="https://wa.me/201015090991?text=أريد حجز: باقة الاطمئنان الدوري" class="btn-book" style="display:inline-block; margin-top:5px;">حجز</a></div>
 
             <h3 class="category-title">🧪 التحاليل الفردية (أكثر من 50 تحليل)</h3>
             <div id="dynamic-tests">
@@ -118,11 +118,12 @@
                         {n: "هرمون ذكورة", t: "24 ساعة"}, {n: "PSA بروستاتا", t: "نفس اليوم"},
                         {n: "كالسيوم كلي Ca", t: "4 ساعات"}, {n: "مزرعة بول", t: "72 ساعة"}
                     ];
+                    // التعديل هنا لجعل الحجز يرسل اسم التحليل
                     testsList.concat(testsList).slice(0, 50).forEach(test => {
                         document.write(`
                             <div class="test-card">
                                 <div class="test-info"><span>${test.n}</span><span class="test-time">النتيجة: ${test.t}</span></div>
-                                <a href="https://wa.me/201015090991" class="btn-book">حجز</a>
+                                <a href="https://wa.me/201015090991?text=أريد حجز تحليل: ${test.n}" class="btn-book">حجز</a>
                             </div>
                         `);
                     });
