@@ -107,42 +107,68 @@
                 <div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div>
             </div>
             
-            <h3 class="category-title">🎁 باقات الفحص الشامل (عروض رمضان)</h3>
+            <h3 class="category-title">🎁 باقات العروض (رمضان 2026)</h3>
+            
             <div class="package-card">
-                <div class="discount-tag">خصم 40%</div>
-                <h4>باقة الاطمئنان الذهبية</h4>
-                <p style="font-size:0.75rem;">(صورة دم، سكر صائم، وظائف كبد وكلى، نقرس، غدة، دهون كاملة)</p>
+                <div class="discount-tag">الأكثر طلباً</div>
+                <h4>باقة الاطمئنان الشاملة</h4>
+                <p style="font-size:0.75rem;">(صورة دم، سكر، كبد، كلى، نقرس، دهون كاملة، غدة، بول)</p>
                 <span class="test-time">النتيجة بعد: 24 ساعة</span>
                 <a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a>
             </div>
 
             <div class="package-card">
-                <div class="discount-tag">خصم 40%</div>
-                <h4>باقة كبار السن (فوق 50)</h4>
-                <p style="font-size:0.75rem;">(الباقة الذهبية + بروستاتا للرجال / هشاشة عظام للسيدات)</p>
+                <div class="discount-tag">جديد</div>
+                <h4>باقة ما قبل الزواج</h4>
+                <p style="font-size:0.75rem;">(فصيلة دم، أنيميا البحر المتوسط، فيروسات B, C, HIV، سكر)</p>
                 <span class="test-time">النتيجة بعد: 48 ساعة</span>
                 <a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a>
             </div>
 
-            <h3 class="category-title">🧪 التحاليل الفردية ومواعيد النتائج</h3>
+            <div class="package-card">
+                <div class="discount-tag">حصري</div>
+                <h4>باقة صحة المرأة/الرجل</h4>
+                <p style="font-size:0.75rem;">(فيتامين د، فيتامين ب12، مخزون حديد، كالسيوم، صورة دم)</p>
+                <span class="test-time">النتيجة بعد: 24 ساعة</span>
+                <a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a>
+            </div>
+
+            <div class="package-card">
+                <div class="discount-tag">عناية</div>
+                <h4>باقة متابعة السكر</h4>
+                <p style="font-size:0.75rem;">(سكر صائم، سكر فاطر، سكر تراكمي HbA1c، زلال دقيق في البول)</p>
+                <span class="test-time">النتيجة بعد: 12 ساعة</span>
+                <a href="https://wa.me/201015090991" class="btn-book" style="margin-top:10px; display:inline-block;">حجز الباقة</a>
+            </div>
+
+            <h3 class="category-title">🧪 الفحوصات الفردية</h3>
             <div id="individual-tests">
                 <script>
                     const testData = [
                         {n: "صورة دم كاملة CBC", t: "ساعتين"},
                         {n: "سكر تراكمي HbA1c", t: "4 ساعات"},
-                        {n: "سكر صائم وفاطر", t: "3 ساعات"},
-                        {n: "وظائف كلى (Creatinine/Urea)", t: "4 ساعات"},
-                        {n: "وظائف كبد (SGOT/SGPT)", t: "4 ساعات"},
-                        {n: "تحليل دهون كامل (Lipid Profile)", t: "6 ساعات"},
                         {n: "هرمون الغدة الدرقية TSH", t: "24 ساعة"},
+                        {n: "هرمونات الغدة الكاملة (T3, T4, TSH)", t: "24 ساعة"},
                         {n: "فيتامين د Vitamin D", t: "48 ساعة"},
-                        {n: "مخزون الحديد Ferritin", t: "24 ساعة"},
-                        {n: "جرثومة المعدة (براز)", t: "24 ساعة"},
-                        {n: "فيروس C و B", t: "24 ساعة"},
-                        {n: "تحليل بول كامل", t: "ساعتين"},
-                        {n: "تحليل براز كامل", t: "3 ساعات"},
+                        {n: "فيتامين ب12 Vitamin B12", t: "48 ساعة"},
+                        {n: "وظائف كبد كاملة (8 تحاليل)", t: "6 ساعات"},
+                        {n: "وظائف كلى كاملة (Urea/Creat/UA)", t: "4 ساعات"},
+                        {n: "دهون كاملة (Lipid Profile)", t: "6 ساعات"},
+                        {n: "جرثومة المعدة (Stool Antigen)", t: "24 ساعة"},
+                        {n: "فيروس سي C (الأجسام المضادة)", t: "24 ساعة"},
+                        {n: "فيروس بي B (الأجسام المضادة)", t: "24 ساعة"},
+                        {n: "تحليل PSA (البروستاتا)", t: "24 ساعة"},
+                        {n: "تحليل مخزون الحديد Ferritin", t: "24 ساعة"},
+                        {n: "كالسيوم كلي ومتأين", t: "5 ساعات"},
+                        {n: "مزرعة بول (C/S)", t: "48-72 ساعة"},
+                        {n: "مزرعة براز (C/S)", t: "48-72 ساعة"},
+                        {n: "تحليل الحمل الرقمي (BHCG)", t: "4 ساعات"},
+                        {n: "دلالات أورام الثدي (CA 15.3)", t: "48 ساعة"},
+                        {n: "دلالات أورام القولون (CEA)", t: "48 ساعة"},
+                        {n: "CRP (بروتين التفاعل C)", t: "ساعتين"},
                         {n: "سرعة ترسيب ESR", t: "ساعتين"},
-                        {n: "تحليل النقرس Uric Acid", t: "4 ساعات"}
+                        {n: "تحليل بول كامل", t: "ساعتين"},
+                        {n: "تحليل براز كامل", t: "3 ساعات"}
                     ];
                     testData.forEach(item => {
                         document.write(`
@@ -170,7 +196,6 @@
                 </div>
                 <div class="package-card">• عضو الجمعية الأمريكية لعلم الأحياء الدقيقة.</div>
                 <div class="package-card">• إشراف طبي كامل على كافة النتائج.</div>
-                <div class="package-card">• تعقيم ومكافحة عدوى بأعلى المعايير.</div>
             </div>
         </div>
     </div>
@@ -179,9 +204,9 @@
         <div class="list-content">
             <div class="fixed-header"><h2>إرشادات التحاليل</h2><div style="color:#d4af37; font-size:2rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
             <div style="margin-top:20px;">
-                <div class="package-card"><h4>تحاليل الدهون</h4><p>يجب الصيام من 12 إلى 14 ساعة (يسمح بشرب الماء فقط).</p></div>
+                <div class="package-card"><h4>تحاليل الدهون</h4><p>يجب الصيام من 12 إلى 14 ساعة.</p></div>
                 <div class="package-card"><h4>تحليل السكر الصائم</h4><p>الصيام من 6 إلى 8 ساعات.</p></div>
-                <div class="package-card"><h4>المضادات الحيوية</h4><p>يجب التوقف عن المضادات قبل المزرعة بـ 48 ساعة على الأقل.</p></div>
+                <div class="package-card"><h4>المزارع</h4><p>يجب التوقف عن المضاد الحيوي قبل المزرعة بـ 48 ساعة.</p></div>
             </div>
         </div>
     </div>
@@ -193,34 +218,15 @@
     </div>
 
     <script>
-        function toggleSidebar() { 
-            document.getElementById('sidebar').classList.toggle('active'); 
-        }
-
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
         function handleMenuClick(targetId) {
             document.getElementById('sidebar').classList.remove('active');
-            if(targetId === 'home') {
-                window.scrollTo({top: 0, behavior: 'smooth'});
-            } else {
-                setTimeout(() => openModal(targetId), 300);
-            }
+            if(targetId === 'home') window.scrollTo({top: 0, behavior: 'smooth'});
+            else setTimeout(() => openModal(targetId), 300);
         }
-
-        function openModal(id) { 
-            document.getElementById(id).style.display = 'block'; 
-            document.body.style.overflow = 'hidden'; 
-            history.pushState({ modalOpen: true }, ""); 
-        }
-
-        function closeModals() { 
-            document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); 
-            document.body.style.overflow = 'auto';
-        }
-
-        window.onpopstate = function() {
-            closeModals();
-            document.getElementById('sidebar').classList.remove('active');
-        };
+        function openModal(id) { document.getElementById(id).style.display = 'block'; document.body.style.overflow = 'hidden'; history.pushState({ modalOpen: true }, ""); }
+        function closeModals() { document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); document.body.style.overflow = 'auto'; }
+        window.onpopstate = function() { closeModals(); document.getElementById('sidebar').classList.remove('active'); };
     </script>
 </body>
 </html>
