@@ -4,283 +4,304 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>معمل الدكتور جابر شحاته</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --medical-blue: #0055ff;
-            --soft-blue: #eef4ff;
-            --dark-text: #1a2b4b;
-            --pure-white: #ffffff;
-            --accent-gold: #c5a059;
+            --bg-color: #f0f2f5;
+            --main-navy: #1a237e;
+            --gold-accent: #b8964d;
+            --white: #ffffff;
+            --shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+            --inner-shadow: inset 6px 6px 12px #c1c1c1, inset -6px -6px 12px #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        body { background-color: var(--soft-blue); color: var(--dark-text); line-height: 1.6; }
+        body { background-color: var(--bg-color); color: var(--main-navy); overflow-x: hidden; }
 
-        /* شريط التميز العلوي */
-        .top-status {
-            background: var(--medical-blue);
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
+        /* الهيدر الاحترافي */
         header {
-            background: var(--pure-white);
-            padding: 15px 5%;
+            padding: 25px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
+            background: var(--bg-color);
         }
 
-        .brand h1 {
-            font-family: 'Amiri', serif;
-            font-size: 1.4rem;
-            color: var(--medical-blue);
+        .header-btn {
+            width: 50px; height: 50px;
+            background: var(--bg-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border: none; color: var(--main-navy);
         }
 
-        .profile-img {
+        .brand-box { text-align: center; }
+        .brand-box h1 { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--main-navy); }
+        .brand-box span { font-size: 0.7rem; letter-spacing: 2px; font-weight: bold; color: var(--gold-accent); }
+
+        .profile-circle {
             width: 55px; height: 55px;
-            border: 3px solid var(--soft-blue);
             border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 3px;
+            background: var(--bg-color);
+            box-shadow: var(--shadow);
         }
-        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+        .profile-circle img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
         /* البطاقة التعريفية */
-        .hero-card {
-            margin: 25px 5%;
-            background: var(--pure-white);
-            padding: 30px 20px;
-            border-radius: 25px;
+        .hero-section { padding: 20px 6%; }
+        
+        .main-card {
+            background: var(--bg-color);
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,85,255,0.05);
+            margin-bottom: 30px;
         }
 
-        .badge {
-            background: var(--soft-blue);
-            color: var(--medical-blue);
-            padding: 5px 15px;
+        .status-pill {
+            display: inline-block;
+            padding: 6px 20px;
+            background: var(--main-navy);
+            color: white;
             border-radius: 50px;
             font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
         }
 
-        .main-title { font-size: 2rem; font-weight: 900; margin-bottom: 10px; color: var(--dark-text); }
+        .title-large { font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 15px; }
 
-        /* الأزرار الرئيسية */
-        .action-group { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
-        
-        .btn-main {
-            background: var(--medical-blue);
-            color: white;
-            padding: 18px;
-            border-radius: 15px;
+        /* أزرار الخدمات */
+        .grid-services {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .service-btn {
+            background: var(--bg-color);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
             text-decoration: none;
-            font-weight: 700;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.2s;
+            border: 2px solid transparent;
         }
-
-        .btn-sub {
-            background: var(--pure-white);
-            color: var(--medical-blue);
-            padding: 18px;
+        .service-btn:active { box-shadow: var(--inner-shadow); transform: scale(0.98); }
+        
+        .icon-box {
+            width: 60px; height: 60px;
+            background: var(--bg-color);
             border-radius: 15px;
-            border: 2px solid var(--medical-blue);
-            font-weight: 700;
-            cursor: pointer;
+            box-shadow: var(--inner-shadow);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
         }
 
-        /* القوائم المنبثقة */
-        .full-page-menu {
+        .btn-txt h3 { font-size: 1.1rem; font-weight: 900; color: var(--main-navy); }
+        .btn-txt p { font-size: 0.8rem; color: #777; }
+
+        /* النوافذ المنبثقة العصرية */
+        .glass-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--pure-white);
-            z-index: 2000; display: none;
-            overflow-y: auto;
-        }
-
-        .menu-header {
+            background: rgba(240, 242, 245, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 5000; display: none;
             padding: 20px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #eee;
-            position: sticky; top: 0; background: white;
         }
 
-        .content-body { padding: 20px; }
+        .overlay-card {
+            background: var(--bg-color);
+            height: 100%;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            display: flex; flex-direction: column;
+            overflow: hidden;
+        }
 
-        .info-card {
-            background: var(--soft-blue);
+        .overlay-header {
+            padding: 25px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .overlay-body { padding: 25px; overflow-y: auto; flex: 1; }
+
+        .list-item {
+            background: var(--bg-color);
+            margin-bottom: 15px;
             padding: 20px;
             border-radius: 15px;
-            margin-bottom: 15px;
-            border-right: 5px solid var(--medical-blue);
-        }
-
-        .test-item {
-            background: var(--pure-white);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            box-shadow: var(--shadow);
             display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            border: 1px solid #f0f0f0;
         }
 
-        .price-tag { color: var(--medical-blue); font-weight: 900; }
+        .tag-special {
+            background: #ffecb3; color: #856404;
+            padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: bold;
+        }
 
-        /* شريط التنقل السفلي */
-        .bottom-bar {
-            position: fixed; bottom: 0; width: 100%;
-            background: var(--pure-white);
+        /* شريط سفلي عائم */
+        .floating-nav {
+            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+            width: 85%; max-width: 400px;
+            background: var(--main-navy);
+            padding: 15px;
+            border-radius: 25px;
             display: flex; justify-content: space-around;
-            padding: 15px 0;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
-            border-radius: 25px 25px 0 0;
-            z-index: 1500;
+            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.4);
+            z-index: 4000;
         }
+        .nav-link { color: white; text-decoration: none; text-align: center; opacity: 0.7; transition: 0.3s; }
+        .nav-link.active { opacity: 1; transform: translateY(-5px); }
+        .nav-link span { display: block; font-size: 0.65rem; margin-top: 5px; font-weight: bold; }
 
-        .nav-item { text-decoration: none; text-align: center; color: #8e9aaf; }
-        .nav-item.active { color: var(--medical-blue); }
-        .nav-item span { display: block; font-size: 0.7rem; font-weight: 700; margin-top: 4px; }
-
-        .footer-info { text-align: center; padding: 40px 20px 120px; font-size: 0.75rem; color: #8e9aaf; }
+        .footer-rights { text-align: center; padding: 40px 20px 120px; font-size: 0.75rem; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <div class="top-status">🌙 عروض شهر رمضان: خصم 40% على كافة التحاليل</div>
-
     <header>
-        <div onclick="openMenu('sidebarMenu')" style="cursor:pointer;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button class="header-btn" onclick="openModal('sidebarMenu')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="brand-box">
+            <h1>د. جابر شحاته</h1>
+            <span>مـعـمـل الـتـحـالـيـل</span>
         </div>
-        <div class="brand"><h1>معمل د. جابر شحاته</h1></div>
-        <div class="profile-img">
+        <div class="profile-circle">
             <img src="love1.jpg" onerror="this.src='https://via.placeholder.com/100'">
         </div>
     </header>
 
-    <section class="hero-card">
-        <div class="badge">استشاري التحاليل الطبية</div>
-        <h1 class="main-title">دقة تمنحك الثقة</h1>
-        <p style="color:#666; font-size: 0.9rem;">نعتني بصحتك باستخدام أحدث التقنيات المختبرية العالمية</p>
-        
-        <div class="action-group">
-            <a href="https://wa.me/201015090991?text=طلب سحب منزلي" class="btn-main">
-                <span>طلب سحب منزلي VIP</span>
+    <section class="hero-section">
+        <div class="main-card">
+            <span class="status-pill">🌙 عروض رمضان - خصم 40%</span>
+            <h2 class="title-large">رعاية صحية<br><span style="color: var(--gold-accent);">بمعايير عالمية</span></h2>
+            <p style="color: #6a737d; margin-bottom: 20px;">دقة النتائج هي أولويتنا القصوى</p>
+        </div>
+
+        <div class="grid-services">
+            <a href="https://wa.me/201015090991?text=حجز سحب منزلي VIP" class="service-btn">
+                <div class="icon-box">🏠</div>
+                <div class="btn-txt">
+                    <h3>سحب منزلي VIP</h3>
+                    <p>نصلك أينما كنت بأقصى سرعة</p>
+                </div>
             </a>
-            <button onclick="openMenu('testList')" class="btn-sub">موسوعة التحاليل والباقات</button>
+
+            <div onclick="openModal('testList')" class="service-btn" style="cursor: pointer;">
+                <div class="icon-box">🧪</div>
+                <div class="btn-txt">
+                    <h3>موسوعة التحاليل</h3>
+                    <p>اكتشف الباقات والعروض المتاحة</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-rights">
+            <p>حقوق النشر محفوظة © 2026</p>
+            <p><b>الدكتور جابر شحاته</b></p>
+            <p style="margin-top: 5px;">Designed by: Eng/ Anas Gaber Shehata</p>
         </div>
     </section>
 
-    <div class="footer-info">
-        <p>جميع حقوق النشر محفوظة لدى <b>د. جابر شحاته</b> © 2026</p>
-        <p>Designed by: <b>Eng/ Anas Gaber Shehata</b></p>
-    </div>
+    <div id="testList" class="glass-overlay">
+        <div class="overlay-card">
+            <div class="overlay-header">
+                <h3 style="font-weight: 900;">الباقات والتحاليل</h3>
+                <button class="header-btn" onclick="closeModals()">✕</button>
+            </div>
+            <div class="overlay-body">
+                <div class="list-item" style="border-right: 5px solid var(--gold-accent);">
+                    <div>
+                        <span class="tag-special">الأكثر طلباً</span>
+                        <h4 style="margin-top: 5px;">باقة الفحص الشامل</h4>
+                        <p style="font-size: 0.75rem; color: #666;">صورة دم، سكر، كبد، كلى، دهون، غدة</p>
+                    </div>
+                    <a href="https://wa.me/201015090991" class="header-btn"> حجز </a>
+                </div>
 
-    <div id="testList" class="full-page-menu">
-        <div class="menu-header">
-            <h3>قائمة التحاليل والعروض</h3>
-            <div onclick="closeMenus()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="content-body">
-            <h4 style="margin-bottom:15px; color:var(--medical-blue);">🎁 عروض رمضان</h4>
-            <div class="info-card">
-                <span style="background:red; color:white; padding:2px 8px; border-radius:5px; font-size:0.7rem;">عرض خاص</span>
-                <h4 style="margin-top:5px;">باقة الفحص الشامل الذهبية</h4>
-                <p style="font-size:0.8rem;">(صورة دم، سكر، كبد، كلى، دهون، غدة، نقرس)</p>
-                <div style="margin-top:10px; display:flex; justify-content:space-between; align-items:center;">
-                    <span class="price-tag">خصم 40%</span>
-                    <a href="https://wa.me/201015090991" class="btn-main" style="padding:8px 15px; font-size:0.8rem;">حجز</a>
+                <h4 style="margin: 20px 0;">التحاليل الفردية</h4>
+                <div id="tests-container">
+                    <script>
+                        const tests = ["صورة دم كاملة CBC", "سكر تراكمي HbA1c", "وظائف كبد ALT", "وظائف كلى Creatinine", "كوليسترول", "دهون ثلاثية", "هرمون غدة TSH", "فيتامين د", "مخزون حديد", "بول كامل"];
+                        tests.forEach(t => {
+                            document.write(`<div class="list-item"><span>${t}</span><a href="https://wa.me/201015090991" style="color:var(--gold-accent); text-decoration:none; font-weight:900;">حجز</a></div>`);
+                        });
+                    </script>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <h4 style="margin:25px 0 15px; color:var(--medical-blue);">🧪 قائمة الفحوصات</h4>
-            <div id="dynamic-tests">
-                <script>
-                    const tests = ["صورة دم كاملة CBC", "سكر تراكمي HbA1c", "وظائف كبد ALT", "وظائف كلى Creatinine", "كوليسترول", "دهون ثلاثية", "هرمون غدة TSH", "فيتامين د", "مخزون حديد", "بول كامل"];
-                    tests.forEach(t => {
-                        document.write(`<div class="test-item"><span>${t}</span><a href="https://wa.me/201015090991" class="price-tag" style="text-decoration:none;">حجز</a></div>`);
-                    });
-                </script>
+    <div id="aboutDoc" class="glass-overlay">
+        <div class="overlay-card">
+            <div class="overlay-header">
+                <h3>عن المعمل</h3>
+                <button class="header-btn" onclick="closeModals()">✕</button>
+            </div>
+            <div class="overlay-body">
+                <div class="main-card">
+                    <h4>د. جابر شحاته</h4>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">استشاري التحاليل الطبية بخبرة تزيد عن 25 عاماً. عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM).</p>
+                </div>
+                <div class="list-item">دقة تضاهي المعايير الدولية</div>
+                <div class="list-item">أجهزة أوتوماتيكية بالكامل</div>
             </div>
         </div>
     </div>
 
-    <div id="aboutDoc" class="full-page-menu">
-        <div class="menu-header">
-            <h3>عن المختبر</h3>
-            <div onclick="closeMenus()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="content-body">
-            <div class="info-card"><h4>د. جابر شحاته</h4><p>استشاري التحاليل الطبية بخبرة تزيد عن 25 عاماً.</p></div>
-            <div class="info-card"><h4>العضويات</h4><p>عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM).</p></div>
-            <div class="info-card"><h4>التجهيزات</h4><p>نمتلك أحدث الأجهزة الأوتوماتيكية لضمان نتائج دقيقة بنسبة 100%.</p></div>
-        </div>
-    </div>
-
-    <div id="medicalTips" class="full-page-menu">
-        <div class="menu-header">
-            <h3>نصائح طبية</h3>
-            <div onclick="closeMenus()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="content-body">
-            <div class="info-card"><h4>صيام الدهون</h4><p>يتطلب صياماً من 12 إلى 14 ساعة.</p></div>
-            <div class="info-card"><h4>السكر الصائم</h4><p>الصيام من 6 إلى 8 ساعات.</p></div>
-            <div class="info-card"><h4>المضادات الحيوية</h4><p>يجب التوقف عنها قبل عمل المزرعة بـ 48 ساعة.</p></div>
+    <div id="medicalTips" class="glass-overlay">
+        <div class="overlay-card">
+            <div class="overlay-header">
+                <h3>تعليمات هامة</h3>
+                <button class="header-btn" onclick="closeModals()">✕</button>
+            </div>
+            <div class="overlay-body">
+                <div class="list-item"><b>تحاليل الدهون:</b> صيام 12-14 ساعة.</div>
+                <div class="list-item"><b>سكر صائم:</b> صيام 6-8 ساعات.</div>
+                <div class="list-item"><b>المزرعة:</b> قبل تناول المضاد الحيوي.</div>
+            </div>
         </div>
     </div>
 
-    <div id="sidebarMenu" class="full-page-menu" style="width: 80%; border-left: 1px solid #eee;">
-        <div class="menu-header">
-            <h3>القائمة</h3>
-            <div onclick="closeMenus()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="content-body">
-            <div class="test-item" onclick="closeMenus()">🏠 الرئيسية</div>
-            <div class="test-item" onclick="openMenu('testList')">🧪 قائمة التحاليل</div>
-            <div class="test-item" onclick="openMenu('aboutDoc')">📄 عن المعمل</div>
-            <div class="test-item" onclick="openMenu('medicalTips')">💡 نصائح طبية</div>
-        </div>
-    </div>
-
-    <nav class="bottom-bar">
-        <a href="tel:01015090991" class="nav-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    <nav class="floating-nav">
+        <a href="tel:01015090991" class="nav-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
             <span>اتصال</span>
         </a>
-        <a href="https://wa.me/201015090991" class="nav-item active">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.5c.9 0 1.8.2 2.7.6L21 3l-1.6 4.7c.4.9.6 1.8.6 2.8z"></path></svg>
+        <a href="https://wa.me/201015090991" class="nav-link active">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.5c.9 0 1.8.2 2.7.6L21 3l-1.6 4.7c.4.9.6 1.8.6 2.8z"></path></svg>
             <span>واتساب</span>
         </a>
-        <a href="#" class="nav-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"></circle><path d="M22 10c0 5.25-10 13-10 13S2 15.25 2 10a10 10 0 1 1 20 0z"></path></svg>
-            <span>موقعنا</span>
-        </a>
+        <div onclick="openModal('aboutDoc')" class="nav-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>عن المعمل</span>
+        </div>
+        <div onclick="openModal('medicalTips')" class="nav-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span>نصائح</span>
+        </div>
     </nav>
 
     <script>
-        function openMenu(id) {
-            // إغلاق أي قائمة مفتوحة أولاً (لحل مشكلة التغطية)
-            closeMenus();
+        function openModal(id) {
+            closeModals();
             document.getElementById(id).style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeMenus() {
-            document.querySelectorAll('.full-page-menu').forEach(m => m.style.display = 'none');
+        function closeModals() {
+            document.querySelectorAll('.glass-overlay').forEach(m => m.style.display = 'none');
             document.body.style.overflow = 'auto';
         }
     </script>
