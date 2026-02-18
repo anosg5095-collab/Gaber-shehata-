@@ -2,338 +2,220 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>د. جابر شحاته | استشاري التحاليل الطبية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Amiri:wght@700&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-bg: #0b0e14;
-            --accent-color: #7000ff; /* بنفسجي كهربائي */
-            --secondary-accent: #00d4ff; /* بلو لايت */
-            --gold-text: #e2b04a;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b38728 100%);
+            --deep-navy: #050c18;
+            --glass: rgba(255, 255, 255, 0.05);
+            --accent-green: #00ffcc;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--deep-navy); color: white; overflow-x: hidden; padding-bottom: 160px; line-height: 1.6; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .animate { animation: fadeInUp 0.8s ease forwards; }
+
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a2a44 0%, #050c18 100%);
+            z-index: -1;
+        }
+
+        .ramadan-bar { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 0; font-weight: 900; text-align: center; position: sticky; top: 0; z-index: 4000; font-size: 0.9rem; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+
+        header { padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; }
+        .menu-toggle { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 4500; }
+        .menu-toggle span { display: block; width: 28px; height: 3px; background: var(--gold-gradient); border-radius: 3px; }
+
+        .logo h1 { font-family: 'Amiri', serif; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.5rem; }
+        .doc-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #d4af37; overflow: hidden; box-shadow: 0 0 15px rgba(212,175,55,0.3); }
+        .doc-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .work-hours-status { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(212, 175, 55, 0.3); margin: 15px auto; padding: 10px; border-radius: 12px; max-width: 320px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.8rem; color: #f9f295; }
+        .status-dot { width: 10px; height: 10px; background: #25d366; border-radius: 50%; box-shadow: 0 0 10px #25d366; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+        .list-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 9999; display: none; padding: 5px; }
+        .list-content { background: var(--deep-navy); border: 1px solid #d4af37; border-radius: 20px; height: 100%; overflow-y: auto; padding: 100px 20px 40px 20px; position: relative; }
+        .fixed-header { position: absolute; top: 0; left: 0; width: 100%; background: #0a192f; padding: 25px 20px; border-bottom: 1px solid #d4af37; display: flex; justify-content: space-between; align-items: center; z-index: 10000; border-radius: 20px 20px 0 0; }
+
+        .package-card { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(5,12,24,0.4)); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #d4af37; position: relative; overflow: hidden; }
+        .discount-tag { position: absolute; top: 12px; left: -35px; background: #ff3366; color: white; padding: 5px 40px; font-size: 0.7rem; font-weight: 900; transform: rotate(-45deg); box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         
-        body { 
-            background: var(--primary-bg); 
-            color: #e0e0e0; 
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 40%);
-            padding-bottom: 100px;
-        }
+        .category-title { color: #d4af37; font-weight: 900; margin: 35px 0 15px 0; border-right: 4px solid #d4af37; padding-right: 12px; font-size: 1.2rem; background: rgba(212,175,55,0.05); padding: 8px 12px; border-radius: 0 8px 8px 0; }
+        
+        .test-card { background: var(--glass); padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; gap: 10px; transition: 0.3s; }
+        .test-card:active { background: rgba(212,175,55,0.1); }
+        .test-info { flex: 1; }
+        .test-name { display: block; font-weight: bold; color: #fff; font-size: 0.95rem; }
+        .test-details { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+        .test-time { color: var(--accent-green); font-size: 0.7rem; font-weight: 800; }
+        .test-discount { color: #ff3366; font-size: 0.7rem; font-weight: 800; }
+        .btn-book { background: var(--gold-gradient); color: var(--deep-navy); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.8rem; font-weight: 900; white-space: nowrap; }
 
-        /* شريط رمضان بشكل عصري */
-        .ramadan-ribbon {
-            background: linear-gradient(90deg, #7000ff, #00d4ff);
-            color: white;
-            text-align: center;
-            padding: 8px 0;
-            font-weight: 700;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            position: sticky; top: 0; z-index: 5000;
-        }
+        .sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background: #0a192f; border-left: 2px solid #d4af37; z-index: 9500; transition: 0.4s; padding: 60px 20px; }
+        .sidebar.active { right: 0; }
+        .sidebar-close { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; color: #d4af37; cursor: pointer; }
+        .sidebar-menu li { margin: 25px 0; border-bottom: 1px solid rgba(212,175,55,0.1); padding-bottom: 15px; cursor: pointer; font-weight: bold; list-style: none; color: #f9f295; font-size: 1.1rem; }
 
-        /* الهيدر */
-        header {
-            padding: 20px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
+        .bottom-nav { position: fixed; bottom: 20px; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 8px; z-index: 1000; }
+        .nav-link { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 5px; flex: 1; }
+        .icon-circle { width: 55px; height: 55px; background: rgba(10, 25, 47, 0.95); border: 2px solid #d4af37; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .icon-circle svg { width: 22px; height: 22px; fill: #d4af37; }
+        .nav-link span { color: #f9f295; font-size: 0.75rem; font-weight: 800; text-shadow: 1px 1px 2px rgba(0,0,0,0.8); }
 
-        .logo-area h1 {
-            font-family: 'Amiri', serif;
-            font-size: 1.6rem;
-            background: linear-gradient(to bottom, #fff, #999);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .avatar-box {
-            position: relative;
-            width: 60px; height: 60px;
-            border-radius: 20px;
-            padding: 2px;
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
-        }
-        .avatar-box img {
-            width: 100%; height: 100%;
-            border-radius: 18px;
-            object-fit: cover;
-            border: 2px solid var(--primary-bg);
-        }
-
-        .menu-btn {
-            width: 45px; height: 45px;
-            background: var(--glass-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
-            cursor: pointer;
-        }
-        .menu-btn span { width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
-
-        /* البطاقة الرئيسية Hero */
-        .hero-section {
-            padding: 40px 6%;
-            text-align: center;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 100px;
-            background: rgba(112, 0, 255, 0.1);
-            border: 1px solid rgba(112, 0, 255, 0.2);
-            color: var(--secondary-accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        .hero-section h2 { font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 10px; color: #fff; }
-
-        .main-actions {
-            display: grid;
-            gap: 15px;
-            margin-top: 35px;
-        }
-        .btn-premium {
-            background: linear-gradient(135deg, #7000ff 0%, #4a00aa 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 20px rgba(112, 0, 255, 0.3);
-            transition: 0.3s;
-        }
-        .btn-outline {
-            background: var(--glass-bg);
-            border: 1px solid var(--card-border);
-            color: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        /* القائمة الجانبية المودرن */
-        .side-nav {
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100%;
-            background: rgba(11, 14, 20, 0.98);
-            z-index: 9000; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-        .side-nav.open { right: 0; }
-        .nav-links { list-style: none; text-align: center; }
-        .nav-links li { margin: 25px 0; font-size: 1.8rem; font-weight: 900; color: #fff; cursor: pointer; transition: 0.3s; }
-        .nav-links li:hover { color: var(--secondary-accent); }
-
-        /* النوافذ المنبثقة Overlays */
-        .modern-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--primary-bg);
-            z-index: 9999; display: none;
-            padding-top: 80px;
-        }
-        .overlay-header {
-            position: absolute; top: 0; width: 100%; padding: 20px 6%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(11, 14, 20, 0.8); backdrop-filter: blur(10px);
-        }
-        .overlay-content { padding: 20px 6%; height: 100%; overflow-y: auto; }
-
-        .m-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--card-border);
-            padding: 20px;
-            border-radius: 24px;
-            margin-bottom: 15px;
-            transition: 0.3s;
-        }
-        .m-card:active { transform: scale(0.98); background: rgba(255,255,255,0.06); }
-        .m-card h4 { color: var(--secondary-accent); margin-bottom: 8px; font-weight: 800; }
-
-        .test-row {
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255,255,255,0.02);
-            padding: 15px; border-radius: 15px; margin-bottom: 10px;
-            border-right: 3px solid var(--accent-color);
-        }
-        .btn-mini {
-            background: #fff; color: #000; padding: 6px 14px; border-radius: 10px;
-            text-decoration: none; font-size: 0.75rem; font-weight: 800;
-        }
-
-        /* شريط التنقل السفلي */
-        .dock-nav {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            width: 90%; max-width: 400px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            display: flex; justify-content: space-around; padding: 10px;
-            z-index: 8000;
-        }
-        .dock-item { text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-        .dock-item svg { width: 22px; height: 22px; fill: #aaa; transition: 0.3s; }
-        .dock-item span { font-size: 0.65rem; color: #aaa; font-weight: 700; }
-        .dock-item.active svg { fill: var(--secondary-accent); }
-        .dock-item.active span { color: var(--secondary-accent); }
-
-        .footer-text { margin-top: 50px; opacity: 0.4; font-size: 0.7rem; text-align: center; }
-
+        .footer-rights { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.5); border-top: 1px solid rgba(212,175,55,0.1); }
     </style>
 </head>
 <body>
 
-    <div class="ramadan-ribbon">🌙 خصومات شهر رمضان المبارك 40% على جميع الباقات 🌙</div>
+    <div class="ramadan-bar">🌙 خصومات رمضان 40% حصرياً لدى معملنا 🌙</div>
 
-    <header>
-        <div class="menu-btn" onclick="toggleNav()">
-            <span></span><span></span>
-        </div>
-        <div class="logo-area">
-            <h1>د. جابر شحاته</h1>
-        </div>
-        <div class="avatar-box">
-            <img src="love1.jpg" onerror="this.src='https://via.placeholder.com/100'">
-        </div>
+    <header class="animate">
+        <div class="menu-toggle" onclick="toggleSidebar()"><span></span><span></span><span></span></div>
+        <div class="logo"><h1>د. جابر شحاته</h1></div>
+        <div class="doc-img"><img src="love1.jpg" alt="د. جابر"></div>
     </header>
 
-    <nav id="sideNav" class="side-nav">
-        <div onclick="toggleNav()" style="position:absolute; top:30px; left:30px; font-size:2rem; cursor:pointer;">✕</div>
-        <ul class="nav-links">
-            <li onclick="handleNavClick('home')">الرئيسية</li>
-            <li onclick="handleNavClick('testList')">التحاليل</li>
-            <li onclick="handleNavClick('aboutDoc')">عن المعمل</li>
-            <li onclick="handleNavClick('medicalTips')">النصائح</li>
-        </ul>
-    </nav>
+    <div class="work-hours-status animate">
+        <div class="status-dot"></div>
+        <span>رقم الدكتور متاح للتواصل من <b>10:00 صباحاً</b></span>
+    </div>
 
-    <section class="hero-section">
-        <div class="hero-badge">معمل الاستشاري للتحاليل الطبية</div>
-        <h2>دقة بلا حدود<br>لرعاية صحتك</h2>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-close" onclick="toggleSidebar()">✕</div>
+        <ul class="sidebar-menu">
+            <li onclick="handleMenuClick('home')">🏠 الرئيسية</li>
+            <li onclick="handleMenuClick('testList')">🧪 قائمة التحاليل</li>
+            <li onclick="handleMenuClick('aboutDoc')">📄 عن المعمل</li>
+            <li onclick="handleMenuClick('medicalTips')">💡 إرشادات هامة</li>
+        </ul>
+    </div>
+
+    <section class="hero animate" style="text-align: center; padding: 20px 20px;">
+        <h2 style="color: #d4af37; font-family: 'Amiri';">معمل</h2>
+        <h1 style="font-size: 2.3rem; margin-bottom: 10px;">د/ جابر شحاته</h1>
+        <div style="background: rgba(212,175,55,0.1); padding: 8px 25px; border-radius: 50px; border: 1px solid #d4af37; display: inline-block; margin: 10px 0; color: #f9f295; font-weight: 800;">استشاري التحاليل الطبية</div>
         
-        <div class="main-actions">
-            <a href="https://wa.me/201015090991?text=طلب سحب منزلي VIP" class="btn-premium">طلب سحب منزلي VIP</a>
-            <div onclick="openOverlay('testList')" class="btn-outline">تصفح موسوعة التحاليل</div>
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 30px auto;">
+            <a href="https://wa.me/201015090991?text=طلب سحب منزلي VIP" style="background: var(--gold-gradient); color: var(--deep-navy); padding: 18px; border-radius: 15px; text-decoration: none; font-weight: 900; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">طلب سحب منزلي VIP</a>
+            <div onclick="openModal('testList')" style="border: 1px solid #d4af37; color: #d4af37; padding: 18px; border-radius: 15px; font-weight: bold; cursor: pointer; background: rgba(212,175,55,0.05);">قائمة التحاليل</div>
         </div>
 
-        <div class="footer-text">
+        <div class="footer-rights animate">
             <p>جميع حقوق النشر محفوظة لدى <b>د. جابر شحاته</b> © 2026</p>
-            <p>Designed by: <b>Eng/ Anas Gaber Shehata</b></p>
+            <p style="margin-top: 5px; font-size: 0.7rem;">Designed by: <b>Eng/ Anas Gaber Shehata</b></p>
         </div>
     </section>
 
-    <div id="testList" class="modern-overlay">
-        <div class="overlay-header">
-            <h2 style="font-weight:900;">قائمة الفحوصات</h2>
-            <div onclick="closeOverlays()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="overlay-content">
-            <h3 style="color:var(--gold-text); margin-bottom:15px;">🎁 باقات رمضان الخاصة</h3>
-            <div class="m-card">
-                <div style="background: #ff3366; display:inline-block; padding:2px 10px; border-radius:5px; font-size:0.7rem; margin-bottom:10px;">خصم 40%</div>
-                <h4>باقة الفحص الشامل الذهبية</h4>
-                <p style="font-size:0.8rem; opacity:0.7;">(صورة دم، سكر، كبد، كلى، نقرس، غدة، دهون، بول وبراز)</p>
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:15px;">
-                    <span style="font-size:0.7rem; color:var(--secondary-accent);">النتيجة: 24 ساعة</span>
-                    <a href="https://wa.me/201015090991" class="btn-mini">احجز الآن</a>
-                </div>
+    <div id="testList" class="list-overlay">
+        <div class="list-content">
+            <div class="fixed-header">
+                <h2 style="font-size:1.1rem; font-weight: 900;">قائمة التحاليل والعروض (خصم 40%)</h2>
+                <div style="color:#d4af37; font-size:1.8rem; cursor:pointer;" onclick="closeModals()">✕</div>
+            </div>
+            
+            <h3 class="category-title">🎁 باقات التوفير الكبرى</h3>
+            <div id="packages-container">
+                <script>
+                    const packages = [
+                        {n: "باقة الاطمئنان الشاملة (44 فحص)", d: "أشمل فحص للجسم: صورة دم، كبد، كلى، سكر، دهون، فيتامينات، غدة، معادن.", t: "24 ساعة"},
+                        {n: "باقة صحتك في صيامك", d: "مخصصة لمتابعة السكر والضغط والأملاح أثناء شهر رمضان.", t: "12 ساعة"},
+                        {n: "باقة الفحص الدوري للرجال", d: "تشمل البروستاتا، هرمون الذكورة، القلب والدهون ووظائف الكلى.", t: "24 ساعة"},
+                        {n: "باقة الفحص الدوري للسيدات", d: "تشمل هرمونات الغدة، مخزون الحديد، الكالسيوم، وفحص الأنيميا.", t: "24 ساعة"},
+                        {n: "باقة الأطفال (نمو ذكي)", d: "صورة دم، فيتامينات، ديدان، فصيلة الدم، كالسيوم.", t: "12 ساعة"},
+                        {n: "باقة السمنة ومقاومة الإنسولين", d: "Homa IR، سكر تراكمي، دهون، وظائف غدة درقية.", t: "24 ساعة"}
+                    ];
+                    packages.forEach(p => document.write(`
+                        <div class="package-card">
+                            <div class="discount-tag">توفير 40%</div>
+                            <h4>${p.n}</h4>
+                            <p style="font-size:0.75rem; color: #eee; margin-bottom:10px;">${p.d}</p>
+                            <span class="test-time">⏰ النتيجة: ${p.t}</span>
+                            <br><a href="https://wa.me/201015090991" class="btn-book" style="margin-top:12px; display:inline-block;">احجز العرض</a>
+                        </div>
+                    `));
+                </script>
             </div>
 
-            <h3 style="color:var(--gold-text); margin:25px 0 15px 0;">🧪 التحاليل الفردية</h3>
-            <div id="test-grid">
+            <h3 class="category-title">🩸 تحاليل السكر والدم</h3>
+            <div id="sugar-tests">
                 <script>
-                    const tests = ["صورة دم كاملة CBC", "سكر تراكمي HbA1c", "وظائف كبد ALT", "وظائف كلى Creatinine", "كوليسترول", "دهون ثلاثية", "هرمون غدة TSH", "فيتامين د", "مخزون حديد", "جرثومة معدة", "بول كامل", "براز كامل"];
-                    tests.forEach(t => {
-                        document.write(`
-                            <div class="test-row">
-                                <span>${t}</span>
-                                <a href="https://wa.me/201015090991?text=حجز ${t}" class="btn-mini">حجز</a>
-                            </div>
-                        `);
-                    });
+                    const t1 = [{n: "سكر صائم وفاطر", t: "4 ساعات"}, {n: "سكر تراكمي HbA1c", t: "4 ساعات"}, {n: "صورة دم كاملة CBC", t: "ساعتين"}, {n: "سرعة ترسيب ESR", t: "ساعتين"}, {n: "فصيلة الدم والريسوس", t: "ساعة"}, {n: "تحليل سيولة الدم PT/INR", t: "3 ساعات"}, {n: "منحنى السكر (GTT)", t: "6 ساعات"}];
+                    t1.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                </script>
+            </div>
+
+            <h3 class="category-title">⚙️ الكبد والكلى والدهون</h3>
+            <div id="organs-tests">
+                <script>
+                    const t2 = [{n: "وظائف كبد كاملة (LFT)", t: "6 ساعات"}, {n: "وظائف كلى (Urea/Creat)", t: "4 ساعات"}, {n: "دهون كاملة (Lipid Profile)", t: "6 ساعات"}, {n: "تحليل النقرس Uric Acid", t: "4 ساعات"}, {n: "أنزيمات كبد ALT / AST", t: "4 ساعات"}, {n: "البومين (الزلال)", t: "5 ساعات"}, {n: "نسبة الصفراء (T&D Bilirubin)", t: "4 ساعات"}];
+                    t2.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                </script>
+            </div>
+
+            <h3 class="category-title">🧪 هرمونات وفيتامينات ومعادن</h3>
+            <div id="hormone-tests">
+                <script>
+                    const t3 = [{n: "الغدة الدرقية TSH", t: "24 ساعة"}, {n: "فيتامين د (Vitamin D)", t: "48 ساعة"}, {n: "فيتامين ب12", t: "48 ساعة"}, {n: "مخزون الحديد (Ferritin)", t: "24 ساعة"}, {n: "هرمون البرولاكتين", t: "24 ساعة"}, {n: "هرمون التستوستيرون", t: "24 ساعة"}, {n: "كالسيوم كلي ومتأين", t: "12 ساعة"}, {n: "صوديوم وبوتاسيوم", t: "6 ساعات"}, {n: "هرمون الحمل الرقمي BHCG", t: "4 ساعات"}];
+                    t3.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                </script>
+            </div>
+
+            <h3 class="category-title">🦠 فيروسات ومناعة ومزارع</h3>
+            <div id="virus-tests">
+                <script>
+                    const t4 = [{n: "فيروس سي (C) - أجسام", t: "24 ساعة"}, {n: "فيروس بي (B) - أجسام", t: "24 ساعة"}, {n: "جرثومة المعدة (براز)", t: "24 ساعة"}, {n: "تحليل CRP (الالتهاب)", t: "3 ساعات"}, {n: "مزرعة بول كاملة", t: "72 ساعة"}, {n: "مزرعة براز", t: "72 ساعة"}, {n: "عامل الروماتويد RF", t: "4 ساعات"}, {n: "دلالات أورام البروستاتا PSA", t: "48 ساعة"}];
+                    t4.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
                 </script>
             </div>
         </div>
     </div>
 
-    <div id="aboutDoc" class="modern-overlay">
-        <div class="overlay-header">
-            <h2 style="font-weight:900;">عن المعمل</h2>
-            <div onclick="closeOverlays()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="overlay-content">
-            <div class="m-card">
-                <h4>د. جابر شحاته</h4>
-                <p style="line-height:1.8;">استشاري التحاليل الطبية بخبرة تزيد عن 25 عاماً. عضو الجمعية الأمريكية لعلم الأحياء الدقيقة (ASM). نستخدم أحدث الأجهزة الأوتوماتيكية بالكامل لضمان أدق النتائج.</p>
+    <div id="aboutDoc" class="list-overlay">
+        <div class="list-content">
+            <div class="fixed-header"><h2>عن المعمل</h2><div style="color:#d4af37; font-size:1.8rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
+            <div style="margin-top:20px;">
+                <div class="package-card">
+                    <h4 style="color:#d4af37; margin-bottom:10px;">دكتور جابر شحاته</h4>
+                    <p style="font-size:0.9rem; line-height:1.8;">استشاري التحاليل الطبية والباثولوجيا الإكلينيكية. معملنا مجهز بأحدث التكنولوجيا لضمان دقة التشخيص وسرعة إصدار النتائج مع الحفاظ على خصوصية المرضى.</p>
+                </div>
             </div>
-            <div class="m-card"><h4>الجودة والدقة</h4><p>نطبق أعلى معايير الجودة العالمية ومكافحة العدوى لضمان سلامة مرضانا.</p></div>
         </div>
     </div>
 
-    <div id="medicalTips" class="modern-overlay">
-        <div class="overlay-header">
-            <h2 style="font-weight:900;">نصائح طبية</h2>
-            <div onclick="closeOverlays()" style="font-size:1.5rem; cursor:pointer;">✕</div>
-        </div>
-        <div class="overlay-content">
-            <div class="m-card"><h4>تحاليل الدهون</h4><p>تتطلب صياماً تاماً من 12 إلى 14 ساعة.</p></div>
-            <div class="m-card"><h4>تحليل السكر الصائم</h4><p>الصيام لمدة 6 إلى 8 ساعات.</p></div>
-            <div class="m-card"><h4>مزرعة البول</h4><p>يفضل إحضار أول عينة في الصباح قبل تناول أي مضاد حيوي.</p></div>
+    <div id="medicalTips" class="list-overlay">
+        <div class="list-content">
+            <div class="fixed-header"><h2>إرشادات</h2><div style="color:#d4af37; font-size:1.8rem; cursor:pointer;" onclick="closeModals()">✕</div></div>
+            <div style="margin-top:20px;">
+                <div class="package-card"><h4>📞 مواعيد التواصل</h4><p>التواصل الهاتفي متاح يومياً من <b>10:00 صباحاً</b>.</p></div>
+                <div class="package-card"><h4>⏱️ شروط الصيام</h4><p>تحاليل الدهون والسكر الصائم تتطلب صيام من 8 إلى 12 ساعة (مسموح بشرب الماء فقط).</p></div>
+            </div>
         </div>
     </div>
 
-    <div class="dock-nav">
-        <a href="tel:01015090991" class="dock-item">
-            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            <span>اتصال</span>
-        </a>
-        <a href="https://maps.app.goo.gl/qVB6VW9PMr923Zcn6" class="dock-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-            <span>موقعنا</span>
-        </a>
-        <a href="https://wa.me/201015090991" class="dock-item active">
-            <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg>
-            <span>واتساب</span>
-        </a>
+    <div class="bottom-nav">
+        <a href="tel:01015090991" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><span>اتصال</span></a>
+        <a href="http://googleusercontent.com/maps.google.com/6" target="_blank" class="nav-link"><div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div><span>موقعنا</span></a>
+        <a href="https://wa.me/201015090991" class="nav-link"><div class="icon-circle" style="border-color:#25d366;"><svg viewBox="0 0 24 24" style="fill:#25d366;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.088-.113-.716-.953-.716-1.815 0-.862.452-1.286.613-1.454.162-.169.352-.211.469-.211.117 0 .235.001.338.005.111.004.259-.042.405.311.147.352.5.1.5.1l.308.62c.1.205.15.426.015.696-.051.103-.102.164-.205.282l-.154.164c-.103.118-.215.247-.092.457.122.21.544.898 1.168 1.454.803.714 1.474.936 1.681 1.042.207.105.33.088.453-.053.122-.14.526-.615.667-.825.141-.21.282-.176.475-.104.193.071 1.222.576 1.433.682.211.105.352.158.404.247.052.09.052.518-.092.923z"/></svg></div><span>واتساب</span></a>
     </div>
 
     <script>
-        function toggleNav() {
-            document.getElementById('sideNav').classList.toggle('open');
+        function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
+        function handleMenuClick(targetId) {
+            document.getElementById('sidebar').classList.remove('active');
+            if(targetId === 'home') window.scrollTo({top: 0, behavior: 'smooth'});
+            else setTimeout(() => openModal(targetId), 300);
         }
-
-        function handleNavClick(id) {
-            toggleNav();
-            if(id !== 'home') {
-                setTimeout(() => openOverlay(id), 400);
-            }
-        }
-
-        function openOverlay(id) {
-            document.getElementById(id).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            history.pushState({modal: id}, "");
-        }
-
-        function closeOverlays() {
-            document.querySelectorAll('.modern-overlay').forEach(o => o.style.display = 'none');
-            document.body.style.overflow = 'auto';
-        }
-
-        window.onpopstate = () => closeOverlays();
+        function openModal(id) { document.getElementById(id).style.display = 'block'; document.body.style.overflow = 'hidden'; history.pushState({ modalOpen: true }, ""); }
+        function closeModals() { document.querySelectorAll('.list-overlay').forEach(m => m.style.display = 'none'); document.body.style.overflow = 'auto'; }
+        window.onpopstate = function() { closeModals(); document.getElementById('sidebar').classList.remove('active'); };
     </script>
 </body>
 </html>
