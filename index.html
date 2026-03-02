@@ -138,7 +138,7 @@
                             <h4>${p.n}</h4>
                             <p style="font-size:0.75rem; color: #eee; margin-bottom:10px;">${p.d}</p>
                             <span class="test-time">⏰ النتيجة: ${p.t}</span>
-                            <br><a href="https://wa.me/201015090991" class="btn-book" style="margin-top:12px; display:inline-block;">احجز العرض</a>
+                            <br><a href="https://wa.me/201015090991?text=${encodeURIComponent('أهلاً دكتور جابر، أريد حجز ' + p.n)}" class="btn-book" style="margin-top:12px; display:inline-block;">احجز العرض</a>
                         </div>
                     `));
                 </script>
@@ -148,7 +148,7 @@
             <div id="sugar-tests">
                 <script>
                     const t1 = [{n: "سكر صائم وفاطر", t: "4 ساعات"}, {n: "سكر تراكمي HbA1c", t: "4 ساعات"}, {n: "صورة دم كاملة CBC", t: "ساعتين"}, {n: "سرعة ترسيب ESR", t: "ساعتين"}, {n: "فصيلة الدم والريسوس", t: "ساعة"}, {n: "تحليل سيولة الدم PT/INR", t: "3 ساعات"}, {n: "منحنى السكر (GTT)", t: "6 ساعات"}];
-                    t1.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                    t1.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991?text=${encodeURIComponent('أهلاً دكتور جابر، أريد الاستفسار عن تحليل: ' + i.n)}" class="btn-book">حجز</a></div>`));
                 </script>
             </div>
 
@@ -156,7 +156,7 @@
             <div id="organs-tests">
                 <script>
                     const t2 = [{n: "وظائف كبد كاملة (LFT)", t: "6 ساعات"}, {n: "وظائف كلى (Urea/Creat)", t: "4 ساعات"}, {n: "دهون كاملة (Lipid Profile)", t: "6 ساعات"}, {n: "تحليل النقرس Uric Acid", t: "4 ساعات"}, {n: "أنزيمات كبد ALT / AST", t: "4 ساعات"}, {n: "البومين (الزلال)", t: "5 ساعات"}, {n: "نسبة الصفراء (T&D Bilirubin)", t: "4 ساعات"}];
-                    t2.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                    t2.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991?text=${encodeURIComponent('أهلاً دكتور جابر، أريد الاستفسار عن تحليل: ' + i.n)}" class="btn-book">حجز</a></div>`));
                 </script>
             </div>
 
@@ -164,7 +164,7 @@
             <div id="hormone-tests">
                 <script>
                     const t3 = [{n: "الغدة الدرقية TSH", t: "24 ساعة"}, {n: "فيتامين د (Vitamin D)", t: "48 ساعة"}, {n: "فيتامين ب12", t: "48 ساعة"}, {n: "مخزون الحديد (Ferritin)", t: "24 ساعة"}, {n: "هرمون البرولاكتين", t: "24 ساعة"}, {n: "هرمون التستوستيرون", t: "24 ساعة"}, {n: "كالسيوم كلي ومتأين", t: "12 ساعة"}, {n: "صوديوم وبوتاسيوم", t: "6 ساعات"}, {n: "هرمون الحمل الرقمي BHCG", t: "4 ساعات"}];
-                    t3.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                    t3.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991?text=${encodeURIComponent('أهلاً دكتور جابر، أريد الاستفسار عن تحليل: ' + i.n)}" class="btn-book">حجز</a></div>`));
                 </script>
             </div>
 
@@ -172,7 +172,7 @@
             <div id="virus-tests">
                 <script>
                     const t4 = [{n: "فيروس سي (C) - أجسام", t: "24 ساعة"}, {n: "فيروس بي (B) - أجسام", t: "24 ساعة"}, {n: "جرثومة المعدة (براز)", t: "24 ساعة"}, {n: "تحليل CRP (الالتهاب)", t: "3 ساعات"}, {n: "مزرعة بول كاملة", t: "72 ساعة"}, {n: "مزرعة براز", t: "72 ساعة"}, {n: "عامل الروماتويد RF", t: "4 ساعات"}, {n: "دلالات أورام البروستاتا PSA", t: "48 ساعة"}];
-                    t4.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991" class="btn-book">حجز</a></div>`));
+                    t4.forEach(i => document.write(`<div class="test-card"><div class="test-info"><span class="test-name">${i.n}</span><div class="test-details"><span class="test-time">⏰ ${i.t}</span><span class="test-discount">🏷️ 40% OFF</span></div></div><a href="https://wa.me/201015090991?text=${encodeURIComponent('أهلاً دكتور جابر، أريد الاستفسار عن تحليل: ' + i.n)}" class="btn-book">حجز</a></div>`));
                 </script>
             </div>
         </div>
